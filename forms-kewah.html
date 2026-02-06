@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KEW.AH Livestock Forms - G-VET System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @media print {
+            .no-print { display: none !important; }
+            body { background: white; }
+            .form-container { box-shadow: none; border: 2px solid #000; page-break-after: always; }
+            .form-header { background: white !important; color: black !important; border-bottom: 3px double #000; }
+        }
+        .signature-box { border-bottom: 1px solid #000; min-height: 60px; }
+        .gov-seal { width: 80px; height: 80px; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-orange-900 to-orange-700 text-white shadow-lg no-print">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <i class="fas fa-paw text-3xl"></i>
+                    <div>
+                        <h1 class="text-2xl font-bold">KEW.AH Livestock Forms</h1>
+                        <p class="text-sm text-orange-200">Live Animal Management Forms - Jabatan Veterinar Perak</p>
+                    </div>
+                </div>
+                <button onclick="window.history.back()" class="bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg">
+                    <i class="fas fa-arrow-left mr-2"></i>Back
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        <!-- Form Selection -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-8 no-print">
+            <h2 class="text-xl font-bold text-gray-900 mb-4">Select Livestock Form</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <button onclick="showForm('kewah1')" class="p-4 bg-orange-50 hover:bg-orange-100 rounded-lg border-2 border-orange-200">
+                    <i class="fas fa-clipboard-list text-orange-600 text-2xl mb-2"></i>
+                    <p class="font-bold text-sm">KEW.AH-1</p>
+                    <p class="text-xs text-gray-600">Animal Register</p>
+                </button>
+                <button onclick="showForm('kewah2')" class="p-4 bg-green-50 hover:bg-green-100 rounded-lg border-2 border-green-200">
+                    <i class="fas fa-heartbeat text-green-600 text-2xl mb-2"></i>
+                    <p class="font-bold text-sm">KEW.AH-2</p>
+                    <p class="text-xs text-gray-600">Health Record</p>
+                </button>
+                <button onclick="showForm('kewah3')" class="p-4 bg-blue-50 hover:bg-blue-100 rounded-lg border-2 border-blue-200">
+                    <i class="fas fa-syringe text-blue-600 text-2xl mb-2"></i>
+                    <p class="font-bold text-sm">KEW.AH-3</p>
+                    <p class="text-xs text-gray-600">Vaccination Log</p>
+                </button>
+                <button onclick="window.print()" class="p-4 bg-gray-100 hover:bg-gray-200 rounded-lg border-2 border-gray-300">
+                    <i class="fas fa-print text-gray-700 text-2xl mb-2"></i>
+                    <p class="font-bold text-sm">Print All</p>
+                    <p class="text-xs text-gray-600">Print Forms</p>
+                </button>
+            </div>
+        </div>
+
+        <!-- Instructions -->
+        <div class="bg-orange-50 border-l-4 border-orange-400 p-6 mb-8 no-print">
+            <div class="flex items-start">
+                <i class="fas fa-book-medical text-orange-600 text-2xl mr-4 mt-1"></i>
+                <div>
+                    <h3 class="font-bold text-gray-900 mb-2">🐄 Livestock Management Instructions</h3>
+                    <div class="grid md:grid-cols-3 gap-4 text-sm">
+                        <div>
+                            <h4 class="font-bold text-orange-800 mb-2">Animal Registration:</h4>
+                            <ul class="list-disc list-inside space-y-1 text-gray-700">
+                                <li>Assign unique animal ID/tag</li>
+                                <li>Record physical characteristics</li>
+                                <li>Document parentage if known</li>
+                                <li>Take identification photos</li>
+                                <li>Complete KEW.AH-1 form</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-orange-800 mb-2">Health Management:</h4>
+                            <ul class="list-disc list-inside space-y-1 text-gray-700">
+                                <li>Daily health observation</li>
+                                <li>Record all treatments</li>
+                                <li>Maintain vaccination schedule</li>
+                                <li>Document any illnesses</li>
+                                <li>Update KEW.AH-2 regularly</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-orange-800 mb-2">Breeding Records:</h4>
+                            <ul class="list-disc list-inside space-y-1 text-gray-700">
+                                <li>Track breeding cycles</li>
+                                <li>Record mating dates</li>
+                                <li>Monitor pregnancy progress</li>
+                                <li>Document birth details</li>
+                                <li>Update offspring records</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="mt-4 p-3 bg-white rounded-lg">
+                        <p class="text-xs text-gray-600">
+                            <strong><i class="fas fa-shield-virus text-red-600"></i> Biosecurity:</strong> 
+                            Maintain strict biosecurity protocols. Report any disease outbreaks immediately. Follow quarantine procedures for new animals.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- KEW.AH-1: Animal Register -->
+        <div id="kewah1" class="form-container bg-white rounded-xl shadow-lg p-8 mb-8" style="display: none;">
+            <div class="form-header border-b-4 border-orange-900 pb-4 mb-6">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-4">
+                        <div class="gov-seal bg-orange-900 rounded-full flex items-center justify-center">
+                            <i class="fas fa-landmark text-white text-3xl"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-600">KERAJAAN MALAYSIA</p>
+                            <h2 class="text-2xl font-bold text-orange-900">KEW.AH-1</h2>
+                            <p class="text-sm text-gray-700">DAFTAR TERNAKAN</p>
+                            <p class="text-xs text-gray-500">(Livestock Register)</p>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-xs text-gray-600">No. Daftar / Register No:</p>
+                        <input type="text" class="border-2 border-gray-400 text-right w-40 px-2 py-1 font-bold" placeholder="AH1-______">
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-6 mb-6">
+                <div>
+                    <p class="text-sm font-bold mb-2">Unit Ternakan / Livestock Unit:</p>
+                    <select class="w-full border-2 border-gray-300 rounded px-2 py-1">
+                        <option>-- Pilih Unit --</option>
+                        <option>Unit Kambing (Goat)</option>
+                        <option>Unit Lembu (Cattle)</option>
+                        <option>Unit Ostrich</option>
+                        <option>Unit Puyuh (Quail)</option>
+                        <option>Unit Rusa (Deer)</option>
+                        <option>Unit Arnab (Rabbit)</option>
+                    </select>
+                </div>
+                <div>
+                    <p class="text-sm font-bold mb-2">Tarikh Daftar / Registration Date:</p>
+                    <input type="date" class="border-2 border-gray-300 rounded px-3 py-2 w-full">
+                </div>
+            </div>
+
+            <div class="bg-orange-50 p-4 rounded-lg mb-6">
+                <h3 class="font-bold text-orange-900 mb-3">MAKLUMAT HAIWAN / ANIMAL INFORMATION</h3>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <p class="text-sm font-bold mb-1">No. Tag / Tag Number: <span class="text-red-600">*</span></p>
+                        <input type="text" class="w-full border-2 border-gray-300 rounded px-3 py-2" placeholder="Contoh: GTG-001">
+                    </div>
+                    <div>
+                        <p class="text-sm font-bold mb-1">Nama / Name:</p>
+                        <input type="text" class="w-full border-2 border-gray-300 rounded px-3 py-2" placeholder="Nama panggilan (optional)">
+                    </div>
+                    <div>
+                        <p class="text-sm font-bold mb-1">Spesies / Species: <span class="text-red-600">*</span></p>
+                        <select class="w-full border-2 border-gray-300 rounded px-2 py-2">
+                            <option>-- Pilih --</option>
+                            <option>Kambing (Goat)</option>
+                            <option>Lembu (Cattle)</option>
+                            <option>Ostrich</option>
+                            <option>Puyuh (Quail)</option>
+                            <option>Rusa (Deer)</option>
+                            <option>Arnab (Rabbit)</option>
+                            <option>Kerbau (Buffalo)</option>
+                            <option>Kuda (Horse)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <p class="text-sm font-bold mb-1">Baka / Breed:</p>
+                        <input type="text" class="w-full border-2 border-gray-300 rounded px-3 py-2" placeholder="Contoh: Boer, Jamnapari">
+                    </div>
+                    <div>
+                        <p class="text-sm font-bold mb-1">Jantina / Gender: <span class="text-red-600">*</span></p>
+                        <select class="w-full border-2 border-gray-300 rounded px-2 py-2">
+                            <option>-- Pilih --</option>
+                            <option>Jantan / Male</option>
+                            <option>Betina / Female</option>
+                        </select>
+                    </div>
+                    <div>
+                        <p class="text-sm font-bold mb-1">Tarikh Lahir / Date of Birth:</p>
+                        <input type="date" class="w-full border-2 border-gray-300 rounded px-3 py-2">
+                    </div>
+                    <div>
+                        <p class="text-sm font-bold mb-1">Warna / Color:</p>
+                        <input type="text" class="w-full border-2 border-gray-300 rounded px-3 py-2" placeholder="Contoh: Putih, Hitam, Belang">
+                    </div>
+                    <div>
+                        <p class="text-sm font-bold mb-1">Berat (kg) / Weight:</p>
+                        <input type="number" step="0.1" class="w-full border-2 border-gray-300 rounded px-3 py-2">
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-blue-50 p-4 rounded-lg mb-6">
+                <h3 class="font-bold text-blue-900 mb-3">MAKLUMAT SUMBER / SOURCE INFORMATION</h3>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <p class="text-sm font-bold mb-1">Sumber / Source:</p>
+                        <select class="w-full border-2 border-gray-300 rounded px-2 py-2">
+                            <option>-- Pilih --</option>
+                            <option>Kelahiran Sendiri / Born on Site</option>
+                            <option>Pembelian / Purchased</option>
+                            <option>Hadiah / Gift</option>
+                            <option>Pertukaran / Exchange</option>
+                        </select>
+                    </div>
+                    <div>
+                        <p class="text-sm font-bold mb-1">Tarikh Perolehan / Acquisition Date:</p>
+                        <input type="date" class="w-full border-2 border-gray-300 rounded px-3 py-2">
+                    </div>
+                    <div>
+                        <p class="text-sm font-bold mb-1">Harga (RM) / Price:</p>
+                        <input type="number" step="0.01" class="w-full border-2 border-gray-300 rounded px-3 py-2">
+                    </div>
+                    <div>
+                        <p class="text-sm font-bold mb-1">Pembekal / Supplier:</p>
+                        <input type="text" class="w-full border-2 border-gray-300 rounded px-3 py-2">
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-green-50 p-4 rounded-lg mb-6">
+                <h3 class="font-bold text-green-900 mb-3">MAKLUMAT INDUK / PARENTAGE INFORMATION</h3>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <p class="text-sm font-bold mb-1">No. Tag Bapa / Father Tag No:</p>
+                        <input type="text" class="w-full border-2 border-gray-300 rounded px-3 py-2">
+                    </div>
+                    <div>
+                        <p class="text-sm font-bold mb-1">No. Tag Ibu / Mother Tag No:</p>
+                        <input type="text" class="w-full border-2 border-gray-300 rounded px-3 py-2">
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-6">
+                <p class="text-sm font-bold mb-2">Ciri-Ciri Khas / Special Characteristics:</p>
+                <textarea class="w-full border-2 border-gray-300 rounded p-3 h-20" placeholder="Tanda pengenalan, parut, kelainan fizikal, dll..."></textarea>
+            </div>
+
+            <div class="mb-6">
+                <p class="text-sm font-bold mb-2">Catatan / Remarks:</p>
+                <textarea class="w-full border-2 border-gray-300 rounded p-3 h-20" placeholder="Catatan tambahan..."></textarea>
+            </div>
+
+            <div class="grid grid-cols-3 gap-6">
+                <div>
+                    <p class="text-sm font-bold mb-2">Didaftarkan Oleh / Registered By:</p>
+                    <div class="signature-box mb-2"></div>
+                    <input type="text" class="w-full border-b border-gray-300 px-2 text-sm" placeholder="Nama / Name">
+                    <input type="text" class="w-full border-b border-gray-300 px-2 text-sm mt-1" placeholder="Jawatan / Position">
+                    <p class="text-xs text-gray-600 mt-1">Tarikh / Date: <input type="date" class="border-b border-gray-300"></p>
+                </div>
+                <div>
+                    <p class="text-sm font-bold mb-2">Disemak Oleh / Verified By:</p>
+                    <div class="signature-box mb-2"></div>
+                    <input type="text" class="w-full border-b border-gray-300 px-2 text-sm" placeholder="Penyelia / Supervisor">
+                    <input type="text" class="w-full border-b border-gray-300 px-2 text-sm mt-1" placeholder="Jawatan / Position">
+                    <p class="text-xs text-gray-600 mt-1">Tarikh / Date: <input type="date" class="border-b border-gray-300"></p>
+                </div>
+                <div>
+                    <p class="text-sm font-bold mb-2">Diluluskan Oleh / Approved By:</p>
+                    <div class="signature-box mb-2"></div>
+                    <input type="text" class="w-full border-b border-gray-300 px-2 text-sm" placeholder="Pengurus Unit / Unit Manager">
+                    <input type="text" class="w-full border-b border-gray-300 px-2 text-sm mt-1" placeholder="Jawatan / Position">
+                    <p class="text-xs text-gray-600 mt-1">Tarikh / Date: <input type="date" class="border-b border-gray-300"></p>
+                </div>
+            </div>
+
+            <div class="border-t-2 border-gray-300 pt-4 mt-6">
+                <p class="text-xs text-gray-600 text-center">
+                    <i class="fas fa-paw mr-1"></i>
+                    Maklumat ini adalah rahsia dan tertakluk kepada peraturan perkhidmatan veterinar<br>
+                    This information is confidential and subject to veterinary service regulations
+                </p>
+            </div>
+        </div>
+
+        <!-- KEW.AH-2: Health Record -->
+        <div id="kewah2" class="form-container bg-white rounded-xl shadow-lg p-8 mb-8" style="display: none;">
+            <div class="text-center py-12">
+                <i class="fas fa-heartbeat text-6xl text-green-600 mb-4"></i>
+                <h3 class="text-2xl font-bold text-gray-900 mb-2">KEW.AH-2: Health Record</h3>
+                <p class="text-gray-600">Rekod Kesihatan Haiwan / Animal Health Record</p>
+                <p class="text-sm text-gray-500 mt-4">Medical history and treatment log</p>
+            </div>
+        </div>
+
+        <!-- KEW.AH-3: Vaccination Log -->
+        <div id="kewah3" class="form-container bg-white rounded-xl shadow-lg p-8 mb-8" style="display: none;">
+            <div class="text-center py-12">
+                <i class="fas fa-syringe text-6xl text-blue-600 mb-4"></i>
+                <h3 class="text-2xl font-bold text-gray-900 mb-2">KEW.AH-3: Vaccination Log</h3>
+                <p class="text-gray-600">Rekod Vaksinasi / Vaccination Record</p>
+                <p class="text-sm text-gray-500 mt-4">Immunization schedule and history</p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function showForm(formId) {
+            document.querySelectorAll('.form-container').forEach(form => {
+                form.style.display = 'none';
+            });
+            document.getElementById(formId).style.display = 'block';
+            document.getElementById(formId).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        window.onbeforeprint = function() {
+            document.querySelectorAll('.form-container').forEach(form => {
+                form.style.display = 'block';
+            });
+        };
+    </script>
+</body>
+</html>

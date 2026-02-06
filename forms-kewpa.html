@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KEW.PA Asset Forms - G-VET System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @media print {
+            .no-print { display: none !important; }
+            body { background: white; }
+            .form-container { box-shadow: none; border: 2px solid #000; }
+            .form-header { background: white !important; color: black !important; border-bottom: 3px double #000; }
+        }
+        .form-container { page-break-after: always; }
+        .gov-seal { width: 80px; height: 80px; }
+        .signature-box { border-bottom: 1px solid #000; min-height: 60px; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-blue-900 to-blue-700 text-white shadow-lg no-print">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <i class="fas fa-file-alt text-3xl"></i>
+                    <div>
+                        <h1 class="text-2xl font-bold">KEW.PA Asset Forms</h1>
+                        <p class="text-sm text-blue-200">Printable Government Forms - Jabatan Veterinar Perak</p>
+                    </div>
+                </div>
+                <button onclick="window.history.back()" class="bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg">
+                    <i class="fas fa-arrow-left mr-2"></i>Back
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        <!-- Form Selection Menu -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-8 no-print">
+            <h2 class="text-xl font-bold text-gray-900 mb-4">Select Form to Print</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <button onclick="showForm('kewpa1')" class="p-4 bg-blue-50 hover:bg-blue-100 rounded-lg border-2 border-blue-200 transition-all">
+                    <i class="fas fa-inbox text-blue-600 text-2xl mb-2"></i>
+                    <p class="font-bold text-sm">KEW.PA-1</p>
+                    <p class="text-xs text-gray-600">Receipt Note</p>
+                </button>
+                <button onclick="showForm('kewpa2')" class="p-4 bg-blue-50 hover:bg-blue-100 rounded-lg border-2 border-blue-200 transition-all">
+                    <i class="fas fa-times-circle text-blue-600 text-2xl mb-2"></i>
+                    <p class="font-bold text-sm">KEW.PA-2</p>
+                    <p class="text-xs text-gray-600">Rejection Note</p>
+                </button>
+                <button onclick="showForm('kewpa3')" class="p-4 bg-green-50 hover:bg-green-100 rounded-lg border-2 border-green-200 transition-all">
+                    <i class="fas fa-clipboard-list text-green-600 text-2xl mb-2"></i>
+                    <p class="font-bold text-sm">KEW.PA-3</p>
+                    <p class="text-xs text-gray-600">Asset Register</p>
+                </button>
+                <button onclick="showForm('kewpa4')" class="p-4 bg-green-50 hover:bg-green-100 rounded-lg border-2 border-green-200 transition-all">
+                    <i class="fas fa-book text-green-600 text-2xl mb-2"></i>
+                    <p class="font-bold text-sm">KEW.PA-4</p>
+                    <p class="text-xs text-gray-600">Asset Card</p>
+                </button>
+                <button onclick="showForm('kewpa9')" class="p-4 bg-purple-50 hover:bg-purple-100 rounded-lg border-2 border-purple-200 transition-all">
+                    <i class="fas fa-exchange-alt text-purple-600 text-2xl mb-2"></i>
+                    <p class="font-bold text-sm">KEW.PA-9</p>
+                    <p class="text-xs text-gray-600">Transfer Note</p>
+                </button>
+                <button onclick="showForm('kewpa11')" class="p-4 bg-orange-50 hover:bg-orange-100 rounded-lg border-2 border-orange-200 transition-all">
+                    <i class="fas fa-search text-orange-600 text-2xl mb-2"></i>
+                    <p class="font-bold text-sm">KEW.PA-11</p>
+                    <p class="text-xs text-gray-600">Inspection Form</p>
+                </button>
+                <button onclick="showForm('kewpa13')" class="p-4 bg-red-50 hover:bg-red-100 rounded-lg border-2 border-red-200 transition-all">
+                    <i class="fas fa-wrench text-red-600 text-2xl mb-2"></i>
+                    <p class="font-bold text-sm">KEW.PA-13</p>
+                    <p class="text-xs text-gray-600">Maintenance Log</p>
+                </button>
+                <button onclick="window.print()" class="p-4 bg-gray-100 hover:bg-gray-200 rounded-lg border-2 border-gray-300 transition-all">
+                    <i class="fas fa-print text-gray-700 text-2xl mb-2"></i>
+                    <p class="font-bold text-sm">Print All</p>
+                    <p class="text-xs text-gray-600">Print Forms</p>
+                </button>
+            </div>
+        </div>
+
+        <!-- Instructions Section -->
+        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-6 mb-8 no-print">
+            <div class="flex items-start">
+                <i class="fas fa-info-circle text-yellow-600 text-2xl mr-4 mt-1"></i>
+                <div>
+                    <h3 class="font-bold text-gray-900 mb-2">📋 Instructions for Using Forms</h3>
+                    <ol class="list-decimal list-inside space-y-2 text-sm text-gray-700">
+                        <li><strong>Select Form:</strong> Click on the desired form button above to display it</li>
+                        <li><strong>Fill Information:</strong> Complete all required fields in the form</li>
+                        <li><strong>Review:</strong> Double-check all entries for accuracy</li>
+                        <li><strong>Print:</strong> Click "Print All" or use Ctrl+P to print</li>
+                        <li><strong>Signatures:</strong> Obtain required signatures after printing</li>
+                        <li><strong>Filing:</strong> File the completed form according to unit procedures</li>
+                        <li><strong>Copy:</strong> Maintain copies as per retention schedule</li>
+                    </ol>
+                    <div class="mt-4 p-3 bg-white rounded-lg">
+                        <p class="text-xs text-gray-600"><strong>Note:</strong> All forms comply with Peraturan Perbendaharaan Malaysia and must be completed in accordance with government financial regulations.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- KEW.PA-1: Receipt Note -->
+        <div id="kewpa1" class="form-container bg-white rounded-xl shadow-lg p-8 mb-8" style="display: none;">
+            <div class="form-header border-b-4 border-blue-900 pb-4 mb-6">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-4">
+                        <div class="gov-seal bg-blue-900 rounded-full flex items-center justify-center">
+                            <i class="fas fa-landmark text-white text-3xl"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-600">KERAJAAN MALAYSIA</p>
+                            <h2 class="text-2xl font-bold text-blue-900">KEW.PA-1</h2>
+                            <p class="text-sm text-gray-700">NOTA PENERIMAAN ASET ALIH</p>
+                            <p class="text-xs text-gray-500">(Receipt Note for Movable Assets)</p>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-xs text-gray-600">No. Rujukan / Ref No:</p>
+                        <input type="text" class="border-b-2 border-gray-300 text-right w-40 focus:border-blue-600 outline-none" placeholder="____________">
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-6 mb-6">
+                <div>
+                    <p class="text-sm font-bold mb-2">Jabatan / Department:</p>
+                    <input type="text" class="w-full border-b-2 border-gray-300 px-2 py-1" value="Jabatan Perkhidmatan Veterinar Negeri Perak">
+                </div>
+                <div>
+                    <p class="text-sm font-bold mb-2">Unit / Unit:</p>
+                    <select class="w-full border-2 border-gray-300 rounded px-2 py-1">
+                        <option>-- Pilih Unit --</option>
+                        <option>Unit Stor</option>
+                        <option>Unit Kambing</option>
+                        <option>Unit Ostrich</option>
+                        <option>Unit Puyuh</option>
+                        <option>Unit Lembu</option>
+                        <option>Unit Rusa</option>
+                        <option>Unit RnD</option>
+                        <option>Unit Agro</option>
+                        <option>Unit Arnab</option>
+                        <option>Unit Latihan</option>
+                        <option>Unit Pentadbiran</option>
+                        <option>Unit Kesihatan</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mb-6">
+                <p class="text-sm font-bold mb-2">Tarikh Penerimaan / Date of Receipt:</p>
+                <input type="date" class="border-2 border-gray-300 rounded px-3 py-2">
+            </div>
+
+            <table class="w-full border-2 border-gray-800 mb-6">
+                <thead class="bg-blue-900 text-white">
+                    <tr>
+                        <th class="border border-gray-300 px-2 py-2 text-xs">Bil</th>
+                        <th class="border border-gray-300 px-2 py-2 text-xs">Kod Aset<br>Asset Code</th>
+                        <th class="border border-gray-300 px-2 py-2 text-xs">Perihal Aset<br>Asset Description</th>
+                        <th class="border border-gray-300 px-2 py-2 text-xs">Kuantiti<br>Quantity</th>
+                        <th class="border border-gray-300 px-2 py-2 text-xs">Nilai (RM)<br>Value</th>
+                        <th class="border border-gray-300 px-2 py-2 text-xs">Pembekal<br>Supplier</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="hover:bg-gray-50">
+                        <td class="border border-gray-300 px-2 py-4 text-center">1</td>
+                        <td class="border border-gray-300 px-2 py-4"><input type="text" class="w-full outline-none"></td>
+                        <td class="border border-gray-300 px-2 py-4"><input type="text" class="w-full outline-none"></td>
+                        <td class="border border-gray-300 px-2 py-4"><input type="number" class="w-full outline-none text-center"></td>
+                        <td class="border border-gray-300 px-2 py-4"><input type="number" step="0.01" class="w-full outline-none text-right"></td>
+                        <td class="border border-gray-300 px-2 py-4"><input type="text" class="w-full outline-none"></td>
+                    </tr>
+                    <tr class="hover:bg-gray-50">
+                        <td class="border border-gray-300 px-2 py-4 text-center">2</td>
+                        <td class="border border-gray-300 px-2 py-4"><input type="text" class="w-full outline-none"></td>
+                        <td class="border border-gray-300 px-2 py-4"><input type="text" class="w-full outline-none"></td>
+                        <td class="border border-gray-300 px-2 py-4"><input type="number" class="w-full outline-none text-center"></td>
+                        <td class="border border-gray-300 px-2 py-4"><input type="number" step="0.01" class="w-full outline-none text-right"></td>
+                        <td class="border border-gray-300 px-2 py-4"><input type="text" class="w-full outline-none"></td>
+                    </tr>
+                    <tr class="hover:bg-gray-50">
+                        <td class="border border-gray-300 px-2 py-4 text-center">3</td>
+                        <td class="border border-gray-300 px-2 py-4"><input type="text" class="w-full outline-none"></td>
+                        <td class="border border-gray-300 px-2 py-4"><input type="text" class="w-full outline-none"></td>
+                        <td class="border border-gray-300 px-2 py-4"><input type="number" class="w-full outline-none text-center"></td>
+                        <td class="border border-gray-300 px-2 py-4"><input type="number" step="0.01" class="w-full outline-none text-right"></td>
+                        <td class="border border-gray-300 px-2 py-4"><input type="text" class="w-full outline-none"></td>
+                    </tr>
+                    <tr class="hover:bg-gray-50">
+                        <td class="border border-gray-300 px-2 py-4 text-center">4</td>
+                        <td class="border border-gray-300 px-2 py-4"><input type="text" class="w-full outline-none"></td>
+                        <td class="border border-gray-300 px-2 py-4"><input type="text" class="w-full outline-none"></td>
+                        <td class="border border-gray-300 px-2 py-4"><input type="number" class="w-full outline-none text-center"></td>
+                        <td class="border border-gray-300 px-2 py-4"><input type="number" step="0.01" class="w-full outline-none text-right"></td>
+                        <td class="border border-gray-300 px-2 py-4"><input type="text" class="w-full outline-none"></td>
+                    </tr>
+                    <tr class="hover:bg-gray-50">
+                        <td class="border border-gray-300 px-2 py-4 text-center">5</td>
+                        <td class="border border-gray-300 px-2 py-4"><input type="text" class="w-full outline-none"></td>
+                        <td class="border border-gray-300 px-2 py-4"><input type="text" class="w-full outline-none"></td>
+                        <td class="border border-gray-300 px-2 py-4"><input type="number" class="w-full outline-none text-center"></td>
+                        <td class="border border-gray-300 px-2 py-4"><input type="number" step="0.01" class="w-full outline-none text-right"></td>
+                        <td class="border border-gray-300 px-2 py-4"><input type="text" class="w-full outline-none"></td>
+                    </tr>
+                    <tr class="bg-gray-100 font-bold">
+                        <td colspan="3" class="border border-gray-300 px-2 py-2 text-right">JUMLAH / TOTAL:</td>
+                        <td class="border border-gray-300 px-2 py-2 text-center"><input type="number" class="w-full outline-none text-center bg-gray-100 font-bold"></td>
+                        <td class="border border-gray-300 px-2 py-2 text-right"><input type="number" step="0.01" class="w-full outline-none text-right bg-gray-100 font-bold"></td>
+                        <td class="border border-gray-300 px-2 py-2"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="grid grid-cols-3 gap-6 mb-6">
+                <div>
+                    <p class="text-sm font-bold mb-2">Disediakan Oleh / Prepared By:</p>
+                    <div class="signature-box mb-2"></div>
+                    <input type="text" class="w-full border-b border-gray-300 px-2 text-sm" placeholder="Nama / Name">
+                    <input type="text" class="w-full border-b border-gray-300 px-2 text-sm mt-1" placeholder="Jawatan / Position">
+                    <p class="text-xs text-gray-600 mt-1">Tarikh / Date: <input type="date" class="border-b border-gray-300"></p>
+                </div>
+                <div>
+                    <p class="text-sm font-bold mb-2">Disemak Oleh / Checked By:</p>
+                    <div class="signature-box mb-2"></div>
+                    <input type="text" class="w-full border-b border-gray-300 px-2 text-sm" placeholder="Nama / Name">
+                    <input type="text" class="w-full border-b border-gray-300 px-2 text-sm mt-1" placeholder="Jawatan / Position">
+                    <p class="text-xs text-gray-600 mt-1">Tarikh / Date: <input type="date" class="border-b border-gray-300"></p>
+                </div>
+                <div>
+                    <p class="text-sm font-bold mb-2">Diluluskan Oleh / Approved By:</p>
+                    <div class="signature-box mb-2"></div>
+                    <input type="text" class="w-full border-b border-gray-300 px-2 text-sm" placeholder="Nama / Name">
+                    <input type="text" class="w-full border-b border-gray-300 px-2 text-sm mt-1" placeholder="Jawatan / Position">
+                    <p class="text-xs text-gray-600 mt-1">Tarikh / Date: <input type="date" class="border-b border-gray-300"></p>
+                </div>
+            </div>
+
+            <div class="border-t-2 border-gray-300 pt-4">
+                <p class="text-xs text-gray-600 text-center">
+                    <i class="fas fa-info-circle mr-1"></i>
+                    Borang ini hendaklah disimpan sebagai rekod tetap mengikut jadual pelupusan dokumen kerajaan<br>
+                    This form shall be kept as permanent record according to government document disposal schedule
+                </p>
+            </div>
+        </div>
+
+        <!-- More forms will be added similarly -->
+        <div id="kewpa3" class="form-container bg-white rounded-xl shadow-lg p-8 mb-8" style="display: none;">
+            <!-- KEW.PA-3 Asset Register content similar structure -->
+            <div class="text-center py-12">
+                <i class="fas fa-clipboard-list text-6xl text-green-600 mb-4"></i>
+                <h3 class="text-2xl font-bold text-gray-900 mb-2">KEW.PA-3: Asset Register</h3>
+                <p class="text-gray-600">Daftar Aset Alih / Movable Asset Register</p>
+                <p class="text-sm text-gray-500 mt-4">Form under development - Similar structure to KEW.PA-1</p>
+            </div>
+        </div>
+
+        <div id="kewpa9" class="form-container bg-white rounded-xl shadow-lg p-8 mb-8" style="display: none;">
+            <div class="text-center py-12">
+                <i class="fas fa-exchange-alt text-6xl text-purple-600 mb-4"></i>
+                <h3 class="text-2xl font-bold text-gray-900 mb-2">KEW.PA-9: Transfer Note</h3>
+                <p class="text-gray-600">Nota Pindahan Aset / Asset Transfer Note</p>
+                <p class="text-sm text-gray-500 mt-4">Form under development</p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function showForm(formId) {
+            // Hide all forms
+            document.querySelectorAll('.form-container').forEach(form => {
+                form.style.display = 'none';
+            });
+            // Show selected form
+            document.getElementById(formId).style.display = 'block';
+            // Scroll to form
+            document.getElementById(formId).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Auto-calculate totals
+        document.addEventListener('input', function(e) {
+            if (e.target.type === 'number') {
+                calculateTotals();
+            }
+        });
+
+        function calculateTotals() {
+            // Calculate total quantity and value
+            // Implementation here
+        }
+
+        // Print functionality
+        window.onbeforeprint = function() {
+            document.querySelectorAll('.form-container').forEach(form => {
+                form.style.display = 'block';
+            });
+        };
+
+        window.onafterprint = function() {
+            // Restore display state
+        };
+    </script>
+</body>
+</html>

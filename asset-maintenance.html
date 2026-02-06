@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asset Maintenance - KEW.PA-13/16</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50">
+    <header class="bg-gradient-to-r from-pink-600 to-pink-800 text-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-4">
+                    <i class="fas fa-wrench text-2xl"></i>
+                    <div>
+                        <h1 class="text-xl font-bold">Asset Maintenance & Repair</h1>
+                        <p class="text-sm text-pink-100">KEW.PA-13/16 - Maintenance Management</p>
+                    </div>
+                </div>
+                <button onclick="window.location.href='kewpa.html'" class="bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg">
+                    <i class="fas fa-arrow-left mr-2"></i>Back
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 py-8">
+        <div class="bg-white rounded-xl shadow-lg p-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">Maintenance Record</h2>
+            <form class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-2">Asset Number</label>
+                        <input type="text" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-pink-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-2">Maintenance Type</label>
+                        <select required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-pink-500">
+                            <option value="">Select Type</option>
+                            <option value="preventive">Preventive Maintenance</option>
+                            <option value="corrective">Corrective Maintenance</option>
+                            <option value="emergency">Emergency Repair</option>
+                            <option value="routine">Routine Service</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-2">Request Date</label>
+                        <input type="date" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-pink-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-2">Priority Level</label>
+                        <select required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-pink-500">
+                            <option value="">Select Priority</option>
+                            <option value="critical">Critical</option>
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-sm font-bold text-gray-700 mb-2">Problem Description</label>
+                        <textarea required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-pink-500" rows="3"></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-2">Service Provider</label>
+                        <input type="text" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-pink-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-2">Estimated Cost (RM)</label>
+                        <input type="number" step="0.01" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-pink-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-2">Scheduled Date</label>
+                        <input type="date" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-pink-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-2">Expected Completion</label>
+                        <input type="date" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-pink-500">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-sm font-bold text-gray-700 mb-2">Work Performed</label>
+                        <textarea class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-pink-500" rows="3"></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-2">Parts Replaced</label>
+                        <input type="text" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-pink-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-2">Actual Cost (RM)</label>
+                        <input type="number" step="0.01" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-pink-500">
+                    </div>
+                </div>
+                <div class="flex space-x-4">
+                    <button type="submit" class="flex-1 bg-pink-600 hover:bg-pink-700 text-white font-bold py-3 px-6 rounded-lg">
+                        <i class="fas fa-save mr-2"></i>Save Maintenance Record
+                    </button>
+                    <button type="button" class="bg-gray-600 hover:bg-gray-700 text-white font-bold py-3 px-6 rounded-lg">
+                        <i class="fas fa-print mr-2"></i>Print KEW.PA-13
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+</body>
+</html>

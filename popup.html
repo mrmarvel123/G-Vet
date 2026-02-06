@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>G-VET Security Notice</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .animate-fade-in {
+        animation: fadeIn 0.6s ease-in-out;
+      }
+      .animate-slide-up {
+        animation: slideUp 0.5s ease-out;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(100px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .modal-overlay {
+        -webkit-backdrop-filter: blur(8px);
+        backdrop-filter: blur(8px);
+        animation: fadeIn 0.3s ease-out;
+      }
+      .modal-content {
+        animation: slideUp 0.4s ease-out;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <!-- Security Notice Modal -->
+    <div
+      id="security-modal"
+      class="fixed inset-0 bg-black/90 modal-overlay flex items-center justify-center p-4 z-50"
+    >
+      <div
+        class="bg-white rounded-2xl max-w-2xl w-full p-8 border-4 border-red-500 shadow-2xl modal-content"
+      >
+        <div class="text-center mb-6">
+          <div
+            class="mx-auto mb-4 w-21 h-21 rounded-full flex items-center justify-center"
+          >
+            <img
+              src="/static/images/G-Vet-logo.png"
+              alt="G-VET Logo"
+              class="w-24 h-24 object-contain"
+            />
+          </div>
+          <h2 class="text-2xl font-bold text-red-800 mb-2">
+            🏛️ NOTIS KESELAMATAN SISTEM KERAJAAN
+          </h2>
+          <p class="text-sm text-gray-600">
+            Malaysian Government Official System
+          </p>
+        </div>
+        <div class="space-y-4 text-sm">
+          <div
+            class="bg-red-50 p-6 rounded-xl border-2 border-red-200 shadow-inner"
+          >
+            <p class="font-bold text-red-800 mb-3 flex items-center">
+              <i class="fas fa-exclamation-triangle mr-2"></i>
+              AMARAN RASMI (OFFICIAL WARNING):
+            </p>
+            <ul class="text-red-700 space-y-2 text-sm">
+              <li class="flex items-start">
+                <i class="fas fa-check-circle mr-2 mt-1"></i>
+                <span>Sistem ini adalah hak milik Kerajaan Malaysia</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle mr-2 mt-1"></i>
+                <span>Akses tanpa kebenaran adalah DILARANG</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle mr-2 mt-1"></i>
+                <span>Semua aktiviti dipantau dan direkod 24/7</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle mr-2 mt-1"></i>
+                <span>Pelanggaran tertakluk kepada tindakan undang-undang</span>
+              </li>
+            </ul>
+          </div>
+          <div
+            class="bg-blue-50 p-6 rounded-xl border-2 border-blue-200 shadow-inner"
+          >
+            <p class="font-bold text-blue-800 mb-3 flex items-center">
+              <i class="fas fa-gavel mr-2"></i>
+              PEMATUHAN UNDANG-UNDANG (LEGAL COMPLIANCE):
+            </p>
+            <ul class="text-blue-700 space-y-2 text-sm">
+              <li class="flex items-start">
+                <i class="fas fa-balance-scale mr-2 mt-1"></i>
+                <span>Akta Rahsia Rasmi 1972</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-balance-scale mr-2 mt-1"></i>
+                <span>Peraturan Perbendaharaan Malaysia</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-balance-scale mr-2 mt-1"></i>
+                <span>Garis Panduan Keselamatan ICT Sektor Awam</span>
+              </li>
+            </ul>
+          </div>
+          <button
+            onclick="acceptSecurityNotice()"
+            class="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-bold py-4 px-6 rounded-xl shadow-lg transition-all transform hover:scale-105"
+          >
+            <i class="fas fa-check-double mr-2"></i>
+            Saya Faham dan Bersetuju (I Understand and Agree)
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function acceptSecurityNotice() {
+        // Redirect to login page
+        window.location.href = "/login.html";
+      }
+    </script>
+  </body>
+</html>

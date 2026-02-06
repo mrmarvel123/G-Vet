@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inventory Management - G-VET System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .gradient-bg {
+        background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+      }
+      .card-hover {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .card-hover:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      }
+      body.dark-mode {
+        background: #0f172a;
+        color: #e2e8f0;
+      }
+      body.dark-mode .bg-white {
+        background: #1e293b;
+        color: #e2e8f0;
+      }
+      .table-row:hover {
+        background-color: #f3f4f6;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <!-- Header -->
+    <header class="gradient-bg text-white shadow-2xl">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center py-4">
+          <div class="flex items-center space-x-4">
+            <h1 class="text-2xl font-bold">
+              <i class="fas fa-boxes text-yellow-300 mr-3"></i>Inventory
+              Management
+            </h1>
+          </div>
+          <div class="flex items-center space-x-4">
+            <button
+              onclick="toggleTheme()"
+              class="bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-lg"
+              title="Toggle dark/light theme"
+            >
+              <i id="theme-icon" class="fas fa-moon"></i>
+            </button>
+            <button
+              onclick="goBack()"
+              class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg"
+            >
+              <i class="fas fa-arrow-left mr-2"></i>Back
+            </button>
+            <button
+              onclick="logout()"
+              class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg"
+            >
+              <i class="fas fa-sign-out-alt mr-2"></i>Logout
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <!-- Inventory Stats -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+        <div
+          class="bg-white rounded-xl shadow-lg p-6 border-l-4 border-blue-600 card-hover"
+        >
+          <p class="text-gray-600 text-sm font-medium">Total Items</p>
+          <p class="text-3xl font-bold text-blue-600 mt-1">5,240</p>
+          <p class="text-xs text-gray-500 mt-2">Active inventory items</p>
+        </div>
+        <div
+          class="bg-white rounded-xl shadow-lg p-6 border-l-4 border-green-600 card-hover"
+        >
+          <p class="text-gray-600 text-sm font-medium">In Stock</p>
+          <p class="text-3xl font-bold text-green-600 mt-1">4,892</p>
+          <p class="text-xs text-gray-500 mt-2">Available for use</p>
+        </div>
+        <div
+          class="bg-white rounded-xl shadow-lg p-6 border-l-4 border-orange-600 card-hover"
+        >
+          <p class="text-gray-600 text-sm font-medium">Low Stock</p>
+          <p class="text-3xl font-bold text-orange-600 mt-1">148</p>
+          <p class="text-xs text-gray-500 mt-2">Requires replenishment</p>
+        </div>
+        <div
+          class="bg-white rounded-xl shadow-lg p-6 border-l-4 border-red-600 card-hover"
+        >
+          <p class="text-gray-600 text-sm font-medium">Out of Stock</p>
+          <p class="text-3xl font-bold text-red-600 mt-1">200</p>
+          <p class="text-xs text-gray-500 mt-2">Unavailable items</p>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        <button
+          onclick="addItem()"
+          class="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white py-3 rounded-lg font-bold transition-all card-hover shadow-lg"
+        >
+          <i class="fas fa-plus-circle mr-2"></i>Add New Item
+        </button>
+        <button
+          onclick="importInventory()"
+          class="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white py-3 rounded-lg font-bold transition-all card-hover shadow-lg"
+        >
+          <i class="fas fa-file-import mr-2"></i>Import Inventory
+        </button>
+        <button
+          onclick="generateInventoryReport()"
+          class="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white py-3 rounded-lg font-bold transition-all card-hover shadow-lg"
+        >
+          <i class="fas fa-file-csv mr-2"></i>Export Report
+        </button>
+      </div>
+
+      <!-- Inventory Table -->
+      <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+        <div class="p-6 border-b-2 border-gray-200">
+          <h2 class="text-2xl font-bold text-gray-900">
+            <i class="fas fa-list text-green-600 mr-3"></i>Inventory Items
+          </h2>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full">
+            <thead class="bg-gray-100 border-b-2 border-gray-300">
+              <tr>
+                <th class="px-6 py-3 text-left text-sm font-bold text-gray-700">
+                  Item Code
+                </th>
+                <th class="px-6 py-3 text-left text-sm font-bold text-gray-700">
+                  Name
+                </th>
+                <th class="px-6 py-3 text-left text-sm font-bold text-gray-700">
+                  Category
+                </th>
+                <th class="px-6 py-3 text-left text-sm font-bold text-gray-700">
+                  Quantity
+                </th>
+                <th class="px-6 py-3 text-left text-sm font-bold text-gray-700">
+                  Status
+                </th>
+                <th class="px-6 py-3 text-left text-sm font-bold text-gray-700">
+                  Actions
+                </th>
+              </tr>
+            </thead>
+            <tbody id="inventory-table">
+              <!-- Table rows will be populated by JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      let isDarkMode = false;
+
+      if (localStorage.getItem("theme") === "dark") {
+        isDarkMode = true;
+        document.body.classList.add("dark-mode");
+        document.getElementById("theme-icon").className = "fas fa-sun";
+      }
+
+      function toggleTheme() {
+        isDarkMode = !isDarkMode;
+        document.body.classList.toggle("dark-mode");
+        const themeIcon = document.getElementById("theme-icon");
+        if (isDarkMode) {
+          themeIcon.className = "fas fa-sun";
+          localStorage.setItem("theme", "dark");
+        } else {
+          themeIcon.className = "fas fa-moon";
+          localStorage.setItem("theme", "light");
+        }
+      }
+
+      function goBack() {
+        window.location.href = "/dashboard-main.html";
+      }
+
+      function logout() {
+        if (confirm("Are you sure you want to logout?")) {
+          localStorage.clear();
+          window.location.href = "/login.html";
+        }
+      }
+
+      function addItem() {
+        alert("Opening add inventory item dialog...");
+      }
+
+      function importInventory() {
+        alert("Opening inventory import wizard...");
+      }
+
+      function generateInventoryReport() {
+        alert("Generating inventory report as CSV...");
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const currentUser = localStorage.getItem("currentUser");
+        if (!currentUser) {
+          window.location.href = "/login.html";
+          return;
+        }
+
+        // Sample inventory data
+        const inventoryData = [
+          {
+            code: "INV-001",
+            name: "Medical Supplies Kit",
+            category: "Medical",
+            qty: 156,
+            status: "In Stock",
+          },
+          {
+            code: "INV-002",
+            name: "Equipment Parts",
+            category: "Equipment",
+            qty: 45,
+            status: "Low Stock",
+          },
+          {
+            code: "INV-003",
+            name: "Office Supplies",
+            category: "Office",
+            qty: 890,
+            status: "In Stock",
+          },
+          {
+            code: "INV-004",
+            name: "Cleaning Materials",
+            category: "Supplies",
+            qty: 12,
+            status: "Low Stock",
+          },
+          {
+            code: "INV-005",
+            name: "Safety Equipment",
+            category: "Safety",
+            qty: 267,
+            status: "In Stock",
+          },
+        ];
+
+        const tableBody = document.getElementById("inventory-table");
+        tableBody.innerHTML = inventoryData
+          .map(
+            (item) => `
+          <tr class="table-row border-b border-gray-200">
+            <td class="px-6 py-4 text-sm font-medium text-gray-900">${item.code}</td>
+            <td class="px-6 py-4 text-sm text-gray-600">${item.name}</td>
+            <td class="px-6 py-4 text-sm text-gray-600">${item.category}</td>
+            <td class="px-6 py-4 text-sm font-bold text-gray-900">${item.qty}</td>
+            <td class="px-6 py-4 text-sm">
+              <span class="px-3 py-1 rounded-full text-xs font-bold ${item.status === "In Stock" ? "bg-green-200 text-green-800" : "bg-orange-200 text-orange-800"}">
+                ${item.status}
+              </span>
+            </td>
+            <td class="px-6 py-4 text-sm space-x-2">
+              <button class="text-blue-600 hover:text-blue-800 font-medium">Edit</button>
+              <button class="text-red-600 hover:text-red-800 font-medium">Delete</button>
+            </td>
+          </tr>
+        `,
+          )
+          .join("");
+      });
+    </script>
+  </body>
+</html>

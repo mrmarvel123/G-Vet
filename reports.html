@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Analytics & Reports - G-VET ASSET & iSTOR</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      .gradient-purple {
+        background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+      }
+      .card-hover {
+        transition: all 0.3s ease;
+      }
+      .card-hover:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <!-- Header -->
+    <header class="gradient-purple text-white shadow-lg">
+      <div class="max-w-7xl mx-auto px-4 py-6">
+        <div class="flex justify-between items-center">
+          <div class="flex items-center space-x-4">
+            <i class="fas fa-chart-bar text-3xl"></i>
+            <div>
+              <h1 class="text-2xl font-bold">Analytics & Reports</h1>
+              <p class="text-sm text-purple-100">
+                Comprehensive System Analysis & Reporting
+              </p>
+            </div>
+          </div>
+          <button
+            onclick="window.location.href = '/dashboard'"
+            class="bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg transition"
+          >
+            <i class="fas fa-arrow-left mr-2"></i>Back to Dashboard
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-8">
+      <!-- Quick Stats -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-gray-600 text-sm">Total Assets</p>
+              <p class="text-3xl font-bold text-purple-600 mt-2">2,456</p>
+              <p class="text-xs text-green-600 mt-1">↑ 156 this month</p>
+            </div>
+            <i class="fas fa-box text-purple-600 text-4xl opacity-20"></i>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-gray-600 text-sm">Inventory Items</p>
+              <p class="text-3xl font-bold text-blue-600 mt-2">8,734</p>
+              <p class="text-xs text-blue-600 mt-1">In Stock</p>
+            </div>
+            <i class="fas fa-cubes text-blue-600 text-4xl opacity-20"></i>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-gray-600 text-sm">Livestock Records</p>
+              <p class="text-3xl font-bold text-green-600 mt-2">1,892</p>
+              <p class="text-xs text-green-600 mt-1">Active Records</p>
+            </div>
+            <i class="fas fa-leaf text-green-600 text-4xl opacity-20"></i>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-gray-600 text-sm">Reports Generated</p>
+              <p class="text-3xl font-bold text-orange-600 mt-2">342</p>
+              <p class="text-xs text-orange-600 mt-1">This year</p>
+            </div>
+            <i class="fas fa-file-alt text-orange-600 text-4xl opacity-20"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Report Categories -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+        <!-- KEW.PA Reports -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+          <div
+            class="bg-gradient-to-r from-blue-600 to-blue-700 text-white p-6"
+          >
+            <h3 class="text-lg font-bold">
+              <i class="fas fa-hammer mr-2"></i>KEW.PA Reports
+            </h3>
+            <p class="text-sm text-blue-100">Asset & Equipment Management</p>
+          </div>
+          <div class="p-6 space-y-3">
+            <button
+              class="w-full text-left px-4 py-3 hover:bg-blue-50 rounded-lg transition flex items-center justify-between group"
+            >
+              <span
+                ><i class="fas fa-list text-blue-600 mr-3"></i>Asset
+                Register</span
+              >
+              <i
+                class="fas fa-arrow-right text-blue-600 opacity-0 group-hover:opacity-100 transition"
+              ></i>
+            </button>
+            <button
+              class="w-full text-left px-4 py-3 hover:bg-blue-50 rounded-lg transition flex items-center justify-between group"
+            >
+              <span
+                ><i class="fas fa-arrow-up-down text-blue-600 mr-3"></i>Asset
+                Movement</span
+              >
+              <i
+                class="fas fa-arrow-right text-blue-600 opacity-0 group-hover:opacity-100 transition"
+              ></i>
+            </button>
+            <button
+              class="w-full text-left px-4 py-3 hover:bg-blue-50 rounded-lg transition flex items-center justify-between group"
+            >
+              <span
+                ><i class="fas fa-wrench text-blue-600 mr-3"></i>Maintenance
+                Log</span
+              >
+              <i
+                class="fas fa-arrow-right text-blue-600 opacity-0 group-hover:opacity-100 transition"
+              ></i>
+            </button>
+            <button
+              class="w-full text-left px-4 py-3 hover:bg-blue-50 rounded-lg transition flex items-center justify-between group"
+            >
+              <span
+                ><i class="fas fa-trash-alt text-blue-600 mr-3"></i>Disposal
+                Report</span
+              >
+              <i
+                class="fas fa-arrow-right text-blue-600 opacity-0 group-hover:opacity-100 transition"
+              ></i>
+            </button>
+            <button
+              class="w-full text-left px-4 py-3 hover:bg-blue-50 rounded-lg transition flex items-center justify-between group"
+            >
+              <span
+                ><i class="fas fa-file-pdf text-blue-600 mr-3"></i>Export to
+                PDF</span
+              >
+              <i
+                class="fas fa-download text-blue-600 opacity-0 group-hover:opacity-100 transition"
+              ></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- KEW.PS Reports -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+          <div
+            class="bg-gradient-to-r from-green-600 to-green-700 text-white p-6"
+          >
+            <h3 class="text-lg font-bold">
+              <i class="fas fa-store mr-2"></i>KEW.PS Reports
+            </h3>
+            <p class="text-sm text-green-100">Inventory & Stock Management</p>
+          </div>
+          <div class="p-6 space-y-3">
+            <button
+              class="w-full text-left px-4 py-3 hover:bg-green-50 rounded-lg transition flex items-center justify-between group"
+            >
+              <span
+                ><i class="fas fa-boxes text-green-600 mr-3"></i>Stock
+                Balance</span
+              >
+              <i
+                class="fas fa-arrow-right text-green-600 opacity-0 group-hover:opacity-100 transition"
+              ></i>
+            </button>
+            <button
+              class="w-full text-left px-4 py-3 hover:bg-green-50 rounded-lg transition flex items-center justify-between group"
+            >
+              <span
+                ><i class="fas fa-warning text-green-600 mr-3"></i>Low Stock
+                Alert</span
+              >
+              <i
+                class="fas fa-arrow-right text-green-600 opacity-0 group-hover:opacity-100 transition"
+              ></i>
+            </button>
+            <button
+              class="w-full text-left px-4 py-3 hover:bg-green-50 rounded-lg transition flex items-center justify-between group"
+            >
+              <span
+                ><i class="fas fa-history text-green-600 mr-3"></i>Movement
+                History</span
+              >
+              <i
+                class="fas fa-arrow-right text-green-600 opacity-0 group-hover:opacity-100 transition"
+              ></i>
+            </button>
+            <button
+              class="w-full text-left px-4 py-3 hover:bg-green-50 rounded-lg transition flex items-center justify-between group"
+            >
+              <span
+                ><i class="fas fa-chart-pie text-green-600 mr-3"></i>Stock
+                Analysis</span
+              >
+              <i
+                class="fas fa-arrow-right text-green-600 opacity-0 group-hover:opacity-100 transition"
+              ></i>
+            </button>
+            <button
+              class="w-full text-left px-4 py-3 hover:bg-green-50 rounded-lg transition flex items-center justify-between group"
+            >
+              <span
+                ><i class="fas fa-file-excel text-green-600 mr-3"></i>Export to
+                Excel</span
+              >
+              <i
+                class="fas fa-download text-green-600 opacity-0 group-hover:opacity-100 transition"
+              ></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- KEW.AH Reports -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+          <div class="bg-gradient-to-r from-red-600 to-red-700 text-white p-6">
+            <h3 class="text-lg font-bold">
+              <i class="fas fa-heartbeat mr-2"></i>KEW.AH Reports
+            </h3>
+            <p class="text-sm text-red-100">Livestock & Veterinary Care</p>
+          </div>
+          <div class="p-6 space-y-3">
+            <button
+              class="w-full text-left px-4 py-3 hover:bg-red-50 rounded-lg transition flex items-center justify-between group"
+            >
+              <span
+                ><i class="fas fa-book text-red-600 mr-3"></i>Livestock
+                Register</span
+              >
+              <i
+                class="fas fa-arrow-right text-red-600 opacity-0 group-hover:opacity-100 transition"
+              ></i>
+            </button>
+            <button
+              class="w-full text-left px-4 py-3 hover:bg-red-50 rounded-lg transition flex items-center justify-between group"
+            >
+              <span
+                ><i class="fas fa-stethoscope text-red-600 mr-3"></i>Care
+                Records</span
+              >
+              <i
+                class="fas fa-arrow-right text-red-600 opacity-0 group-hover:opacity-100 transition"
+              ></i>
+            </button>
+            <button
+              class="w-full text-left px-4 py-3 hover:bg-red-50 rounded-lg transition flex items-center justify-between group"
+            >
+              <span
+                ><i class="fas fa-disease text-red-600 mr-3"></i>Incident
+                Report</span
+              >
+              <i
+                class="fas fa-arrow-right text-red-600 opacity-0 group-hover:opacity-100 transition"
+              ></i>
+            </button>
+            <button
+              class="w-full text-left px-4 py-3 hover:bg-red-50 rounded-lg transition flex items-center justify-between group"
+            >
+              <span
+                ><i class="fas fa-pills text-red-600 mr-3"></i>Treatment
+                Log</span
+              >
+              <i
+                class="fas fa-arrow-right text-red-600 opacity-0 group-hover:opacity-100 transition"
+              ></i>
+            </button>
+            <button
+              class="w-full text-left px-4 py-3 hover:bg-red-50 rounded-lg transition flex items-center justify-between group"
+            >
+              <span
+                ><i class="fas fa-file-pdf text-red-600 mr-3"></i>Generate
+                Report</span
+              >
+              <i
+                class="fas fa-download text-red-600 opacity-0 group-hover:opacity-100 transition"
+              ></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Reports -->
+      <div class="bg-white rounded-xl shadow-lg p-6">
+        <h2 class="text-xl font-bold text-gray-900 mb-6">
+          Recently Generated Reports
+        </h2>
+        <div class="overflow-x-auto">
+          <table class="w-full">
+            <thead class="bg-gray-50">
+              <tr>
+                <th
+                  class="px-4 py-3 text-left text-sm font-semibold text-gray-700"
+                >
+                  Report Name
+                </th>
+                <th
+                  class="px-4 py-3 text-left text-sm font-semibold text-gray-700"
+                >
+                  Type
+                </th>
+                <th
+                  class="px-4 py-3 text-left text-sm font-semibold text-gray-700"
+                >
+                  Generated Date
+                </th>
+                <th
+                  class="px-4 py-3 text-left text-sm font-semibold text-gray-700"
+                >
+                  Generated By
+                </th>
+                <th
+                  class="px-4 py-3 text-left text-sm font-semibold text-gray-700"
+                >
+                  Status
+                </th>
+                <th
+                  class="px-4 py-3 text-left text-sm font-semibold text-gray-700"
+                >
+                  Actions
+                </th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+              <tr class="hover:bg-gray-50">
+                <td class="px-4 py-3 text-sm font-medium">
+                  Asset Register 2026
+                </td>
+                <td class="px-4 py-3 text-sm">
+                  <span
+                    class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs"
+                    >KEW.PA</span
+                  >
+                </td>
+                <td class="px-4 py-3 text-sm">Feb 6, 2026</td>
+                <td class="px-4 py-3 text-sm">Ahmad Hassan</td>
+                <td class="px-4 py-3 text-sm">
+                  <span
+                    class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs"
+                    >Completed</span
+                  >
+                </td>
+                <td class="px-4 py-3 text-sm space-x-2">
+                  <button
+                    class="text-blue-600 hover:text-blue-800"
+                    title="Download Asset Register"
+                  >
+                    <i class="fas fa-download"></i>
+                  </button>
+                  <button
+                    class="text-gray-600 hover:text-gray-800"
+                    title="View Asset Register"
+                  >
+                    <i class="fas fa-eye"></i>
+                  </button>
+                </td>
+              </tr>
+              <tr class="hover:bg-gray-50">
+                <td class="px-4 py-3 text-sm font-medium">
+                  Monthly Stock Analysis
+                </td>
+                <td class="px-4 py-3 text-sm">
+                  <span
+                    class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs"
+                    >KEW.PS</span
+                  >
+                </td>
+                <td class="px-4 py-3 text-sm">Feb 5, 2026</td>
+                <td class="px-4 py-3 text-sm">Siti Nurhaliza</td>
+                <td class="px-4 py-3 text-sm">
+                  <span
+                    class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs"
+                    >Completed</span
+                  >
+                </td>
+                <td class="px-4 py-3 text-sm space-x-2">
+                  <button
+                    class="text-blue-600 hover:text-blue-800"
+                    title="Download Stock Analysis"
+                  >
+                    <i class="fas fa-download"></i>
+                  </button>
+                  <button
+                    class="text-gray-600 hover:text-gray-800"
+                    title="View Stock Analysis"
+                  >
+                    <i class="fas fa-eye"></i>
+                  </button>
+                </td>
+              </tr>
+              <tr class="hover:bg-gray-50">
+                <td class="px-4 py-3 text-sm font-medium">
+                  Livestock Care Report
+                </td>
+                <td class="px-4 py-3 text-sm">
+                  <span
+                    class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-xs"
+                    >KEW.AH</span
+                  >
+                </td>
+                <td class="px-4 py-3 text-sm">Feb 4, 2026</td>
+                <td class="px-4 py-3 text-sm">Dr. Mohd Ali</td>
+                <td class="px-4 py-3 text-sm">
+                  <span
+                    class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs"
+                    >Completed</span
+                  >
+                </td>
+                <td class="px-4 py-3 text-sm space-x-2">
+                  <button
+                    class="text-blue-600 hover:text-blue-800"
+                    title="Download Livestock Report"
+                  >
+                    <i class="fas fa-download"></i>
+                  </button>
+                  <button
+                    class="text-gray-600 hover:text-gray-800"
+                    title="View Livestock Report"
+                  >
+                    <i class="fas fa-eye"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

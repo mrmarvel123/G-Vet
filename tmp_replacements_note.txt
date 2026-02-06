@@ -1,0 +1,1 @@
+Preparing to replace inline animation-delay styles in public/dashboard.html: replace style attributes with Tailwind-like delay classes (delay-1..delay-8).

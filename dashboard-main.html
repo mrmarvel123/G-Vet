@@ -1,0 +1,823 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>G-VET ASSET & iSTOR SYSTEM - Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.js"></script>
+    <style>
+      .gradient-bg {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      }
+      .card-hover {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .card-hover:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      }
+      .malaysia-flag {
+        background: linear-gradient(
+          90deg,
+          #cc0001 0%,
+          #cc0001 25%,
+          #ffffff 25%,
+          #ffffff 75%,
+          #010066 75%,
+          #010066 100%
+        );
+      }
+      .animate-fade-in {
+        animation: fadeIn 0.6s ease-in-out;
+      }
+      .animate-slide-up {
+        animation: slideUp 0.5s ease-out;
+      }
+      .pulse-dot {
+        animation: pulse 2s infinite;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(100px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.7;
+          transform: scale(1.1);
+        }
+      }
+      .stat-card {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.95) 0%,
+          rgba(255, 255, 255, 0.85) 100%
+        );
+      }
+
+      /* Trend Indicators */
+      .trend-up {
+        color: #10b981;
+      }
+      .trend-down {
+        color: #ef4444;
+      }
+      .trend-neutral {
+        color: #6b7280;
+      }
+
+      /* Keyboard Shortcuts Modal */
+      .shortcuts-modal {
+        max-height: 80vh;
+        overflow-y: auto;
+      }
+
+      .shortcut-key {
+        background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.25rem;
+        font-family: monospace;
+        font-weight: bold;
+        font-size: 0.875rem;
+        border: 1px solid #d1d5db;
+      }
+
+      /* System Health Badge */
+      .health-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        border-radius: 9999px;
+        font-size: 0.875rem;
+        font-weight: bold;
+      }
+
+      .health-excellent {
+        background: #d1fae5;
+        color: #065f46;
+      }
+
+      .health-good {
+        background: #dbeafe;
+        color: #0c2d6b;
+      }
+
+      .health-warning {
+        background: #fed7aa;
+        color: #7c2d12;
+      }
+
+      /* Dark Mode Styles */
+      body.dark-mode {
+        background: #0f172a;
+        color: #e2e8f0;
+      }
+      body.dark-mode .bg-gray-50 {
+        background: #1e293b;
+      }
+      body.dark-mode .bg-white {
+        background: #1e293b;
+        color: #e2e8f0;
+      }
+      body.dark-mode .text-gray-900 {
+        color: #f1f5f9;
+      }
+      body.dark-mode .text-gray-800 {
+        color: #e2e8f0;
+      }
+      body.dark-mode .text-gray-700 {
+        color: #cbd5e1;
+      }
+      body.dark-mode .text-gray-600 {
+        color: #94a3b8;
+      }
+      body.dark-mode .stat-card {
+        background: linear-gradient(
+          135deg,
+          rgba(30, 41, 59, 0.95) 0%,
+          rgba(30, 41, 59, 0.85) 100%
+        );
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      body.dark-mode .border-gray-200 {
+        border-color: rgba(255, 255, 255, 0.1);
+      }
+      body.dark-mode .border-gray-100 {
+        border-color: rgba(255, 255, 255, 0.05);
+      }
+      body.dark-mode .bg-gray-100 {
+        background: #334155;
+      }
+      body.dark-mode .hover\:bg-gray-100:hover {
+        background: #334155;
+      }
+      body.dark-mode .bg-gradient-to-br.from-blue-50 {
+        background: linear-gradient(
+          135deg,
+          rgba(59, 130, 246, 0.2) 0%,
+          rgba(59, 130, 246, 0.1) 100%
+        );
+      }
+      body.dark-mode .bg-gradient-to-br.from-green-50 {
+        background: linear-gradient(
+          135deg,
+          rgba(34, 197, 94, 0.2) 0%,
+          rgba(34, 197, 94, 0.1) 100%
+        );
+      }
+      body.dark-mode .bg-gradient-to-br.from-purple-50 {
+        background: linear-gradient(
+          135deg,
+          rgba(168, 85, 247, 0.2) 0%,
+          rgba(168, 85, 247, 0.1) 100%
+        );
+      }
+      body.dark-mode .bg-gradient-to-br.from-orange-50 {
+        background: linear-gradient(
+          135deg,
+          rgba(249, 115, 22, 0.2) 0%,
+          rgba(249, 115, 22, 0.1) 100%
+        );
+      }
+      body.dark-mode .bg-gradient-to-r.from-blue-50 {
+        background: linear-gradient(
+          90deg,
+          rgba(59, 130, 246, 0.2),
+          rgba(59, 130, 246, 0.1)
+        );
+      }
+      body.dark-mode .bg-gradient-to-r.from-green-50 {
+        background: linear-gradient(
+          90deg,
+          rgba(34, 197, 94, 0.2),
+          rgba(34, 197, 94, 0.1)
+        );
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <!-- Main Dashboard -->
+    <div id="main-dashboard" class="min-h-screen">
+      <!-- Enhanced Header -->
+      <header class="gradient-bg text-white shadow-2xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex justify-between items-center py-4">
+            <div class="flex items-center space-x-4">
+              <div
+                class="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-lg p-1"
+              >
+                <img
+                  src="/static/images/veterinar-logo.png"
+                  alt="Veterinar Logo"
+                  class="w-full h-full object-contain"
+                />
+              </div>
+              <div>
+                <h1 class="text-2xl font-bold">G-VET ASSET & iSTOR SYSTEM</h1>
+                <p class="text-blue-100 text-sm">KEW.PA • KEW.PS • KEW.AH</p>
+              </div>
+              <div
+                class="hidden md:block w-6 h-8 malaysia-flag rounded shadow-md"
+              ></div>
+            </div>
+            <div class="flex items-center space-x-4">
+              <div class="bg-white/20 rounded-lg px-4 py-2 backdrop-blur-sm">
+                <span class="text-sm">Status: </span>
+                <span class="font-bold pulse-dot">🟢 Operational</span>
+              </div>
+              <button
+                onclick="toggleTheme()"
+                class="bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-lg shadow-lg transition-all transform hover:scale-105"
+                title="Toggle Dark/Light Mode"
+              >
+                <i id="theme-icon" class="fas fa-moon"></i>
+              </button>
+              <div
+                class="flex items-center space-x-2 bg-white/10 rounded-lg px-4 py-2"
+              >
+                <i class="fas fa-user-circle text-xl"></i>
+                <span id="user-role" class="text-sm font-medium"></span>
+              </div>
+              <button
+                onclick="logout()"
+                class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg shadow-lg transition-all transform hover:scale-105"
+              >
+                <i class="fas fa-sign-out-alt mr-2"></i>Logout
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Navigation Menu -->
+      <nav class="bg-white shadow-md border-b-4 border-purple-600">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex items-center justify-between h-14">
+            <div class="flex items-center space-x-8">
+              <a
+                href="/dashboard-main.html"
+                class="text-purple-600 font-bold hover:text-purple-800 transition-all"
+              >
+                <i class="fas fa-home mr-2"></i>Dashboard
+              </a>
+              <a
+                href="/reports"
+                class="text-gray-700 hover:text-purple-600 font-medium transition-all"
+              >
+                <i class="fas fa-chart-bar mr-2"></i>Reports
+              </a>
+              <a
+                href="/inventory-management.html"
+                class="text-gray-700 hover:text-purple-600 font-medium transition-all"
+              >
+                <i class="fas fa-boxes mr-2"></i>Inventory
+              </a>
+              <a
+                href="/asset-management.html"
+                class="text-gray-700 hover:text-purple-600 font-medium transition-all"
+              >
+                <i class="fas fa-hdd mr-2"></i>Assets
+              </a>
+              <a
+                href="/admin"
+                class="text-gray-700 hover:text-purple-600 font-medium transition-all"
+              >
+                <i class="fas fa-cog mr-2"></i>Admin
+              </a>
+              <a
+                href="/settings"
+                class="text-gray-700 hover:text-purple-600 font-medium transition-all"
+              >
+                <i class="fas fa-sliders-h mr-2"></i>Settings
+              </a>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Main Content -->
+      <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Notification Center -->
+        <div
+          id="notification-container"
+          class="mb-8 space-y-3"
+          role="region"
+          aria-label="System notifications"
+          aria-live="polite"
+        ></div>
+        <!-- Welcome Banner -->
+        <div
+          class="bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl shadow-xl p-8 mb-8 animate-fade-in text-white"
+        >
+          <div class="flex justify-between items-start">
+            <div>
+              <h2 class="text-3xl font-bold mb-2">Welcome to G-VET System</h2>
+              <p class="text-purple-100">
+                Integrated Asset & Inventory Management with Government
+                Compliance
+              </p>
+            </div>
+            <div class="text-right">
+              <div class="health-badge health-excellent">
+                <i class="fas fa-check-circle"></i>
+                <span>System Healthy</span>
+              </div>
+              <p class="text-purple-100 text-xs mt-2">
+                <i class="fas fa-server mr-1"></i>All Services Operational
+              </p>
+            </div>
+          </div>
+          <div class="mt-4 flex gap-2">
+            <button
+              onclick="showKeyboardShortcuts()"
+              class="bg-white/20 hover:bg-white/30 text-white px-3 py-2 rounded-lg transition-all text-sm flex items-center gap-2"
+              title="Show keyboard shortcuts (Ctrl+?)"
+            >
+              <i class="fas fa-keyboard mr-1"></i>Shortcuts
+            </button>
+          </div>
+        </div>
+
+        <!-- System Status Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          <div
+            class="stat-card rounded-2xl shadow-xl p-6 card-hover animate-fade-in border-l-4 border-blue-600 delay-1"
+          >
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-gray-600 text-sm font-medium">Total Assets</p>
+                <p
+                  class="text-3xl font-bold text-blue-600 mt-1"
+                  id="total-assets"
+                >
+                  0
+                </p>
+                <p class="text-xs text-gray-500 mt-1">KEW.PA Framework</p>
+                <div class="text-sm trend-up mt-2">
+                  <i class="fas fa-arrow-up mr-1"></i
+                  ><span>+5.2% from last month</span>
+                </div>
+              </div>
+              <div
+                class="w-14 h-14 bg-gradient-to-br from-blue-400 to-blue-600 rounded-xl flex items-center justify-center shadow-lg"
+              >
+                <i class="fas fa-desktop text-white text-xl"></i>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="stat-card rounded-2xl shadow-xl p-6 card-hover animate-fade-in border-l-4 border-green-600 delay-2"
+          >
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-gray-600 text-sm font-medium">Inventory Items</p>
+                <p
+                  class="text-3xl font-bold text-green-600 mt-1"
+                  id="total-inventory"
+                >
+                  0
+                </p>
+                <p class="text-xs text-gray-500 mt-1">KEW.PS Framework</p>
+                <div class="text-sm trend-up mt-2">
+                  <i class="fas fa-arrow-up mr-1"></i
+                  ><span>+8.3% from last month</span>
+                </div>
+              </div>
+              <div
+                class="w-14 h-14 bg-gradient-to-br from-green-400 to-green-600 rounded-xl flex items-center justify-center shadow-lg"
+              >
+                <i class="fas fa-boxes text-white text-xl"></i>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="stat-card rounded-2xl shadow-xl p-6 card-hover animate-fade-in border-l-4 border-yellow-600 delay-3"
+          >
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-gray-600 text-sm font-medium">
+                  Low Stock Alerts
+                </p>
+                <p
+                  class="text-3xl font-bold text-yellow-600 mt-1"
+                  id="low-stock"
+                >
+                  0
+                </p>
+                <p class="text-xs text-gray-500 mt-1">Need Attention</p>
+                <div class="text-sm trend-down mt-2">
+                  <i class="fas fa-arrow-down mr-1"></i
+                  ><span>-2.1% from last month</span>
+                </div>
+              </div>
+              <div
+                class="w-14 h-14 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-xl flex items-center justify-center shadow-lg"
+              >
+                <i class="fas fa-exclamation-triangle text-white text-xl"></i>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="stat-card rounded-2xl shadow-xl p-6 card-hover animate-fade-in border-l-4 border-purple-600 delay-4"
+          >
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-gray-600 text-sm font-medium">Active Users</p>
+                <p
+                  class="text-3xl font-bold text-purple-600 mt-1"
+                  id="active-users"
+                >
+                  0
+                </p>
+                <p class="text-xs text-gray-500 mt-1">Currently Online</p>
+                <div class="text-sm trend-up mt-2">
+                  <i class="fas fa-arrow-up mr-1"></i
+                  ><span>+3.7% from last month</span>
+                </div>
+              </div>
+              <div
+                class="w-14 h-14 bg-gradient-to-br from-purple-400 to-purple-600 rounded-xl flex items-center justify-center shadow-lg"
+              >
+                <i class="fas fa-users text-white text-xl"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Module Overview Cards -->
+        <div class="mb-12">
+          <h3 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+            <i class="fas fa-layer-group text-purple-600 mr-3"></i>
+            Government Compliance Modules
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <!-- KEW.PA Module Card -->
+            <div
+              class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl shadow-xl p-6 border-2 border-blue-200 card-hover animate-fade-in delay-5"
+              role="region"
+              aria-label="KEW.PA Asset Management Module"
+            >
+              <div class="flex items-center mb-4">
+                <div
+                  class="w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg flex items-center justify-center mr-3"
+                >
+                  <i
+                    class="fas fa-desktop text-white text-lg"
+                    aria-hidden="true"
+                  ></i>
+                </div>
+                <h4 class="text-lg font-bold text-blue-900">KEW.PA</h4>
+              </div>
+              <p class="text-sm text-blue-800 mb-4">
+                Asset Management Framework
+              </p>
+              <ul class="space-y-2 mb-4 text-xs text-blue-700">
+                <li>
+                  <i class="fas fa-check mr-2" aria-hidden="true"></i>Asset
+                  Registration (PA-3/4)
+                </li>
+                <li>
+                  <i class="fas fa-check mr-2" aria-hidden="true"></i>Receipt &
+                  Rejection (PA-1/2)
+                </li>
+                <li>
+                  <i class="fas fa-check mr-2" aria-hidden="true"></i>36 Forms
+                  Available
+                </li>
+              </ul>
+              <button
+                onclick="openModule('kewpa-dashboard')"
+                class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg transition-all font-medium"
+                title="Access KEW.PA Asset Management (Ctrl+1)"
+                aria-label="Open KEW.PA Asset Management Dashboard"
+              >
+                Access KEW.PA
+              </button>
+            </div>
+
+            <!-- KEW.PS Module Card -->
+            <div
+              class="bg-gradient-to-br from-green-50 to-green-100 rounded-2xl shadow-xl p-6 border-2 border-green-200 card-hover animate-fade-in delay-6"
+              role="region"
+              aria-label="KEW.PS Store Management Module"
+            >
+              <div class="flex items-center mb-4">
+                <div
+                  class="w-12 h-12 bg-gradient-to-br from-green-400 to-green-600 rounded-lg flex items-center justify-center mr-3"
+                >
+                  <i
+                    class="fas fa-warehouse text-white text-lg"
+                    aria-hidden="true"
+                  ></i>
+                </div>
+                <h4 class="text-lg font-bold text-green-900">KEW.PS</h4>
+              </div>
+              <p class="text-sm text-green-800 mb-4">
+                Store Management Framework
+              </p>
+              <ul class="space-y-2 mb-4 text-xs text-green-700">
+                <li>
+                  <i class="fas fa-check mr-2" aria-hidden="true"></i>Store
+                  Receipt (PS-1/2)
+                </li>
+                <li>
+                  <i class="fas fa-check mr-2" aria-hidden="true"></i>Stock
+                  Control (PS-3/4)
+                </li>
+                <li>
+                  <i class="fas fa-check mr-2" aria-hidden="true"></i>36 Forms
+                  Available
+                </li>
+              </ul>
+              <button
+                onclick="openModule('kewps-dashboard')"
+                class="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg transition-all font-medium"
+                title="Access KEW.PS Store Management (Ctrl+2)"
+                aria-label="Open KEW.PS Store Management Dashboard"
+              >
+                Access KEW.PS
+              </button>
+            </div>
+
+            <!-- KEW.AH Module Card -->
+            <div
+              class="bg-gradient-to-br from-amber-50 to-amber-100 rounded-2xl shadow-xl p-6 border-2 border-amber-200 card-hover animate-fade-in delay-7"
+              role="region"
+              aria-label="KEW.AH Livestock Assets Module"
+            >
+              <div class="flex items-center mb-4">
+                <div
+                  class="w-12 h-12 bg-gradient-to-br from-amber-400 to-amber-600 rounded-lg flex items-center justify-center mr-3"
+                >
+                  <i
+                    class="fas fa-paw text-white text-lg"
+                    aria-hidden="true"
+                  ></i>
+                </div>
+                <h4 class="text-lg font-bold text-amber-900">KEW.AH</h4>
+              </div>
+              <p class="text-sm text-amber-800 mb-4">
+                Livestock Assets Framework
+              </p>
+              <ul class="space-y-2 mb-4 text-xs text-amber-700">
+                <li>
+                  <i class="fas fa-check mr-2" aria-hidden="true"></i>Asset
+                  Register (AH-2)
+                </li>
+                <li>
+                  <i class="fas fa-check mr-2" aria-hidden="true"></i>Veterinary
+                  Care (AH-3/4)
+                </li>
+                <li>
+                  <i class="fas fa-check mr-2" aria-hidden="true"></i>8 Forms
+                  Available
+                </li>
+              </ul>
+              <button
+                onclick="openModule('kewah-dashboard')"
+                class="w-full bg-amber-600 hover:bg-amber-700 text-white py-2 rounded-lg transition-all font-medium"
+                title="Access KEW.AH Livestock Management (Ctrl+3)"
+                aria-label="Open KEW.AH Livestock Assets Dashboard"
+              >
+                Access KEW.AH
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Actions Section -->
+        <div
+          class="bg-white rounded-2xl shadow-xl p-8 mb-8 animate-fade-in delay-8"
+        >
+          <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+            <i class="fas fa-bolt text-yellow-500 mr-3"></i>
+            Quick Access
+          </h2>
+          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            <!-- Core Quick Actions -->
+            <button
+              onclick="openModule('kewpa-dashboard')"
+              class="p-4 bg-gradient-to-br from-blue-50 to-blue-100 hover:from-blue-100 hover:to-blue-200 rounded-xl transition-all card-hover border-2 border-blue-200"
+              title="Access KEW.PA Asset Management"
+            >
+              <i class="fas fa-desktop text-blue-600 text-2xl mb-2 block"></i>
+              <p class="text-xs font-bold text-gray-800">KEW.PA</p>
+            </button>
+            <button
+              onclick="openModule('kewps-dashboard')"
+              class="p-4 bg-gradient-to-br from-green-50 to-green-100 hover:from-green-100 hover:to-green-200 rounded-xl transition-all card-hover border-2 border-green-200"
+              title="Access KEW.PS Store Management"
+            >
+              <i
+                class="fas fa-warehouse text-green-600 text-2xl mb-2 block"
+              ></i>
+              <p class="text-xs font-bold text-gray-800">KEW.PS</p>
+            </button>
+            <button
+              onclick="openModule('kewah-dashboard')"
+              class="p-4 bg-gradient-to-br from-amber-50 to-amber-100 hover:from-amber-100 hover:to-amber-200 rounded-xl transition-all card-hover border-2 border-amber-200"
+              title="Access KEW.AH Livestock Management"
+            >
+              <i class="fas fa-paw text-amber-600 text-2xl mb-2 block"></i>
+              <p class="text-xs font-bold text-gray-800">KEW.AH</p>
+            </button>
+            <button
+              onclick="openModule('reports')"
+              class="p-4 bg-gradient-to-br from-red-50 to-red-100 hover:from-red-100 hover:to-red-200 rounded-xl transition-all card-hover border-2 border-red-200"
+              title="View Reports and Analytics"
+            >
+              <i class="fas fa-chart-bar text-red-600 text-2xl mb-2 block"></i>
+              <p class="text-xs font-bold text-gray-800">Reports</p>
+            </button>
+            <button
+              onclick="openModule('inventory')"
+              class="p-4 bg-gradient-to-br from-yellow-50 to-yellow-100 hover:from-yellow-100 hover:to-yellow-200 rounded-xl transition-all card-hover border-2 border-yellow-200"
+              title="Manage Inventory"
+            >
+              <i class="fas fa-boxes text-yellow-600 text-2xl mb-2 block"></i>
+              <p class="text-xs font-bold text-gray-800">Inventory</p>
+            </button>
+            <button
+              onclick="openModule('admin')"
+              class="p-4 bg-gradient-to-br from-purple-50 to-purple-100 hover:from-purple-100 hover:to-purple-200 rounded-xl transition-all card-hover border-2 border-purple-200"
+              title="Access Administration Settings"
+            >
+              <i class="fas fa-cog text-purple-600 text-2xl mb-2 block"></i>
+              <p class="text-xs font-bold text-gray-800">Admin</p>
+            </button>
+          </div>
+        </div>
+
+        <!-- System Status & Recent Activities Row -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div
+            class="bg-white rounded-2xl shadow-xl p-8 animate-fade-in delay-1"
+          >
+            <h2 class="text-xl font-bold text-gray-900 mb-6 flex items-center">
+              <i class="fas fa-plug text-green-500 mr-3"></i>
+              System Integration Status
+            </h2>
+            <div class="space-y-4">
+              <div
+                class="flex items-center justify-between p-4 bg-gradient-to-r from-green-50 to-green-100 rounded-xl border-2 border-green-200"
+              >
+                <div class="flex items-center">
+                  <i
+                    class="fas fa-check-circle text-green-600 mr-3 text-xl"
+                  ></i>
+                  <span class="text-sm font-bold text-gray-800"
+                    >Info-T Aset</span
+                  >
+                </div>
+                <span
+                  class="text-xs bg-green-600 text-white px-3 py-1 rounded-full font-bold"
+                  >Connected</span
+                >
+              </div>
+              <div
+                class="flex items-center justify-between p-4 bg-gradient-to-r from-green-50 to-green-100 rounded-xl border-2 border-green-200"
+              >
+                <div class="flex items-center">
+                  <i
+                    class="fas fa-check-circle text-green-600 mr-3 text-xl"
+                  ></i>
+                  <span class="text-sm font-bold text-gray-800"
+                    >iStor System</span
+                  >
+                </div>
+                <span
+                  class="text-xs bg-green-600 text-white px-3 py-1 rounded-full font-bold"
+                  >Connected</span
+                >
+              </div>
+            </div>
+            <button
+              onclick="verifySystem()"
+              class="w-full mt-6 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-4 py-3 rounded-xl shadow-lg transition-all transform hover:scale-105 font-bold"
+            >
+              <i class="fas fa-shield-alt mr-2"></i>Verify System Status
+            </button>
+          </div>
+
+          <div
+            class="bg-white rounded-2xl shadow-xl p-8 animate-fade-in delay-2"
+          >
+            <h2 class="text-xl font-bold text-gray-900 mb-6 flex items-center">
+              <i class="fas fa-history text-purple-500 mr-3"></i>
+              Recent Activities
+            </h2>
+            <div id="recent-activities" class="space-y-3">
+              <!-- Activities will be loaded here -->
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Module Scripts - Load in order -->
+    <script src="/static/js/modules/notifications.js"></script>
+    <script src="/static/js/modules/ui.js"></script>
+    <script src="/static/js/modules/auth.js"></script>
+    <script src="/static/js/modules/modules.js"></script>
+    <script src="/static/js/modules/shortcuts.js"></script>
+    <script src="/static/js/modules/activity.js"></script>
+    <script src="/static/js/modules/dashboard.js"></script>
+
+    <!-- Application Initialization -->
+    <script>
+      // Legacy support - delegate to modular system
+      function toggleTheme() {
+        GVETTheme.toggle();
+      }
+
+      function logout() {
+        GVETAuth.logout();
+      }
+
+      function openModule(moduleName) {
+        GVETModules.open(moduleName, { requireAuth: true });
+      }
+
+      function showKeyboardShortcuts() {
+        GVETShortcuts.showShortcuts();
+      }
+
+      function showNotification(message, type = "info", duration = 5000) {
+        GVETNotifications.show(message, type, duration);
+      }
+
+      document.addEventListener("DOMContentLoaded", async function () {
+        console.log("🏛️ G-VET Dashboard Initialized with Modular Architecture");
+
+        // Check authentication
+        if (!GVETAuth.isAuthenticated()) {
+          window.location.href = "/";
+          return;
+        }
+
+        // Update user display
+        const user = GVETAuth.getCurrentUser();
+        if (user) {
+          const userElements = document.querySelectorAll(
+            "[data-user-name], #user-role",
+          );
+          userElements.forEach((el) => {
+            el.textContent = user.fullName || user.username || "User";
+          });
+        }
+
+        // Show welcome notification
+        setTimeout(() => {
+          GVETNotifications.show(
+            "✨ System fully operational - All services healthy",
+            "success",
+            6000,
+          );
+        }, 500);
+
+        // Load dashboard data if module initialized
+        if (window.GVETDashboard) {
+          GVETDashboard.init();
+        }
+
+        // Log active systems
+        console.log("📊 Dashboard Systems Status:", {
+          authentication: GVETAuth.isAuthenticated(),
+          theme: GVETTheme.getCurrent(),
+          websocket: GVETActivity.isConnected(),
+          modules:
+            Object.keys(GVETModules.MODULES).length + " modules available",
+        });
+      });
+    </script>
+  </body>
+</html>

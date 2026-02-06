@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Asset Management - G-VET System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .gradient-bg {
+        background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+      }
+      .card-hover {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .card-hover:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      }
+      body.dark-mode {
+        background: #0f172a;
+        color: #e2e8f0;
+      }
+      body.dark-mode .bg-white {
+        background: #1e293b;
+        color: #e2e8f0;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <!-- Header -->
+    <header class="gradient-bg text-white shadow-2xl">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center py-4">
+          <div class="flex items-center space-x-4">
+            <h1 class="text-2xl font-bold">
+              <i class="fas fa-hdd text-cyan-300 mr-3"></i>Asset Management
+              System
+            </h1>
+          </div>
+          <div class="flex items-center space-x-4">
+            <button
+              onclick="toggleTheme()"
+              class="bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-lg"
+              title="Toggle dark/light theme"
+            >
+              <i id="theme-icon" class="fas fa-moon"></i>
+            </button>
+            <button
+              onclick="goBack()"
+              class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg"
+            >
+              <i class="fas fa-arrow-left mr-2"></i>Back
+            </button>
+            <button
+              onclick="logout()"
+              class="bg-red-800 hover:bg-red-900 text-white px-4 py-2 rounded-lg"
+            >
+              <i class="fas fa-sign-out-alt mr-2"></i>Logout
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <!-- Asset Stats -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+        <div
+          class="bg-white rounded-xl shadow-lg p-6 border-l-4 border-blue-600 card-hover"
+        >
+          <p class="text-gray-600 text-sm font-medium">Total Assets</p>
+          <p class="text-3xl font-bold text-blue-600 mt-1">1,245</p>
+          <p class="text-xs text-gray-500 mt-2">All registered assets</p>
+        </div>
+        <div
+          class="bg-white rounded-xl shadow-lg p-6 border-l-4 border-green-600 card-hover"
+        >
+          <p class="text-gray-600 text-sm font-medium">Active Assets</p>
+          <p class="text-3xl font-bold text-green-600 mt-1">980</p>
+          <p class="text-xs text-gray-500 mt-2">Currently in use</p>
+        </div>
+        <div
+          class="bg-white rounded-xl shadow-lg p-6 border-l-4 border-orange-600 card-hover"
+        >
+          <p class="text-gray-600 text-sm font-medium">Maintenance</p>
+          <p class="text-3xl font-bold text-orange-600 mt-1">156</p>
+          <p class="text-xs text-gray-500 mt-2">Requires service</p>
+        </div>
+        <div
+          class="bg-white rounded-xl shadow-lg p-6 border-l-4 border-red-600 card-hover"
+        >
+          <p class="text-gray-600 text-sm font-medium">Retired</p>
+          <p class="text-3xl font-bold text-red-600 mt-1">109</p>
+          <p class="text-xs text-gray-500 mt-2">Decommissioned items</p>
+        </div>
+      </div>
+
+      <!-- Asset Management Options -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+        <div class="bg-white rounded-xl shadow-lg p-8 card-hover">
+          <div class="text-4xl text-blue-600 mb-4">
+            <i class="fas fa-plus-square"></i>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">
+            Register New Asset
+          </h3>
+          <p class="text-gray-600 text-sm mb-4">
+            Add newly acquired assets to the system
+          </p>
+          <button
+            onclick="registerAsset()"
+            class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg transition-all"
+          >
+            <i class="fas fa-plus-circle mr-2"></i>Register Asset
+          </button>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-lg p-8 card-hover">
+          <div class="text-4xl text-green-600 mb-4">
+            <i class="fas fa-search"></i>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">
+            Search & View Assets
+          </h3>
+          <p class="text-gray-600 text-sm mb-4">
+            Find assets by serial number or location
+          </p>
+          <button
+            onclick="searchAssets()"
+            class="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg transition-all"
+          >
+            <i class="fas fa-search mr-2"></i>Search
+          </button>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-lg p-8 card-hover">
+          <div class="text-4xl text-orange-600 mb-4">
+            <i class="fas fa-tools"></i>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">
+            Maintenance Schedule
+          </h3>
+          <p class="text-gray-600 text-sm mb-4">
+            View and schedule asset maintenance
+          </p>
+          <button
+            onclick="viewMaintenance()"
+            class="w-full bg-orange-600 hover:bg-orange-700 text-white py-2 rounded-lg transition-all"
+          >
+            <i class="fas fa-calendar-check mr-2"></i>Maintenance
+          </button>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-lg p-8 card-hover">
+          <div class="text-4xl text-purple-600 mb-4">
+            <i class="fas fa-exchange-alt"></i>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">Asset Transfer</h3>
+          <p class="text-gray-600 text-sm mb-4">
+            Transfer assets between departments
+          </p>
+          <button
+            onclick="transferAsset()"
+            class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg transition-all"
+          >
+            <i class="fas fa-arrows-alt mr-2"></i>Transfer
+          </button>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-lg p-8 card-hover">
+          <div class="text-4xl text-red-600 mb-4">
+            <i class="fas fa-trash-alt"></i>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">Asset Disposal</h3>
+          <p class="text-gray-600 text-sm mb-4">
+            Record asset disposal or retirement
+          </p>
+          <button
+            onclick="disposeAsset()"
+            class="w-full bg-red-600 hover:bg-red-700 text-white py-2 rounded-lg transition-all"
+          >
+            <i class="fas fa-trash-alt mr-2"></i>Dispose
+          </button>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-lg p-8 card-hover">
+          <div class="text-4xl text-indigo-600 mb-4">
+            <i class="fas fa-chart-pie"></i>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">Asset Reports</h3>
+          <p class="text-gray-600 text-sm mb-4">
+            Generate asset inventory and analysis reports
+          </p>
+          <button
+            onclick="generateReport()"
+            class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded-lg transition-all"
+          >
+            <i class="fas fa-file-csv mr-2"></i>Reports
+          </button>
+        </div>
+      </div>
+
+      <!-- Recent Assets -->
+      <div class="bg-white rounded-2xl shadow-xl p-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">
+          <i class="fas fa-clock text-blue-600 mr-3"></i>Recently Added Assets
+        </h2>
+        <div id="recent-assets" class="space-y-2">
+          <!-- Assets will be populated here -->
+        </div>
+      </div>
+    </main>
+
+    <script>
+      let isDarkMode = false;
+
+      if (localStorage.getItem("theme") === "dark") {
+        isDarkMode = true;
+        document.body.classList.add("dark-mode");
+        document.getElementById("theme-icon").className = "fas fa-sun";
+      }
+
+      function toggleTheme() {
+        isDarkMode = !isDarkMode;
+        document.body.classList.toggle("dark-mode");
+        const themeIcon = document.getElementById("theme-icon");
+        if (isDarkMode) {
+          themeIcon.className = "fas fa-sun";
+          localStorage.setItem("theme", "dark");
+        } else {
+          themeIcon.className = "fas fa-moon";
+          localStorage.setItem("theme", "light");
+        }
+      }
+
+      function goBack() {
+        window.location.href = "/dashboard";
+      }
+
+      function logout() {
+        if (confirm("Are you sure you want to logout?")) {
+          localStorage.clear();
+          window.location.href = "/login.html";
+        }
+      }
+
+      function registerAsset() {
+        alert("Opening asset registration form...");
+      }
+
+      function searchAssets() {
+        alert("Opening asset search interface...");
+      }
+
+      function viewMaintenance() {
+        alert("Opening maintenance schedule...");
+      }
+
+      function transferAsset() {
+        alert("Opening asset transfer dialog...");
+      }
+
+      function disposeAsset() {
+        alert("Opening asset disposal form...");
+      }
+
+      function generateReport() {
+        alert("Generating asset report...");
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const currentUser = localStorage.getItem("currentUser");
+        if (!currentUser) {
+          window.location.href = "/login.html";
+          return;
+        }
+
+        const recentAssets = [
+          {
+            id: "AST-2026-001",
+            name: "Server HP ProLiant DL380 Gen10",
+            date: "2026-02-05",
+          },
+          {
+            id: "AST-2026-002",
+            name: "Network Switch Cisco Catalyst",
+            date: "2026-02-04",
+          },
+          {
+            id: "AST-2026-003",
+            name: "Workstation Dell Precision T7820",
+            date: "2026-02-03",
+          },
+        ];
+
+        const container = document.getElementById("recent-assets");
+        container.innerHTML = recentAssets
+          .map(
+            (asset) => `
+          <div class="flex items-center justify-between p-4 bg-gray-50 hover:bg-gray-100 rounded-lg transition-all">
+            <div class="flex items-center">
+              <i class="fas fa-hdd text-blue-600 mr-3 text-lg"></i>
+              <div>
+                <p class="font-bold text-gray-800">${asset.name}</p>
+                <p class="text-xs text-gray-500">${asset.id} - Added on ${asset.date}</p>
+              </div>
+            </div>
+            <button class="text-blue-600 hover:text-blue-800 font-medium">View Details</button>
+          </div>
+        `,
+          )
+          .join("");
+      });
+    </script>
+  </body>
+</html>
