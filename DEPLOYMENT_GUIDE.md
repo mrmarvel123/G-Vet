@@ -90,9 +90,12 @@ npm run release:gh
    ```
 
 2. Authenticate with GitHub:
+
    ```powershell
    gh auth login
+
    ```
+
    Follow the browser prompt to authorize.
 
 ### Create GitHub Release
@@ -138,11 +141,16 @@ For production releases, code sign the installer:
 
 1. Obtain a code signing certificate (PFX format) from a trusted CA
 2. Set environment variables:
+
    ```powershell
+
    $env:CSC_LINK = "C:\path\to\cert.pfx"
+
    $env:CSC_KEY_PASSWORD = "your-password"
    ```
+
 3. Rebuild:
+
    ```bash
    npm run electron-build-win
    ```
@@ -200,15 +208,22 @@ Or configure in GitHub Actions secrets for automated signing.
 ### Update Won't Install
 
 - Check file permissions in `AppData\Local\Temp`
-- Restart the app after download is complete
-- Verify no antivirus blocking updates
+- Restart the ap<https://www.electronjs.org/docs>
+- Verify no antivirus bl<https://www.electron.build/>
+  <https://github.com/electron-userland/electron-updater>
 
-## Support Links
+## Support Links<https://cli.github.com/>
 
-- **Electron:** https://www.electronjs.org/docs
-- **electron-builder:** https://www.electron.build/
-- **electron-updater:** https://github.com/electron-userland/electron-updater
-- **GitHub CLI:** https://cli.github.com/
+- **Electron:** <https://www.electronjs.org/docs>
+- **electron-builder:** <https://www.electron.build/>
+- **electron-updater:** <https://github.com/electron-userland/electron-updater>
+- **GitHub CLI:** <https://cli.github.com/>
+
+---
+
+**Version:** 2.0.0
+**Last Updated:** February 7, 2026
+**Maintained by:** G-VET Development Team
 
 ---
 
