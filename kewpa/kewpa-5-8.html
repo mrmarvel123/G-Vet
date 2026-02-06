@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KEW.PA-5 to 8: Asset Verification Forms</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      @media print {
+        .no-print {
+          display: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <header
+      class="bg-gradient-to-r from-indigo-600 to-indigo-800 text-white shadow-lg p-6 no-print"
+    >
+      <div class="flex items-center justify-between">
+        <div class="flex items-center space-x-4">
+          <i class="fas fa-check-circle text-3xl"></i>
+          <div>
+            <h1 class="text-2xl font-bold">
+              KEW.PA-5 to 8: Asset Verification
+            </h1>
+            <p class="text-sm text-indigo-100">
+              Annual Asset Verification Forms
+            </p>
+          </div>
+        </div>
+        <button
+          onclick="window.history.back()"
+          class="bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg"
+        >
+          <i class="fas fa-arrow-left mr-2"></i>Back
+        </button>
+      </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto p-6">
+      <div class="bg-white rounded-xl shadow-lg p-8">
+        <div class="border-t-4 border-indigo-600 pt-4 mb-6 text-center">
+          <p class="font-bold text-lg">
+            JABATAN PERKHIDMATAN VETERINAR NEGERI PERAK
+          </p>
+          <p class="text-sm font-semibold">ASSET VERIFICATION FORM</p>
+          <p class="text-sm font-bold text-indigo-600 mt-2">
+            FORMS KEW.PA-5, 6, 7, 8
+          </p>
+        </div>
+
+        <!-- Form Selection -->
+        <div class="grid grid-cols-4 gap-4 mb-8 no-print">
+          <button
+            onclick="showForm('5')"
+            class="p-4 bg-indigo-50 hover:bg-indigo-100 border-2 border-indigo-300 rounded-lg transition"
+          >
+            <p class="font-bold">KEW.PA-5</p>
+            <p class="text-xs">Q1 Verification</p>
+          </button>
+          <button
+            onclick="showForm('6')"
+            class="p-4 bg-indigo-50 hover:bg-indigo-100 border-2 border-indigo-300 rounded-lg transition"
+          >
+            <p class="font-bold">KEW.PA-6</p>
+            <p class="text-xs">Q2 Verification</p>
+          </button>
+          <button
+            onclick="showForm('7')"
+            class="p-4 bg-indigo-50 hover:bg-indigo-100 border-2 border-indigo-300 rounded-lg transition"
+          >
+            <p class="font-bold">KEW.PA-7</p>
+            <p class="text-xs">Q3 Verification</p>
+          </button>
+          <button
+            onclick="showForm('8')"
+            class="p-4 bg-indigo-50 hover:bg-indigo-100 border-2 border-indigo-300 rounded-lg transition"
+          >
+            <p class="font-bold">KEW.PA-8</p>
+            <p class="text-xs">Q4 Verification</p>
+          </button>
+        </div>
+
+        <!-- Verification Form -->
+        <div class="border-t-2 border-gray-300 pt-4 space-y-6">
+          <div class="grid grid-cols-3 gap-4">
+            <div>
+              <label class="block font-semibold text-gray-700 mb-1"
+                >Verification Period</label
+              >
+              <input
+                type="text"
+                title="Select verification quarter"
+                class="w-full border border-gray-300 px-3 py-2 rounded"
+                list="periods"
+              />
+              <datalist id="periods">
+                <option value="Q1 (Jan-Mar)"></option>
+                <option value="Q2 (Apr-Jun)"></option>
+                <option value="Q3 (Jul-Sep)"></option>
+                <option value="Q4 (Oct-Dec)"></option>
+              </datalist>
+            </div>
+            <div>
+              <label class="block font-semibold text-gray-700 mb-1">Year</label>
+              <input
+                type="number"
+                title="Verification year"
+                class="w-full border border-gray-300 px-3 py-2 rounded"
+                value="2026"
+              />
+            </div>
+            <div>
+              <label class="block font-semibold text-gray-700 mb-1"
+                >Verification Date</label
+              >
+              <input
+                type="date"
+                title="Date of verification"
+                class="w-full border border-gray-300 px-3 py-2 rounded"
+              />
+            </div>
+          </div>
+
+          <!-- Verification Details -->
+          <div>
+            <h3 class="font-bold text-lg text-indigo-600 mb-4">
+              Assets to Verify
+            </h3>
+            <div class="overflow-x-auto">
+              <table class="w-full border-collapse">
+                <thead class="bg-indigo-100">
+                  <tr>
+                    <th class="border px-3 py-2">Asset Code</th>
+                    <th class="border px-3 py-2">Description</th>
+                    <th class="border px-3 py-2">Location</th>
+                    <th class="border px-3 py-2">Status</th>
+                    <th class="border px-3 py-2">Found</th>
+                    <th class="border px-3 py-2">Remarks</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="border px-3 py-2">
+                      <input
+                        type="text"
+                        class="w-full border-0"
+                        placeholder="PA-001"
+                      />
+                    </td>
+                    <td class="border px-3 py-2">
+                      <input
+                        type="text"
+                        class="w-full border-0"
+                        placeholder="Asset"
+                      />
+                    </td>
+                    <td class="border px-3 py-2">
+                      <input
+                        type="text"
+                        class="w-full border-0"
+                        placeholder="Loc"
+                      />
+                    </td>
+                    <td class="border px-3 py-2">
+                      <select
+                        class="w-full border-0"
+                        title="Select asset condition"
+                      >
+                        <option>Good</option>
+                        <option>Fair</option>
+                        <option>Poor</option>
+                      </select>
+                    </td>
+                    <td class="border px-3 py-2">
+                      <input
+                        type="checkbox"
+                        class="w-5 h-5"
+                        title="Item has been verified"
+                      />
+                    </td>
+                    <td class="border px-3 py-2">
+                      <input
+                        type="text"
+                        class="w-full border-0"
+                        title="Additional verification notes"
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Summary -->
+          <div class="grid grid-cols-4 gap-4 bg-indigo-50 p-4 rounded-lg">
+            <div>
+              <p class="text-sm text-gray-600">Total Assets</p>
+              <p class="text-2xl font-bold text-indigo-600">___</p>
+            </div>
+            <div>
+              <p class="text-sm text-gray-600">Found</p>
+              <p class="text-2xl font-bold text-green-600">___</p>
+            </div>
+            <div>
+              <p class="text-sm text-gray-600">Missing</p>
+              <p class="text-2xl font-bold text-red-600">___</p>
+            </div>
+            <div>
+              <p class="text-sm text-gray-600">Discrepancies</p>
+              <p class="text-2xl font-bold text-orange-600">___</p>
+            </div>
+          </div>
+
+          <!-- Signatures -->
+          <div class="border-t-2 border-gray-300 pt-4 grid grid-cols-3 gap-4">
+            <div class="text-center">
+              <div class="border-t border-gray-400 pt-2 h-20"></div>
+              <p class="text-sm font-semibold">Verified By</p>
+              <p class="text-xs text-gray-600">Date: _______</p>
+            </div>
+            <div class="text-center">
+              <div class="border-t border-gray-400 pt-2 h-20"></div>
+              <p class="text-sm font-semibold">Supervisor</p>
+              <p class="text-xs text-gray-600">Date: _______</p>
+            </div>
+            <div class="text-center">
+              <div class="border-t border-gray-400 pt-2 h-20"></div>
+              <p class="text-sm font-semibold">Manager</p>
+              <p class="text-xs text-gray-600">Date: _______</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      function showForm(num) {
+        console.log("Showing form KEW.PA-" + num);
+      }
+    </script>
+  </body>
+</html>

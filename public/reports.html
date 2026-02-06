@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics & Reports - G-VET System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-50">
+    <header class="bg-gradient-to-r from-purple-600 to-purple-800 text-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-4">
+                    <i class="fas fa-chart-line text-2xl"></i>
+                    <div>
+                        <h1 class="text-xl font-bold">Analytics & Reporting System</h1>
+                        <p class="text-sm text-purple-100">Comprehensive Data Analysis & Reports</p>
+                    </div>
+                </div>
+                <button onclick="window.location.href='dashboard.html'" class="bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg">
+                    <i class="fas fa-arrow-left mr-2"></i>Back
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <h3 class="text-lg font-bold text-gray-900 mb-4">KEW.PA Reports</h3>
+                <div class="space-y-2">
+                    <button class="w-full text-left px-4 py-2 hover:bg-blue-50 rounded-lg transition-colors">
+                        <i class="fas fa-file-pdf text-red-600 mr-2"></i>Asset Register Report
+                    </button>
+                    <button class="w-full text-left px-4 py-2 hover:bg-blue-50 rounded-lg transition-colors">
+                        <i class="fas fa-file-pdf text-red-600 mr-2"></i>Asset Movement Report
+                    </button>
+                    <button class="w-full text-left px-4 py-2 hover:bg-blue-50 rounded-lg transition-colors">
+                        <i class="fas fa-file-pdf text-red-600 mr-2"></i>Maintenance Summary
+                    </button>
+                    <button class="w-full text-left px-4 py-2 hover:bg-blue-50 rounded-lg transition-colors">
+                        <i class="fas fa-file-pdf text-red-600 mr-2"></i>Disposal Report
+                    </button>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <h3 class="text-lg font-bold text-gray-900 mb-4">KEW.PS Reports</h3>
+                <div class="space-y-2">
+                    <button class="w-full text-left px-4 py-2 hover:bg-green-50 rounded-lg transition-colors">
+                        <i class="fas fa-file-excel text-green-600 mr-2"></i>Stock Balance Report
+                    </button>
+                    <button class="w-full text-left px-4 py-2 hover:bg-green-50 rounded-lg transition-colors">
+                        <i class="fas fa-file-excel text-green-600 mr-2"></i>Receipt & Issuance
+                    </button>
+                    <button class="w-full text-left px-4 py-2 hover:bg-green-50 rounded-lg transition-colors">
+                        <i class="fas fa-file-excel text-green-600 mr-2"></i>ABC Analysis
+                    </button>
+                    <button class="w-full text-left px-4 py-2 hover:bg-green-50 rounded-lg transition-colors">
+                        <i class="fas fa-file-excel text-green-600 mr-2"></i>Stock Movement
+                    </button>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <h3 class="text-lg font-bold text-gray-900 mb-4">KEW.AH Reports</h3>
+                <div class="space-y-2">
+                    <button class="w-full text-left px-4 py-2 hover:bg-orange-50 rounded-lg transition-colors">
+                        <i class="fas fa-file-alt text-orange-600 mr-2"></i>Livestock Register
+                    </button>
+                    <button class="w-full text-left px-4 py-2 hover:bg-orange-50 rounded-lg transition-colors">
+                        <i class="fas fa-file-alt text-orange-600 mr-2"></i>Health Records
+                    </button>
+                    <button class="w-full text-left px-4 py-2 hover:bg-orange-50 rounded-lg transition-colors">
+                        <i class="fas fa-file-alt text-orange-600 mr-2"></i>Breeding Report
+                    </button>
+                    <button class="w-full text-left px-4 py-2 hover:bg-orange-50 rounded-lg transition-colors">
+                        <i class="fas fa-file-alt text-orange-600 mr-2"></i>Mortality Report
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <h3 class="text-lg font-bold text-gray-900 mb-4">Asset Distribution by Category</h3>
+                <canvas id="assetChart" height="200"></canvas>
+            </div>
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <h3 class="text-lg font-bold text-gray-900 mb-4">Stock Movement Trend</h3>
+                <canvas id="stockChart" height="200"></canvas>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-lg p-6">
+            <h3 class="text-lg font-bold text-gray-900 mb-4">Generate Custom Report</h3>
+            <form class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <select class="px-4 py-2 border rounded-lg">
+                    <option>Select Module</option>
+                    <option>KEW.PA Assets</option>
+                    <option>KEW.PS Store</option>
+                    <option>KEW.AH Livestock</option>
+                </select>
+                <select class="px-4 py-2 border rounded-lg">
+                    <option>Select Report Type</option>
+                    <option>Summary Report</option>
+                    <option>Detailed Report</option>
+                    <option>Financial Report</option>
+                </select>
+                <input type="date" class="px-4 py-2 border rounded-lg" placeholder="From Date">
+                <input type="date" class="px-4 py-2 border rounded-lg" placeholder="To Date">
+                <div class="md:col-span-4">
+                    <button type="button" class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-lg">
+                        <i class="fas fa-file-export mr-2"></i>Generate Report
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        // Asset Distribution Chart
+        const assetCtx = document.getElementById('assetChart').getContext('2d');
+        new Chart(assetCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Computer Equipment', 'Furniture', 'Vehicles', 'Machinery', 'Others'],
+                datasets: [{
+                    data: [450, 320, 78, 245, 154],
+                    backgroundColor: ['#3b82f6', '#10b981', '#f59e0b', '#8b5cf6', '#6b7280']
+                }]
+            }
+        });
+
+        // Stock Movement Chart
+        const stockCtx = document.getElementById('stockChart').getContext('2d');
+        new Chart(stockCtx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                datasets: [{
+                    label: 'Received',
+                    data: [450, 520, 380, 620, 480, 590],
+                    borderColor: '#10b981',
+                    tension: 0.4
+                }, {
+                    label: 'Issued',
+                    data: [380, 420, 450, 390, 510, 460],
+                    borderColor: '#ef4444',
+                    tension: 0.4
+                }]
+            }
+        });
+    </script>
+</body>
+</html>

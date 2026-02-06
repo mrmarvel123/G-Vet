@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KEW.PS-3 &amp; 4: Stock Control Forms</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      @media print {
+        .no-print {
+          display: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <header
+      class="bg-gradient-to-r from-blue-600 to-blue-800 text-white shadow-lg p-6 no-print"
+    >
+      <div class="flex items-center justify-between">
+        <div class="flex items-center space-x-4">
+          <i class="fas fa-boxes text-3xl"></i>
+          <div>
+            <h1 class="text-2xl font-bold">KEW.PS-3 &amp; 4: Stock Control</h1>
+            <p class="text-sm text-blue-100">
+              Stock Card & Inventory Management Forms
+            </p>
+          </div>
+        </div>
+        <button
+          onclick="window.history.back()"
+          class="bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg"
+        >
+          <i class="fas fa-arrow-left mr-2"></i>Back
+        </button>
+      </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto p-6">
+      <div class="bg-white rounded-xl shadow-lg p-8">
+        <div class="border-t-4 border-blue-600 pt-4 mb-6 text-center">
+          <p class="font-bold text-lg">
+            JABATAN PERKHIDMATAN VETERINAR NEGERI PERAK
+          </p>
+          <p class="text-sm font-semibold">STOCK CONTROL & INVENTORY</p>
+          <p class="text-sm font-bold text-blue-600 mt-2">
+            FORMS KEW.PS-3 (Stock Card) & KEW.PS-4 (Inventory)
+          </p>
+        </div>
+
+        <!-- Item Information -->
+        <div
+          class="space-y-6 border-t-2 border-gray-300 pt-4 bg-blue-50 p-4 rounded-lg mb-6"
+        >
+          <div class="grid grid-cols-4 gap-4">
+            <div>
+              <label class="block font-semibold text-gray-700 mb-1"
+                >Item Code</label
+              >
+              <input
+                type="text"
+                class="w-full border border-gray-300 px-3 py-2 rounded"
+                placeholder="PS-001"
+              />
+            </div>
+            <div>
+              <label class="block font-semibold text-gray-700 mb-1"
+                >Item Description</label
+              >
+              <input
+                type="text"
+                class="w-full border border-gray-300 px-3 py-2 rounded"
+                title="Item description"
+              />
+            </div>
+            <div>
+              <label class="block font-semibold text-gray-700 mb-1">UOM</label>
+              <select
+                class="w-full border border-gray-300 px-3 py-2 rounded"
+                title="Unit of measure"
+              >
+                <option>Pcs</option>
+                <option>Box</option>
+                <option>Liter</option>
+                <option>Kg</option>
+              </select>
+            </div>
+            <div>
+              <label class="block font-semibold text-gray-700 mb-1"
+                >Category</label
+              >
+              <input
+                type="text"
+                class="w-full border border-gray-300 px-3 py-2 rounded"
+                title="Item category"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Stock Card Section -->
+        <div class="mb-8">
+          <h3 class="font-bold text-lg text-blue-600 mb-4">
+            Stock Card (KEW.PS-3)
+          </h3>
+          <div class="overflow-x-auto">
+            <table
+              class="w-full border-collapse border border-gray-400 text-sm"
+            >
+              <thead class="bg-blue-600 text-white">
+                <tr>
+                  <th class="border px-2 py-2">Date</th>
+                  <th class="border px-2 py-2">Reference</th>
+                  <th class="border px-2 py-2">In Qty</th>
+                  <th class="border px-2 py-2">Out Qty</th>
+                  <th class="border px-2 py-2">Balance</th>
+                  <th class="border px-2 py-2">Unit Cost</th>
+                  <th class="border px-2 py-2">Value</th>
+                  <th class="border px-2 py-2">Remarks</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="border px-2 py-2">
+                    <input
+                      type="date"
+                      class="w-full border-0 text-xs"
+                      title="Transaction date"
+                    />
+                  </td>
+                  <td class="border px-2 py-2">
+                    <input
+                      type="text"
+                      class="w-full border-0 text-xs"
+                      title="Reference number"
+                    />
+                  </td>
+                  <td class="border px-2 py-2 text-right">
+                    <input
+                      type="number"
+                      class="w-full border-0 text-xs text-right"
+                      title="Quantity in"
+                    />
+                  </td>
+                  <td class="border px-2 py-2 text-right">
+                    <input
+                      type="number"
+                      class="w-full border-0 text-xs text-right"
+                      title="Quantity out"
+                    />
+                  </td>
+                  <td class="border px-2 py-2 text-right">
+                    <input
+                      type="number"
+                      class="w-full border-0 text-xs text-right"
+                      title="Balance quantity"
+                    />
+                  </td>
+                  <td class="border px-2 py-2 text-right">
+                    <input
+                      type="number"
+                      class="w-full border-0 text-xs text-right"
+                      step="0.01"
+                      title="Unit cost"
+                    />
+                  </td>
+                  <td class="border px-2 py-2 text-right">
+                    <input
+                      type="number"
+                      class="w-full border-0 text-xs text-right"
+                      step="0.01"
+                      title="Total value"
+                    />
+                  </td>
+                  <td class="border px-2 py-2">
+                    <input
+                      type="text"
+                      class="w-full border-0 text-xs"
+                      title="Remarks"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td class="border px-2 py-2">
+                    <input
+                      type="date"
+                      class="w-full border-0 text-xs"
+                      title="Transaction date"
+                    />
+                  </td>
+                  <td class="border px-2 py-2">
+                    <input
+                      type="text"
+                      class="w-full border-0 text-xs"
+                      title="Reference number"
+                    />
+                  </td>
+                  <td class="border px-2 py-2 text-right">
+                    <input
+                      type="number"
+                      class="w-full border-0 text-xs text-right"
+                      title="Quantity in"
+                    />
+                  </td>
+                  <td class="border px-2 py-2 text-right">
+                    <input
+                      type="number"
+                      class="w-full border-0 text-xs text-right"
+                      title="Quantity out"
+                    />
+                  </td>
+                  <td class="border px-2 py-2 text-right">
+                    <input
+                      type="number"
+                      class="w-full border-0 text-xs text-right"
+                      title="Balance quantity"
+                    />
+                  </td>
+                  <td class="border px-2 py-2 text-right">
+                    <input
+                      type="number"
+                      class="w-full border-0 text-xs text-right"
+                      step="0.01"
+                      title="Unit cost"
+                    />
+                  </td>
+                  <td class="border px-2 py-2 text-right">
+                    <input
+                      type="number"
+                      class="w-full border-0 text-xs text-right"
+                      step="0.01"
+                      title="Total value"
+                    />
+                  </td>
+                  <td class="border px-2 py-2">
+                    <input
+                      type="text"
+                      class="w-full border-0 text-xs"
+                      title="Remarks"
+                    />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Inventory Control Section -->
+        <div>
+          <h3 class="font-bold text-lg text-blue-600 mb-4">
+            Inventory Control (KEW.PS-4)
+          </h3>
+          <div class="grid grid-cols-3 gap-6 mb-6">
+            <div class="p-4 bg-blue-50 rounded-lg">
+              <p class="text-sm text-gray-600 font-semibold">
+                Minimum Stock Level
+              </p>
+              <input
+                type="number"
+                class="w-full border border-gray-300 px-3 py-2 rounded mt-2"
+                placeholder="Qty"
+                title="Minimum stock level quantity"
+              />
+            </div>
+            <div class="p-4 bg-blue-50 rounded-lg">
+              <p class="text-sm text-gray-600 font-semibold">
+                Maximum Stock Level
+              </p>
+              <input
+                type="number"
+                class="w-full border border-gray-300 px-3 py-2 rounded mt-2"
+                placeholder="Qty"
+                title="Maximum stock level quantity"
+              />
+            </div>
+            <div class="p-4 bg-blue-50 rounded-lg">
+              <p class="text-sm text-gray-600 font-semibold">
+                Reorder Quantity
+              </p>
+              <input
+                type="number"
+                class="w-full border border-gray-300 px-3 py-2 rounded mt-2"
+                placeholder="Qty"
+                title="Reorder quantity threshold"
+              />
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <div>
+              <label class="block font-semibold text-gray-700 mb-1"
+                >Current Stock Level</label
+              >
+              <input
+                type="number"
+                class="w-full border border-gray-300 px-3 py-2 rounded"
+                placeholder="Current qty on hand"
+                title="Current stock quantity on hand"
+              />
+            </div>
+            <div>
+              <label class="block font-semibold text-gray-700 mb-1"
+                >Last Count Date</label
+              >
+              <input
+                type="date"
+                class="w-full border border-gray-300 px-3 py-2 rounded"
+                title="Date of last stock count"
+              />
+            </div>
+            <div>
+              <label class="block font-semibold text-gray-700 mb-1"
+                >Shelf Location</label
+              >
+              <input
+                type="text"
+                class="w-full border border-gray-300 px-3 py-2 rounded"
+                placeholder="e.g., Shelf A-01"
+                title="Storage shelf or location code"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Approval Section -->
+        <div
+          class="border-t-2 border-gray-300 mt-8 pt-4 grid grid-cols-3 gap-4"
+        >
+          <div class="text-center">
+            <div class="border-t border-gray-400 pt-2 h-20"></div>
+            <p class="text-sm font-semibold">Prepared By</p>
+            <p class="text-xs text-gray-600">Date: _______</p>
+          </div>
+          <div class="text-center">
+            <div class="border-t border-gray-400 pt-2 h-20"></div>
+            <p class="text-sm font-semibold">Verified By</p>
+            <p class="text-xs text-gray-600">Date: _______</p>
+          </div>
+          <div class="text-center">
+            <div class="border-t border-gray-400 pt-2 h-20"></div>
+            <p class="text-sm font-semibold">Approved By</p>
+            <p class="text-xs text-gray-600">Date: _______</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KEW.PA-9 &amp; 10: Asset Movement Forms</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      @media print {
+        .no-print {
+          display: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <header
+      class="bg-gradient-to-r from-purple-600 to-purple-800 text-white shadow-lg p-6 no-print"
+    >
+      <div class="flex items-center justify-between">
+        <div class="flex items-center space-x-4">
+          <i class="fas fa-exchange-alt text-3xl"></i>
+          <div>
+            <h1 class="text-2xl font-bold">
+              KEW.PA-9 &amp; 10: Asset Movement
+            </h1>
+            <p class="text-sm text-purple-100">
+              Asset Transfer and Movement Forms
+            </p>
+          </div>
+        </div>
+        <button
+          onclick="window.history.back()"
+          class="bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg"
+        >
+          <i class="fas fa-arrow-left mr-2"></i>Back
+        </button>
+      </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto p-6">
+      <div class="bg-white rounded-xl shadow-lg p-8">
+        <div class="border-t-4 border-purple-600 pt-4 mb-6 text-center">
+          <p class="font-bold text-lg">
+            JABATAN PERKHIDMATAN VETERINAR NEGERI PERAK
+          </p>
+          <p class="text-sm font-semibold">ASSET MOVEMENT FORM</p>
+          <p class="text-sm font-bold text-purple-600 mt-2">
+            FORMS KEW.PA-9 (Transfer) & KEW.PA-10 (Movement)
+          </p>
+        </div>
+
+        <!-- Form Type Selection -->
+        <div class="grid grid-cols-2 gap-4 mb-8 no-print">
+          <button
+            onclick="selectedForm = '9'"
+            class="p-4 bg-purple-50 hover:bg-purple-100 border-2 border-purple-300 rounded-lg transition"
+          >
+            <i class="fas fa-arrow-right text-purple-600 text-2xl mb-2"></i>
+            <p class="font-bold">KEW.PA-9</p>
+            <p class="text-xs">Asset Transfer</p>
+          </button>
+          <button
+            onclick="selectedForm = '10'"
+            class="p-4 bg-blue-50 hover:bg-blue-100 border-2 border-blue-300 rounded-lg transition"
+          >
+            <i class="fas fa-truck text-blue-600 text-2xl mb-2"></i>
+            <p class="font-bold">KEW.PA-10</p>
+            <p class="text-xs">Asset Movement</p>
+          </button>
+        </div>
+
+        <!-- Movement Form -->
+        <div class="border-t-2 border-gray-300 pt-4 space-y-6">
+          <div class="grid grid-cols-3 gap-4">
+            <div>
+              <label class="block font-semibold text-gray-700 mb-1"
+                >Movement Date</label
+              >
+              <input
+                type="date"
+                title="Date of asset movement"
+                class="w-full border border-gray-300 px-3 py-2 rounded"
+              />
+            </div>
+            <div>
+              <label class="block font-semibold text-gray-700 mb-1"
+                >Reference No.</label
+              >
+              <input
+                type="text"
+                title="Movement reference number"
+                class="w-full border border-gray-300 px-3 py-2 rounded"
+                placeholder="PA-MOV-001"
+              />
+            </div>
+            <div>
+              <label class="block font-semibold text-gray-700 mb-1"
+                >Movement Type</label
+              >
+              <select
+                title="Type of asset movement"
+                class="w-full border border-gray-300 px-3 py-2 rounded"
+              >
+                <option>-- Select --</option>
+                <option>Transfer Between Locations</option>
+                <option>Transfer Between Departments</option>
+                <option>Temporary Loan</option>
+                <option>Permanent Transfer</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Asset Details -->
+          <div>
+            <h3 class="font-bold text-lg text-purple-600 mb-4">
+              Asset Information
+            </h3>
+            <div class="space-y-4">
+              <div>
+                <label class="block font-semibold text-gray-700 mb-1"
+                  >Asset Code</label
+                >
+                <input
+                  type="text"
+                  class="w-full border border-gray-300 px-3 py-2 rounded"
+                  placeholder="PA-001"
+                />
+              </div>
+              <div>
+                <label class="block font-semibold text-gray-700 mb-1"
+                  >Asset Description</label
+                >
+                <textarea
+                  class="w-full border border-gray-300 px-3 py-2 rounded h-16"
+                  title="Asset description and details"
+                ></textarea>
+              </div>
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label class="block font-semibold text-gray-700 mb-1"
+                    >Current Location/Department</label
+                  >
+                  <input
+                    type="text"
+                    class="w-full border border-gray-300 px-3 py-2 rounded"
+                    title="Current location or department"
+                  />
+                </div>
+                <div>
+                  <label class="block font-semibold text-gray-700 mb-1"
+                    >Current Custodian</label
+                  >
+                  <input
+                    type="text"
+                    class="w-full border border-gray-300 px-3 py-2 rounded"
+                    title="Current custodian name"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Movement Details -->
+          <div>
+            <h3 class="font-bold text-lg text-purple-600 mb-4">
+              Movement Details
+            </h3>
+            <div class="space-y-4">
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label class="block font-semibold text-gray-700 mb-1"
+                    >New Location/Department</label
+                  >
+                  <input
+                    type="text"
+                    class="w-full border border-gray-300 px-3 py-2 rounded"
+                    title="New location or department"
+                  />
+                </div>
+                <div>
+                  <label class="block font-semibold text-gray-700 mb-1"
+                    >New Custodian</label
+                  >
+                  <input
+                    type="text"
+                    class="w-full border border-gray-300 px-3 py-2 rounded"
+                    title="New custodian name"
+                  />
+                </div>
+              </div>
+              <div>
+                <label class="block font-semibold text-gray-700 mb-1"
+                  >Reason for Movement</label
+                >
+                <textarea
+                  class="w-full border border-gray-300 px-3 py-2 rounded h-16"
+                  title="Reason for asset movement"
+                ></textarea>
+              </div>
+              <div>
+                <label class="block font-semibold text-gray-700 mb-1"
+                  >Movement Duration</label
+                >
+                <div class="grid grid-cols-2 gap-4">
+                  <div>
+                    <label class="text-xs text-gray-600">From Date</label>
+                    <input
+                      type="date"
+                      class="w-full border border-gray-300 px-3 py-2 rounded"
+                      title="Movement start date"
+                    />
+                  </div>
+                  <div>
+                    <label class="text-xs text-gray-600"
+                      >To Date (if temporary)</label
+                    >
+                    <input
+                      type="date"
+                      class="w-full border border-gray-300 px-3 py-2 rounded"
+                      title="Movement end date if temporary"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Approvals -->
+          <div class="border-t-2 border-gray-300 pt-4 grid grid-cols-4 gap-4">
+            <div class="text-center">
+              <div class="border-t border-gray-400 pt-2 h-20"></div>
+              <p class="text-sm font-semibold">Released By (Old Dept)</p>
+              <p class="text-xs text-gray-600">Date: _______</p>
+            </div>
+            <div class="text-center">
+              <div class="border-t border-gray-400 pt-2 h-20"></div>
+              <p class="text-sm font-semibold">Received By (New Dept)</p>
+              <p class="text-xs text-gray-600">Date: _______</p>
+            </div>
+            <div class="text-center">
+              <div class="border-t border-gray-400 pt-2 h-20"></div>
+              <p class="text-sm font-semibold">Supervisor Approval</p>
+              <p class="text-xs text-gray-600">Date: _______</p>
+            </div>
+            <div class="text-center">
+              <div class="border-t border-gray-400 pt-2 h-20"></div>
+              <p class="text-sm font-semibold">Manager Approval</p>
+              <p class="text-xs text-gray-600">Date: _______</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      let selectedForm = "9";
+    </script>
+  </body>
+</html>

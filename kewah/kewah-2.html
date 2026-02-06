@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KEW.AH-2: Animal Health Record</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      @media print {
+        .no-print {
+          display: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <header
+      class="bg-gradient-to-r from-green-600 to-green-800 text-white shadow-lg p-6 no-print"
+    >
+      <div class="flex items-center justify-between">
+        <div class="flex items-center space-x-4">
+          <i class="fas fa-heartbeat text-3xl"></i>
+          <div>
+            <h1 class="text-2xl font-bold">KEW.AH-2: Animal Health Record</h1>
+            <p class="text-sm text-green-100">
+              Treatment & Medical History Tracking
+            </p>
+          </div>
+        </div>
+        <button
+          onclick="window.history.back()"
+          class="bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg"
+        >
+          <i class="fas fa-arrow-left mr-2"></i>Back
+        </button>
+      </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto p-6">
+      <div class="bg-white rounded-xl shadow-lg p-8">
+        <div class="border-t-4 border-green-600 pt-4 mb-6 text-center">
+          <p class="font-bold text-lg">
+            JABATAN PERKHIDMATAN VETERINAR NEGERI PERAK
+          </p>
+          <p class="text-sm font-semibold">ANIMAL HEALTH RECORD</p>
+          <p class="text-sm font-bold text-green-600 mt-2">FORM KEW.AH-2</p>
+        </div>
+
+        <!-- Animal Identification -->
+        <div class="bg-green-50 p-4 rounded-lg mb-6">
+          <div class="grid grid-cols-4 gap-4">
+            <div>
+              <label class="block font-semibold text-gray-700 mb-1"
+                >Animal ID</label
+              >
+              <input
+                type="text"
+                class="w-full border border-gray-300 px-3 py-2 rounded"
+                placeholder="AH-001"
+                title="Animal ID or tag number"
+              />
+            </div>
+            <div>
+              <label class="block font-semibold text-gray-700 mb-1"
+                >Species</label
+              >
+              <input
+                type="text"
+                class="w-full border border-gray-300 px-3 py-2 rounded"
+                title="Animal species"
+              />
+            </div>
+            <div>
+              <label class="block font-semibold text-gray-700 mb-1"
+                >Breed</label
+              >
+              <input
+                type="text"
+                class="w-full border border-gray-300 px-3 py-2 rounded"
+                title="Animal breed"
+              />
+            </div>
+            <div>
+              <label class="block font-semibold text-gray-700 mb-1"
+                >Farm/Unit</label
+              >
+              <input
+                type="text"
+                class="w-full border border-gray-300 px-3 py-2 rounded"
+                title="Farm or unit name"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Health Status -->
+        <div class="space-y-6 border-t-2 border-gray-300 pt-4">
+          <div>
+            <h3 class="font-bold text-lg text-green-600 mb-4">
+              Current Health Status
+            </h3>
+            <div class="space-y-4">
+              <div>
+                <label class="block font-semibold text-gray-700 mb-2"
+                  >Overall Health Status</label
+                >
+                <div class="space-y-2">
+                  <label class="flex items-center"
+                    ><input type="radio" name="health" class="mr-2" />
+                    Healthy</label
+                  >
+                  <label class="flex items-center"
+                    ><input type="radio" name="health" class="mr-2" /> Ill/Under
+                    Treatment</label
+                  >
+                  <label class="flex items-center"
+                    ><input type="radio" name="health" class="mr-2" />
+                    Recovering</label
+                  >
+                  <label class="flex items-center"
+                    ><input type="radio" name="health" class="mr-2" />
+                    Critical</label
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Treatment History Table -->
+          <div>
+            <h3 class="font-bold text-lg text-green-600 mb-4">
+              Treatment & Medical History
+            </h3>
+            <div class="overflow-x-auto">
+              <table
+                class="w-full border-collapse border border-gray-400 text-sm"
+              >
+                <thead class="bg-green-600 text-white">
+                  <tr>
+                    <th class="border px-3 py-2">Date</th>
+                    <th class="border px-3 py-2">Diagnosis</th>
+                    <th class="border px-3 py-2">Treatment/Medicine</th>
+                    <th class="border px-3 py-2">Dosage</th>
+                    <th class="border px-3 py-2">Duration</th>
+                    <th class="border px-3 py-2">Vet Name</th>
+                    <th class="border px-3 py-2">Outcome</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="border px-3 py-2">
+                      <input
+                        type="date"
+                        class="w-full border-0 text-xs"
+                        title="Treatment date"
+                      />
+                    </td>
+                    <td class="border px-3 py-2">
+                      <input
+                        type="text"
+                        class="w-full border-0 text-xs"
+                        title="Diagnosis or condition"
+                      />
+                    </td>
+                    <td class="border px-3 py-2">
+                      <input
+                        type="text"
+                        class="w-full border-0 text-xs"
+                        title="Treatment or medication"
+                      />
+                    </td>
+                    <td class="border px-3 py-2">
+                      <input
+                        type="text"
+                        class="w-full border-0 text-xs"
+                        title="Dosage amount"
+                      />
+                    </td>
+                    <td class="border px-3 py-2">
+                      <input
+                        type="text"
+                        class="w-full border-0 text-xs"
+                        title="Treatment duration"
+                      />
+                    </td>
+                    <td class="border px-3 py-2">
+                      <input
+                        type="text"
+                        class="w-full border-0 text-xs"
+                        title="Veterinarian name"
+                      />
+                    </td>
+                    <td class="border px-3 py-2">
+                      <input
+                        type="text"
+                        class="w-full border-0 text-xs"
+                        title="Treatment outcome"
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Known Conditions -->
+          <div>
+            <h3 class="font-bold text-lg text-green-600 mb-4">
+              Known Conditions & Allergies
+            </h3>
+            <div class="space-y-4">
+              <div>
+                <label class="block font-semibold text-gray-700 mb-1"
+                  >Chronic Conditions</label
+                >
+                <textarea
+                  class="w-full border border-gray-300 px-3 py-2 rounded h-12"
+                  placeholder="List any chronic conditions..."
+                ></textarea>
+              </div>
+              <div>
+                <label class="block font-semibold text-gray-700 mb-1"
+                  >Drug Allergies/Sensitivities</label
+                >
+                <textarea
+                  class="w-full border border-gray-300 px-3 py-2 rounded h-12"
+                  placeholder="List any known allergies or sensitivities..."
+                ></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Regular Observations -->
+          <div>
+            <h3 class="font-bold text-lg text-green-600 mb-4">
+              Daily Observations Log
+            </h3>
+            <div class="overflow-x-auto">
+              <table
+                class="w-full border-collapse border border-gray-400 text-sm"
+              >
+                <thead class="bg-green-100">
+                  <tr>
+                    <th class="border px-3 py-2">Date</th>
+                    <th class="border px-3 py-2">Appetite</th>
+                    <th class="border px-3 py-2">Behavior</th>
+                    <th class="border px-3 py-2">Weight</th>
+                    <th class="border px-3 py-2">Comments</th>
+                    <th class="border px-3 py-2">Observed By</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="border px-3 py-2">
+                      <input
+                        type="date"
+                        class="w-full border-0 text-xs"
+                        title="Observation date"
+                      />
+                    </td>
+                    <td class="border px-3 py-2">
+                      <select
+                        class="w-full border-0 text-xs"
+                        title="Appetite level"
+                      >
+                        <option>Good</option>
+                        <option>Fair</option>
+                        <option>Poor</option>
+                      </select>
+                    </td>
+                    <td class="border px-3 py-2">
+                      <input
+                        type="text"
+                        class="w-full border-0 text-xs"
+                        title="Behavior observations"
+                      />
+                    </td>
+                    <td class="border px-3 py-2">
+                      <input
+                        type="number"
+                        class="w-full border-0 text-xs"
+                        step="0.1"
+                        title="Weight in kilograms"
+                      />
+                    </td>
+                    <td class="border px-3 py-2">
+                      <input
+                        type="text"
+                        class="w-full border-0 text-xs"
+                        title="General comments"
+                      />
+                    </td>
+                    <td class="border px-3 py-2">
+                      <input
+                        type="text"
+                        class="w-full border-0 text-xs"
+                        title="Observer name"
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Signature -->
+          <div class="border-t-2 border-gray-300 pt-4 grid grid-cols-3 gap-4">
+            <div class="text-center">
+              <div class="border-t border-gray-400 pt-2 h-20"></div>
+              <p class="text-sm font-semibold">Recorded By</p>
+              <p class="text-xs text-gray-600">Date: _______</p>
+            </div>
+            <div class="text-center">
+              <div class="border-t border-gray-400 pt-2 h-20"></div>
+              <p class="text-sm font-semibold">Veterinarian</p>
+              <p class="text-xs text-gray-600">Date: _______</p>
+            </div>
+            <div class="text-center">
+              <div class="border-t border-gray-400 pt-2 h-20"></div>
+              <p class="text-sm font-semibold">Manager</p>
+              <p class="text-xs text-gray-600">Date: _______</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

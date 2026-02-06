@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KEW.PA-11 &amp; 12: Asset Inspection Forms</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      @media print {
+        .no-print {
+          display: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <header
+      class="bg-gradient-to-r from-orange-600 to-orange-800 text-white shadow-lg p-6 no-print"
+    >
+      <div class="flex items-center justify-between">
+        <div class="flex items-center space-x-4">
+          <i class="fas fa-search text-3xl"></i>
+          <div>
+            <h1 class="text-2xl font-bold">
+              KEW.PA-11 &amp; 12: Asset Inspection
+            </h1>
+            <p class="text-sm text-orange-100">
+              Condition and Functionality Assessment Forms
+            </p>
+          </div>
+        </div>
+        <button
+          onclick="window.history.back()"
+          class="bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg"
+        >
+          <i class="fas fa-arrow-left mr-2"></i>Back
+        </button>
+      </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto p-6">
+      <div class="bg-white rounded-xl shadow-lg p-8">
+        <div class="border-t-4 border-orange-600 pt-4 mb-6 text-center">
+          <p class="font-bold text-lg">
+            JABATAN PERKHIDMATAN VETERINAR NEGERI PERAK
+          </p>
+          <p class="text-sm font-semibold">ASSET INSPECTION REPORT</p>
+          <p class="text-sm font-bold text-orange-600 mt-2">
+            FORMS KEW.PA-11 (Condition) & KEW.PA-12 (Functionality)
+          </p>
+        </div>
+
+        <!-- Inspection Details -->
+        <div class="space-y-6 border-t-2 border-gray-300 pt-4">
+          <div class="grid grid-cols-3 gap-4">
+            <div>
+              <label class="block font-semibold text-gray-700 mb-1"
+                >Inspection Date</label
+              >
+              <input
+                type="date"
+                class="w-full border border-gray-300 px-3 py-2 rounded"
+                title="Date of inspection"
+              />
+            </div>
+            <div>
+              <label class="block font-semibold text-gray-700 mb-1"
+                >Inspection Type</label
+              >
+              <select class="w-full border border-gray-300 px-3 py-2 rounded" title="Select inspection type">
+                <option>-- Select --</option>
+                <option>Routine Inspection</option>
+                <option>Pre-Transfer Inspection</option>
+                <option>Damage Assessment</option>
+                <option>End-of-Life Assessment</option>
+              </select>
+            </div>
+            <div>
+              <label class="block font-semibold text-gray-700 mb-1"
+                >Inspection Ref No.</label
+              >
+              <input
+                type="text"
+                class="w-full border border-gray-300 px-3 py-2 rounded"
+                placeholder="PA-INP-001"
+                title="Inspection reference number"
+              />
+            </div>
+          </div>
+
+          <!-- Asset Information -->
+          <div>
+            <h3 class="font-bold text-lg text-orange-600 mb-4">
+              Asset Information
+            </h3>
+            <div class="space-y-4">
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label class="block font-semibold text-gray-700 mb-1"
+                    >Asset Code</label
+                  >
+                  <input
+                    type="text"
+                    class="w-full border border-gray-300 px-3 py-2 rounded"
+                    title="Asset code"
+                  />
+                </div>
+                <div>
+                  <label class="block font-semibold text-gray-700 mb-1"
+                    >Asset Description</label
+                  >
+                  <input
+                    type="text"
+                    class="w-full border border-gray-300 px-3 py-2 rounded"
+                    title="Asset description"
+                  />
+                </div>
+              </div>
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label class="block font-semibold text-gray-700 mb-1"
+                    >Location</label
+                  >
+                  <input
+                    type="text"
+                    class="w-full border border-gray-300 px-3 py-2 rounded"
+                    title="Asset location"
+                  />
+                </div>
+                <div>
+                  <label class="block font-semibold text-gray-700 mb-1"
+                    >Custodian</label
+                  >
+                  <input
+                    type="text"
+                    class="w-full border border-gray-300 px-3 py-2 rounded"
+                    title="Asset custodian"
+                  />
+                </div>
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Physical Condition Assessment (KEW.PA-11) -->
+          <div>
+            <h3 class="font-bold text-lg text-orange-600 mb-4">
+              Physical Condition Assessment
+            </h3>
+            <div class="space-y-3">
+              <div>
+                <label class="block font-semibold text-gray-700 mb-2"
+                  >Overall Condition</label
+                >
+                <div class="grid grid-cols-5 gap-2">
+                  <label class="flex items-center"
+                    ><input
+                      type="radio"
+                      name="condition"
+                      value="excellent"
+                      class="mr-2"
+                    />
+                    Excellent</label
+                  >
+                  <label class="flex items-center"
+                    ><input
+                      type="radio"
+                      name="condition"
+                      value="good"
+                      class="mr-2"
+                    />
+                    Good</label
+                  >
+                  <label class="flex items-center"
+                    ><input
+                      type="radio"
+                      name="condition"
+                      value="fair"
+                      class="mr-2"
+                    />
+                    Fair</label
+                  >
+                  <label class="flex items-center"
+                    ><input
+                      type="radio"
+                      name="condition"
+                      value="poor"
+                      class="mr-2"
+                    />
+                    Poor</label
+                  >
+                  <label class="flex items-center"
+                    ><input
+                      type="radio"
+                      name="condition"
+                      value="unserviceable"
+                      class="mr-2"
+                    />
+                    Unserviceable</label
+                  >
+                </div>
+              </div>
+              <div>
+                <label class="block font-semibold text-gray-700 mb-2"
+                  >Visible Damage</label
+                >
+                <div class="space-y-2">
+                  <label class="flex items-center"
+                    ><input type="checkbox" class="mr-2" /> Surface
+                    damage/scratches</label
+                  >
+                  <label class="flex items-center"
+                    ><input type="checkbox" class="mr-2" /> Cracks or
+                    breaks</label
+                  >
+                  <label class="flex items-center"
+                    ><input type="checkbox" class="mr-2" />
+                    Corrosion/rust</label
+                  >
+                  <label class="flex items-center"
+                    ><input type="checkbox" class="mr-2" /> Mechanical
+                    damage</label
+                  >
+                  <label class="flex items-center"
+                    ><input type="checkbox" class="mr-2" /> Other:
+                    <input type="text" class="ml-2 border-b border-gray-400"
+                  /></label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Functionality Assessment (KEW.PA-12) -->
+          <div>
+            <h3 class="font-bold text-lg text-orange-600 mb-4">
+              Functionality Assessment
+            </h3>
+            <div class="space-y-4">
+              <div>
+                <label class="block font-semibold text-gray-700 mb-2"
+                  >Operational Status</label
+                >
+                <div class="grid grid-cols-3 gap-2">
+                  <label class="flex items-center"
+                    ><input
+                      type="radio"
+                      name="operational"
+                      value="fully"
+                      class="mr-2"
+                    />
+                    Fully Operational</label
+                  >
+                  <label class="flex items-center"
+                    ><input
+                      type="radio"
+                      name="operational"
+                      value="partial"
+                      class="mr-2"
+                    />
+                    Partially Operational</label
+                  >
+                  <label class="flex items-center"
+                    ><input
+                      type="radio"
+                      name="operational"
+                      value="non"
+                      class="mr-2"
+                    />
+                    Non-Operational</label
+                  >
+                </div>
+              </div>
+              <div>
+                <label class="block font-semibold text-gray-700 mb-1"
+                  >Functional Issues (if any)</label
+                >
+                <textarea
+                  class="w-full border border-gray-300 px-3 py-2 rounded h-16"
+                  placeholder="Describe any functional issues..."
+                ></textarea>
+              </div>
+              <div>
+                <label class="block font-semibold text-gray-700 mb-1"
+                  >Recommendations</label
+                >
+                <div class="space-y-2">
+                  <label class="flex items-center"
+                    ><input
+                      type="radio"
+                      name="recommendation"
+                      value="retain"
+                      class="mr-2"
+                    />
+                    Retain in service</label
+                  >
+                  <label class="flex items-center"
+                    ><input
+                      type="radio"
+                      name="recommendation"
+                      value="repair"
+                      class="mr-2"
+                    />
+                    Repair required</label
+                  >
+                  <label class="flex items-center"
+                    ><input
+                      type="radio"
+                      name="recommendation"
+                      value="maintenance"
+                      class="mr-2"
+                    />
+                    Maintenance required</label
+                  >
+                  <label class="flex items-center"
+                    ><input
+                      type="radio"
+                      name="recommendation"
+                      value="dispose"
+                      class="mr-2"
+                    />
+                    Dispose/Write-off</label
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Signature -->
+          <div class="border-t-2 border-gray-300 pt-4 grid grid-cols-3 gap-4">
+            <div class="text-center">
+              <div class="border-t border-gray-400 pt-2 h-20"></div>
+              <p class="text-sm font-semibold">Inspected By</p>
+              <p class="text-xs text-gray-600">Date: _______</p>
+            </div>
+            <div class="text-center">
+              <div class="border-t border-gray-400 pt-2 h-20"></div>
+              <p class="text-sm font-semibold">Supervisor</p>
+              <p class="text-xs text-gray-600">Date: _______</p>
+            </div>
+            <div class="text-center">
+              <div class="border-t border-gray-400 pt-2 h-20"></div>
+              <p class="text-sm font-semibold">Manager</p>
+              <p class="text-xs text-gray-600">Date: _______</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

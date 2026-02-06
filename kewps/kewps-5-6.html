@@ -1,0 +1,757 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KEW.PS-5 & 6: ABC Analysis & Inventory Valuation Forms</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-color: #f9fafb;
+      }
+      .form-header {
+        background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+        color: white;
+        padding: 2rem;
+      }
+      .form-section {
+        background: white;
+        border-left: 4px solid #3b82f6;
+        margin: 1.5rem 0;
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+      }
+      .form-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+      }
+      .form-group {
+        display: flex;
+        flex-direction: column;
+      }
+      .form-group label {
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: #374151;
+      }
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        padding: 0.75rem;
+        border: 1px solid #d1d5db;
+        border-radius: 0.375rem;
+        font-size: 0.875rem;
+      }
+      .btn-group {
+        display: flex;
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+      .btn {
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 0.375rem;
+        cursor: pointer;
+        font-weight: 600;
+      }
+      .btn-primary {
+        background-color: #3b82f6;
+        color: white;
+      }
+      .btn-secondary {
+        background-color: #e5e7eb;
+        color: #374151;
+      }
+      .analysis-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1rem;
+      }
+      .analysis-table th,
+      .analysis-table td {
+        padding: 0.75rem;
+        border: 1px solid #d1d5db;
+        text-align: left;
+      }
+      .analysis-table th {
+        background-color: #f3f4f6;
+        font-weight: 600;
+      }
+      .tab-buttons {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+        border-bottom: 2px solid #e5e7eb;
+      }
+      .tab-btn {
+        padding: 0.75rem 1.5rem;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-weight: 600;
+        color: #6b7280;
+        border-bottom: 3px solid transparent;
+      }
+      .tab-btn.active {
+        color: #3b82f6;
+        border-bottom-color: #3b82f6;
+      }
+      .tab-content {
+        display: none;
+      }
+      .tab-content.active {
+        display: block;
+      }
+      .table-input {
+        width: 100%;
+        padding: 0.5rem;
+        border: 1px solid #d1d5db;
+      }
+      .table-select {
+        width: 100%;
+        padding: 0.5rem;
+        border: 1px solid #d1d5db;
+      }
+      @media print {
+        body {
+          font-size: 12pt;
+        }
+        .no-print {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-header">
+      <div class="max-w-6xl mx-auto">
+        <h1 class="text-3xl font-bold mb-2">
+          KEW.PS-5 & 6: ABC Analysis & Inventory Valuation
+        </h1>
+        <p class="text-blue-100">
+          ABC Classification & Inventory Valuation Methods
+        </p>
+      </div>
+    </div>
+
+    <main class="max-w-6xl mx-auto p-8">
+      <form id="analysisForm">
+        <!-- Tab Navigation -->
+        <div class="tab-buttons no-print">
+          <button
+            type="button"
+            class="tab-btn active"
+            onclick="switchTab('abc')"
+          >
+            <i class="fas fa-chart-pie mr-2"></i>KEW.PS-5: ABC Analysis
+          </button>
+          <button
+            type="button"
+            class="tab-btn"
+            onclick="switchTab('valuation')"
+          >
+            <i class="fas fa-dollar-sign mr-2"></i>KEW.PS-6: Inventory Valuation
+          </button>
+        </div>
+
+        <!-- TAB 1: ABC ANALYSIS -->
+        <div id="abc" class="tab-content active">
+          <!-- Analysis Information -->
+          <div class="form-section">
+            <h2 class="text-xl font-bold text-blue-700 mb-4">
+              <i class="fas fa-chart-pie mr-2"></i>ABC Analysis Information
+            </h2>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="analysisDate">Analysis Date</label>
+                <input type="date" id="analysisDate" name="analysisDate" />
+              </div>
+              <div class="form-group">
+                <label for="analysisPeriod">Analysis Period</label>
+                <select id="analysisPeriod" name="analysisPeriod">
+                  <option value="">Select Period</option>
+                  <option value="monthly">Monthly</option>
+                  <option value="quarterly">Quarterly</option>
+                  <option value="annual">Annual</option>
+                  <option value="custom">Custom Range</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="analysisBy">Analyzed By</label>
+                <input type="text" id="analysisBy" name="analysisBy" />
+              </div>
+              <div class="form-group">
+                <label for="department">Department/Store</label>
+                <input type="text" id="department" name="department" />
+              </div>
+            </div>
+          </div>
+
+          <!-- ABC Classification Methodology -->
+          <div class="form-section">
+            <h2 class="text-xl font-bold text-blue-700 mb-4">
+              <i class="fas fa-cogs mr-2"></i>Classification Methodology
+            </h2>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="classificationBasis">Classification Basis</label>
+                <select id="classificationBasis" name="classificationBasis">
+                  <option value="">Select Basis</option>
+                  <option value="value">Annual Consumption Value</option>
+                  <option value="usage">Usage Frequency</option>
+                  <option value="criticality">Criticality to Operations</option>
+                  <option value="combined">Combined Method</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="aPercentage">A Category %</label>
+                <input
+                  type="number"
+                  id="aPercentage"
+                  name="aPercentage"
+                  min="0"
+                  max="100"
+                  placeholder="Typically 10-20%"
+                />
+              </div>
+              <div class="form-group">
+                <label for="bPercentage">B Category %</label>
+                <input
+                  type="number"
+                  id="bPercentage"
+                  name="bPercentage"
+                  min="0"
+                  max="100"
+                  placeholder="Typically 30-40%"
+                />
+              </div>
+              <div class="form-group">
+                <label for="cPercentage">C Category %</label>
+                <input
+                  type="number"
+                  id="cPercentage"
+                  name="cPercentage"
+                  min="0"
+                  max="100"
+                  placeholder="Typically 40-60%"
+                />
+              </div>
+            </div>
+            <div class="form-grid">
+              <div class="form-group col-span-2">
+                <label for="methodologyNotes">Methodology Notes</label>
+                <textarea
+                  id="methodologyNotes"
+                  name="methodologyNotes"
+                  rows="3"
+                  placeholder="Explain the basis, thresholds, and any adjustments made"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- ABC Classification Results -->
+          <div class="form-section">
+            <h2 class="text-xl font-bold text-blue-700 mb-4">
+              <i class="fas fa-table mr-2"></i>ABC Classification Results
+            </h2>
+            <table class="analysis-table">
+              <thead>
+                <tr>
+                  <th>Category</th>
+                  <th>Item Count</th>
+                  <th>% of Total Items</th>
+                  <th>Total Value (RM)</th>
+                  <th>% of Total Value</th>
+                  <th>Control Level</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>A - Critical Items</strong></td>
+                  <td>
+                    <input
+                      type="number"
+                      class="table-input"
+                      min="0"
+                      title="Item count for A category"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      class="table-input"
+                      min="0"
+                      max="100"
+                      title="Percentage of total A items"
+                    />%
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      class="table-input"
+                      min="0"
+                      step="0.01"
+                      placeholder="0.00"
+                      title="Total value for A category"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      class="table-input"
+                      min="0"
+                      max="100"
+                      title="Percentage of total value for A items"
+                    />%
+                  </td>
+                  <td>
+                    <select
+                      class="table-select"
+                      title="Control level for A category"
+                    >
+                      <option>Strict Control</option>
+                      <option>ABC Classification</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>B - Important Items</strong></td>
+                  <td>
+                    <input
+                      type="number"
+                      class="table-input"
+                      min="0"
+                      title="Item count for B category"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      class="table-input"
+                      min="0"
+                      max="100"
+                      title="Percentage of total B items"
+                    />%
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      class="table-input"
+                      min="0"
+                      step="0.01"
+                      placeholder="0.00"
+                      title="Total value for B category"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      class="table-input"
+                      min="0"
+                      max="100"
+                      title="Percentage of total value for B items"
+                    />%
+                  </td>
+                  <td>
+                    <select
+                      class="table-select"
+                      title="Control level for B category"
+                    >
+                      <option>Moderate Control</option>
+                      <option>ABC Classification</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>C - Low-Value Items</strong></td>
+                  <td>
+                    <input
+                      type="number"
+                      class="table-input"
+                      min="0"
+                      title="Item count for C category"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      class="table-input"
+                      min="0"
+                      max="100"
+                      title="Percentage of total C items"
+                    />%
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      class="table-input"
+                      min="0"
+                      step="0.01"
+                      placeholder="0.00"
+                      title="Total value for C category"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      class="table-input"
+                      min="0"
+                      max="100"
+                      title="Percentage of total value for C items"
+                    />%
+                  </td>
+                  <td>
+                    <select
+                      class="table-select"
+                      title="Control level for C category"
+                    >
+                      <option>Minimal Control</option>
+                      <option>ABC Classification</option>
+                    </select>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Recommendations -->
+          <div class="form-section">
+            <h2 class="text-xl font-bold text-blue-700 mb-4">
+              <i class="fas fa-lightbulb mr-2"></i>Recommendations & Actions
+            </h2>
+            <div class="form-grid">
+              <div class="form-group col-span-2">
+                <label for="recommendations"
+                  >ABC Analysis Recommendations</label
+                >
+                <textarea
+                  id="recommendations"
+                  name="recommendations"
+                  rows="4"
+                  placeholder="Recommendations for inventory management based on ABC analysis"
+                ></textarea>
+              </div>
+              <div class="form-group col-span-2">
+                <label for="actionItems"
+                  >Action Items & Implementation Plan</label
+                >
+                <textarea
+                  id="actionItems"
+                  name="actionItems"
+                  rows="4"
+                  placeholder="Specific actions to be taken based on analysis results"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 2: INVENTORY VALUATION -->
+        <div id="valuation" class="tab-content">
+          <!-- Valuation Information -->
+          <div class="form-section">
+            <h2 class="text-xl font-bold text-blue-700 mb-4">
+              <i class="fas fa-dollar-sign mr-2"></i>Inventory Valuation
+              Information
+            </h2>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="valuationDate">Valuation Date</label>
+                <input type="date" id="valuationDate" name="valuationDate" />
+              </div>
+              <div class="form-group">
+                <label for="valuationPeriod">Valuation Period</label>
+                <input
+                  type="text"
+                  id="valuationPeriod"
+                  name="valuationPeriod"
+                  placeholder="e.g., Q1 2026"
+                />
+              </div>
+              <div class="form-group">
+                <label for="valuationBy">Valuated By</label>
+                <input type="text" id="valuationBy" name="valuationBy" />
+              </div>
+              <div class="form-group">
+                <label for="verifiedBy">Verified By</label>
+                <input type="text" id="verifiedBy" name="verifiedBy" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Valuation Methods -->
+          <div class="form-section">
+            <h2 class="text-xl font-bold text-blue-700 mb-4">
+              <i class="fas fa-cogs mr-2"></i>Valuation Methods
+            </h2>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="valuationMethod">Primary Valuation Method</label>
+                <select id="valuationMethod" name="valuationMethod">
+                  <option value="">Select Method</option>
+                  <option value="fifo">First-In-First-Out (FIFO)</option>
+                  <option value="lifo">Last-In-First-Out (LIFO)</option>
+                  <option value="weighted">Weighted Average Cost</option>
+                  <option value="standard">Standard Cost</option>
+                  <option value="retail">Retail Inventory Method</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="accountingPeriod">Accounting Period</label>
+                <select id="accountingPeriod" name="accountingPeriod">
+                  <option value="">Select Period</option>
+                  <option value="monthly">Monthly</option>
+                  <option value="quarterly">Quarterly</option>
+                  <option value="annual">Annual</option>
+                </select>
+              </div>
+              <div class="form-group col-span-2">
+                <label for="methodJustification"
+                  >Justification for Method Selection</label
+                >
+                <textarea
+                  id="methodJustification"
+                  name="methodJustification"
+                  rows="2"
+                  placeholder="Why this method was chosen"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Valuation Summary -->
+          <div class="form-section">
+            <h2 class="text-xl font-bold text-blue-700 mb-4">
+              <i class="fas fa-summary mr-2"></i>Valuation Summary
+            </h2>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="openingStock">Opening Stock Value (RM)</label>
+                <input
+                  type="number"
+                  id="openingStock"
+                  name="openingStock"
+                  min="0"
+                  step="0.01"
+                  placeholder="0.00"
+                />
+              </div>
+              <div class="form-group">
+                <label for="purchases">Total Purchases (RM)</label>
+                <input
+                  type="number"
+                  id="purchases"
+                  name="purchases"
+                  min="0"
+                  step="0.01"
+                  placeholder="0.00"
+                />
+              </div>
+              <div class="form-group">
+                <label for="issues">Total Issues/Usage (RM)</label>
+                <input
+                  type="number"
+                  id="issues"
+                  name="issues"
+                  min="0"
+                  step="0.01"
+                  placeholder="0.00"
+                />
+              </div>
+              <div class="form-group">
+                <label for="adjustments">Adjustments (RM)</label>
+                <input
+                  type="number"
+                  id="adjustments"
+                  name="adjustments"
+                  step="0.01"
+                  placeholder="0.00"
+                />
+              </div>
+              <div class="form-group">
+                <label for="closingStockCalculated"
+                  >Calculated Closing Stock (RM)</label
+                >
+                <input
+                  type="number"
+                  id="closingStockCalculated"
+                  name="closingStockCalculated"
+                  min="0"
+                  step="0.01"
+                  placeholder="0.00"
+                  readonly
+                />
+              </div>
+              <div class="form-group">
+                <label for="closingStockActual"
+                  >Actual Stock Count Value (RM)</label
+                >
+                <input
+                  type="number"
+                  id="closingStockActual"
+                  name="closingStockActual"
+                  min="0"
+                  step="0.01"
+                  placeholder="0.00"
+                />
+              </div>
+              <div class="form-group">
+                <label for="variance">Variance (RM)</label>
+                <input
+                  type="number"
+                  id="variance"
+                  name="variance"
+                  step="0.01"
+                  placeholder="0.00"
+                  readonly
+                />
+              </div>
+              <div class="form-group">
+                <label for="variancePercent">Variance %</label>
+                <input
+                  type="number"
+                  id="variancePercent"
+                  name="variancePercent"
+                  step="0.01"
+                  placeholder="0.00"
+                  readonly
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Reconciliation & Analysis -->
+          <div class="form-section">
+            <h2 class="text-xl font-bold text-blue-700 mb-4">
+              <i class="fas fa-check-circle mr-2"></i>Reconciliation & Analysis
+            </h2>
+            <div class="form-grid">
+              <div class="form-group col-span-2">
+                <label for="varianceExplanation">Variance Explanation</label>
+                <textarea
+                  id="varianceExplanation"
+                  name="varianceExplanation"
+                  rows="3"
+                  placeholder="Explain significant variances between theoretical and actual closing stock"
+                ></textarea>
+              </div>
+              <div class="form-group col-span-2">
+                <label for="correctionActions">Correction Actions Taken</label>
+                <textarea
+                  id="correctionActions"
+                  name="correctionActions"
+                  rows="3"
+                  placeholder="Actions taken to reconcile differences"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Approval -->
+          <div class="form-section">
+            <h2 class="text-xl font-bold text-blue-700 mb-4">
+              <i class="fas fa-signature mr-2"></i>Approval
+            </h2>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="preparedBy">Prepared By (Name)</label>
+                <input type="text" id="preparedBy" name="preparedBy" />
+              </div>
+              <div class="form-group">
+                <label for="preparedDate">Prepared Date</label>
+                <input type="date" id="preparedDate" name="preparedDate" />
+              </div>
+              <div class="form-group">
+                <label for="approvedBy">Approved By (Name)</label>
+                <input type="text" id="approvedBy" name="approvedBy" />
+              </div>
+              <div class="form-group">
+                <label for="approvalDate">Approval Date</label>
+                <input type="date" id="approvalDate" name="approvalDate" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="btn-group no-print">
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-save mr-2"></i>Save Form
+          </button>
+          <button type="reset" class="btn btn-secondary">
+            <i class="fas fa-redo mr-2"></i>Reset
+          </button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            onclick="window.print()"
+          >
+            <i class="fas fa-print mr-2"></i>Print
+          </button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            onclick="window.location.href = '/kewps/index'"
+          >
+            <i class="fas fa-arrow-left mr-2"></i>Back
+          </button>
+        </div>
+      </form>
+    </main>
+
+    <script>
+      function switchTab(tabName) {
+        // Hide all tabs
+        document.querySelectorAll(".tab-content").forEach((tab) => {
+          tab.classList.remove("active");
+        });
+        document.querySelectorAll(".tab-btn").forEach((btn) => {
+          btn.classList.remove("active");
+        });
+
+        // Show selected tab
+        document.getElementById(tabName).classList.add("active");
+        event.target.classList.add("active");
+      }
+
+      // Calculate closing stock automatically
+      document
+        .getElementById("analysisForm")
+        .addEventListener("input", function () {
+          const opening =
+            parseFloat(document.getElementById("openingStock").value) || 0;
+          const purchases =
+            parseFloat(document.getElementById("purchases").value) || 0;
+          const issues =
+            parseFloat(document.getElementById("issues").value) || 0;
+          const adjustments =
+            parseFloat(document.getElementById("adjustments").value) || 0;
+          const calculated = opening + purchases - issues + adjustments;
+          document.getElementById("closingStockCalculated").value =
+            calculated.toFixed(2);
+
+          const actual =
+            parseFloat(document.getElementById("closingStockActual").value) ||
+            0;
+          const variance = actual - calculated;
+          document.getElementById("variance").value = variance.toFixed(2);
+          const variancePercent =
+            calculated !== 0 ? ((variance / calculated) * 100).toFixed(2) : 0;
+          document.getElementById("variancePercent").value = variancePercent;
+        });
+
+      document
+        .getElementById("analysisForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          alert("Form submitted successfully!");
+        });
+    </script>
+  </body>
+</html>

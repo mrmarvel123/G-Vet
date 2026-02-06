@@ -1,0 +1,577 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KEW.PS-13 to 36: Advanced Store Management Forms</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-color: #f9fafb;
+      }
+      .form-header {
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        color: white;
+        padding: 2rem;
+      }
+      .form-section {
+        background: white;
+        border-left: 4px solid #10b981;
+        margin: 1.5rem 0;
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+      }
+      .form-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+      }
+      .form-group {
+        display: flex;
+        flex-direction: column;
+      }
+      .form-group label {
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: #374151;
+      }
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        padding: 0.75rem;
+        border: 1px solid #d1d5db;
+        border-radius: 0.375rem;
+        font-size: 0.875rem;
+      }
+      .btn-group {
+        display: flex;
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+      .btn {
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 0.375rem;
+        cursor: pointer;
+        font-weight: 600;
+      }
+      .btn-primary {
+        background-color: #10b981;
+        color: white;
+      }
+      .btn-secondary {
+        background-color: #e5e7eb;
+        color: #374151;
+      }
+      .form-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1rem;
+      }
+      .form-table th,
+      .form-table td {
+        padding: 0.75rem;
+        border: 1px solid #d1d5db;
+        text-align: left;
+      }
+      .form-table th {
+        background-color: #f3f4f6;
+        font-weight: 600;
+      }
+      .tab-content {
+        display: none;
+      }
+      .tab-content.active {
+        display: block;
+      }
+      .hidden-section {
+        display: none;
+      }
+      @media print {
+        body {
+          font-size: 12pt;
+        }
+        .no-print {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-header">
+      <div class="max-w-6xl mx-auto">
+        <h1 class="text-3xl font-bold mb-2">
+          KEW.PS-13 to 36: Advanced Store Management
+        </h1>
+        <p class="text-green-100">
+          Adjustments, Disposals, Reports & Specialized Tracking
+        </p>
+      </div>
+    </div>
+
+    <main class="max-w-6xl mx-auto p-8">
+      <div class="bg-green-50 border-l-4 border-green-400 p-6 rounded-lg mb-8">
+        <h3 class="font-bold text-gray-900 mb-3">
+          <i class="fas fa-info-circle mr-2"></i>KEW.PS Forms 13-36 Overview
+        </h3>
+        <p class="text-gray-700 text-sm mb-3">
+          This consolidated form covers the remaining 24 KEW.PS forms that
+          address advanced store management functions including inventory
+          adjustments, disposal procedures, special requests, and comprehensive
+          reporting.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+          <div class="bg-white p-3 rounded">
+            <p class="font-bold text-green-700">Forms 13-18</p>
+            <p class="text-gray-600">Adjustments & Corrections</p>
+          </div>
+          <div class="bg-white p-3 rounded">
+            <p class="font-bold text-green-700">Forms 19-26</p>
+            <p class="text-gray-600">Disposals & Transfers</p>
+          </div>
+          <div class="bg-white p-3 rounded">
+            <p class="font-bold text-green-700">Forms 27-36</p>
+            <p class="text-gray-600">Reports & Analytics</p>
+          </div>
+        </div>
+      </div>
+
+      <form id="advancedForm">
+        <!-- Form Type Selection -->
+        <div class="form-section">
+          <h2 class="text-xl font-bold text-green-700 mb-4">
+            <i class="fas fa-check-square mr-2"></i>Form Category & Type
+          </h2>
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="formType">Select Form Type</label>
+              <select
+                id="formType"
+                name="formType"
+                onchange="updateFormFields()"
+              >
+                <option value="">-- Select Form Category --</option>
+                <optgroup label="Adjustments (13-18)">
+                  <option value="damage">
+                    Form 13: Damage/Deterioration Report
+                  </option>
+                  <option value="shortage">
+                    Form 14: Shortage/Discrepancy Report
+                  </option>
+                  <option value="obsolescence">
+                    Form 15: Obsolescence Declaration
+                  </option>
+                  <option value="recovery">
+                    Form 16: Recovery/Salvage Report
+                  </option>
+                  <option value="recount">
+                    Form 17: Recount & Reconciliation
+                  </option>
+                  <option value="inventory_write_off">
+                    Form 18: Write-Off Authorization
+                  </option>
+                </optgroup>
+                <optgroup label="Disposals & Transfers (19-26)">
+                  <option value="disposal">
+                    Form 19: Disposal Authorization
+                  </option>
+                  <option value="auction">
+                    Form 20: Auction/Sale Preparation
+                  </option>
+                  <option value="donation">Form 21: Donation Record</option>
+                  <option value="transfer_inter">
+                    Form 22: Inter-Store Transfer
+                  </option>
+                  <option value="return_supplier">
+                    Form 23: Return to Supplier
+                  </option>
+                  <option value="scrap">Form 24: Scrap/Recycling Report</option>
+                  <option value="recall">Form 25: Recall/Safety Issue</option>
+                  <option value="incident">
+                    Form 26: Loss/Theft Incident Report
+                  </option>
+                </optgroup>
+                <optgroup label="Reports (27-36)">
+                  <option value="daily_summary">
+                    Form 27: Daily Stock Summary
+                  </option>
+                  <option value="movement_report">
+                    Form 28: Stock Movement Report
+                  </option>
+                  <option value="aging_report">
+                    Form 29: Stock Aging Report
+                  </option>
+                  <option value="supplier_performance">
+                    Form 30: Supplier Performance
+                  </option>
+                  <option value="consumption_trend">
+                    Form 31: Consumption Trend Analysis
+                  </option>
+                  <option value="budget_vs_actual">
+                    Form 32: Budget vs Actual Spending
+                  </option>
+                  <option value="compliance_audit">
+                    Form 33: Compliance Audit Report
+                  </option>
+                  <option value="operational_metrics">
+                    Form 34: Operational Metrics
+                  </option>
+                  <option value="recommendations">
+                    Form 35: Management Recommendations
+                  </option>
+                  <option value="annual_review">
+                    Form 36: Annual Store Review
+                  </option>
+                </optgroup>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="reportDate">Report/Form Date</label>
+              <input type="date" id="reportDate" name="reportDate" />
+            </div>
+            <div class="form-group">
+              <label for="preparedBy">Prepared By</label>
+              <input type="text" id="preparedBy" name="preparedBy" />
+            </div>
+            <div class="form-group">
+              <label for="department">Department/Store</label>
+              <input type="text" id="department" name="department" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Damage/Deterioration Section -->
+        <div id="damage-section" class="form-section hidden-section">
+          <h2 class="text-xl font-bold text-red-700 mb-4">
+            <i class="fas fa-exclamation-triangle mr-2"></i>Damage/Deterioration
+            Details
+          </h2>
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="itemId">Item Code/ID</label>
+              <input type="text" id="itemId" name="itemId" />
+            </div>
+            <div class="form-group">
+              <label for="itemName">Item Name</label>
+              <input type="text" id="itemName" name="itemName" />
+            </div>
+            <div class="form-group">
+              <label for="quantityDamaged">Quantity Damaged</label>
+              <input
+                type="number"
+                id="quantityDamaged"
+                name="quantityDamaged"
+                min="0"
+              />
+            </div>
+            <div class="form-group">
+              <label for="damageType">Type of Damage</label>
+              <select id="damageType" name="damageType">
+                <option value="">Select Damage Type</option>
+                <option value="moisture">Water/Moisture</option>
+                <option value="pest">Pest Damage</option>
+                <option value="physical">Physical Damage</option>
+                <option value="expiration">Expired/Obsolescent</option>
+                <option value="contamination">Contamination</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-group col-span-2">
+              <label for="damageDescription">Damage Description</label>
+              <textarea
+                id="damageDescription"
+                name="damageDescription"
+                rows="3"
+                placeholder="Detailed description of damage"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Shortage/Discrepancy Section -->
+        <div id="shortage-section" class="form-section hidden-section">
+          <h2 class="text-xl font-bold text-yellow-700 mb-4">
+            <i class="fas fa-search-minus mr-2"></i>Shortage/Discrepancy Details
+          </h2>
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="shortage_itemId">Item Code/ID</label>
+              <input type="text" id="shortage_itemId" name="shortage_itemId" />
+            </div>
+            <div class="form-group">
+              <label for="shortage_itemName">Item Name</label>
+              <input
+                type="text"
+                id="shortage_itemName"
+                name="shortage_itemName"
+              />
+            </div>
+            <div class="form-group">
+              <label for="recordedQty">Recorded Quantity</label>
+              <input
+                type="number"
+                id="recordedQty"
+                name="recordedQty"
+                min="0"
+              />
+            </div>
+            <div class="form-group">
+              <label for="actualQty">Actual Quantity Found</label>
+              <input type="number" id="actualQty" name="actualQty" min="0" />
+            </div>
+            <div class="form-group">
+              <label for="shortageQty">Shortage Quantity</label>
+              <input
+                type="number"
+                id="shortageQty"
+                name="shortageQty"
+                min="0"
+                readonly
+              />
+            </div>
+            <div class="form-group">
+              <label for="shortageValue">Shortage Value (RM)</label>
+              <input
+                type="number"
+                id="shortageValue"
+                name="shortageValue"
+                min="0"
+                step="0.01"
+              />
+            </div>
+            <div class="form-group col-span-2">
+              <label for="probableCause">Probable Cause</label>
+              <select id="probableCause" name="probableCause">
+                <option value="">Select Cause</option>
+                <option value="counting_error">Counting Error</option>
+                <option value="recording_error">Recording Error</option>
+                <option value="pilferage">Pilferage/Theft</option>
+                <option value="damage_loss">Damage/Loss</option>
+                <option value="supplier_error">Supplier Error</option>
+                <option value="unknown">Unknown</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Disposal Section -->
+        <div id="disposal-section" class="form-section hidden-section">
+          <h2 class="text-xl font-bold text-red-700 mb-4">
+            <i class="fas fa-trash-alt mr-2"></i>Disposal Authorization
+          </h2>
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="disposal_itemId">Item Code/ID</label>
+              <input type="text" id="disposal_itemId" name="disposal_itemId" />
+            </div>
+            <div class="form-group">
+              <label for="disposal_itemName">Item Name</label>
+              <input
+                type="text"
+                id="disposal_itemName"
+                name="disposal_itemName"
+              />
+            </div>
+            <div class="form-group">
+              <label for="disposal_quantity">Quantity to Dispose</label>
+              <input
+                type="number"
+                id="disposal_quantity"
+                name="disposal_quantity"
+                min="0"
+              />
+            </div>
+            <div class="form-group">
+              <label for="disposal_method">Disposal Method</label>
+              <select id="disposal_method" name="disposal_method">
+                <option value="">Select Method</option>
+                <option value="scrap">Scrap/Recycling</option>
+                <option value="incineration">Incineration</option>
+                <option value="burial">Burial (Bio-hazard)</option>
+                <option value="donation">Donation</option>
+                <option value="sale">Public Sale</option>
+                <option value="auction">Auction</option>
+              </select>
+            </div>
+            <div class="form-group col-span">
+              <label for="disposalJustification"
+                >Justification for Disposal</label
+              >
+              <textarea
+                id="disposalJustification"
+                name="disposalJustification"
+                rows="3"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Report Section -->
+        <div id="report-section" class="form-section hidden-section">
+          <h2 class="text-xl font-bold text-blue-700 mb-4">
+            <i class="fas fa-chart-bar mr-2"></i>Report Contents
+          </h2>
+          <div class="form-grid">
+            <div class="form-group col-span-2">
+              <label for="reportSummary">Executive Summary</label>
+              <textarea
+                id="reportSummary"
+                name="reportSummary"
+                rows="4"
+                placeholder="Key findings and summary"
+              ></textarea>
+            </div>
+            <div class="form-group col-span-2">
+              <label for="reportDetails">Detailed Report</label>
+              <textarea
+                id="reportDetails"
+                name="reportDetails"
+                rows="6"
+                placeholder="Comprehensive details and analysis"
+              ></textarea>
+            </div>
+            <div class="form-group col-span-2">
+              <label for="reportRecommendations">Recommendations</label>
+              <textarea
+                id="reportRecommendations"
+                name="reportRecommendations"
+                rows="4"
+                placeholder="Suggested actions and improvements"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- General Notes -->
+        <div class="form-section">
+          <h2 class="text-xl font-bold text-green-700 mb-4">
+            <i class="fas fa-clipboard-list mr-2"></i>Additional Information
+          </h2>
+          <div class="form-grid">
+            <div class="form-group col-span-2">
+              <label for="notes">Additional Notes/Comments</label>
+              <textarea
+                id="notes"
+                name="notes"
+                rows="3"
+                placeholder="Any additional information relevant to this form"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Approval -->
+        <div class="form-section">
+          <h2 class="text-xl font-bold text-green-700 mb-4">
+            <i class="fas fa-check-square mr-2"></i>Authorization & Approval
+          </h2>
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="authorizedBy">Authorized By (Supervisor)</label>
+              <input type="text" id="authorizedBy" name="authorizedBy" />
+            </div>
+            <div class="form-group">
+              <label for="authorizationDate">Authorization Date</label>
+              <input
+                type="date"
+                id="authorizationDate"
+                name="authorizationDate"
+              />
+            </div>
+            <div class="form-group">
+              <label for="approvalSignature">Approval Signature</label>
+              <input
+                type="text"
+                id="approvalSignature"
+                name="approvalSignature"
+                placeholder="Signature or initials"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="btn-group no-print">
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-save mr-2"></i>Save Form
+          </button>
+          <button type="reset" class="btn btn-secondary">
+            <i class="fas fa-redo mr-2"></i>Reset
+          </button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            onclick="window.print()"
+          >
+            <i class="fas fa-print mr-2"></i>Print
+          </button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            onclick="window.location.href = '/kewps/index'"
+          >
+            <i class="fas fa-arrow-left mr-2"></i>Back
+          </button>
+        </div>
+      </form>
+    </main>
+
+    <script>
+      function updateFormFields() {
+        const formType = document.getElementById("formType").value;
+        // Hide all sections
+        document.getElementById("damage-section").style.display = "none";
+        document.getElementById("shortage-section").style.display = "none";
+        document.getElementById("disposal-section").style.display = "none";
+        document.getElementById("report-section").style.display = "none";
+
+        // Show relevant section
+        if (formType === "damage" || formType === "deterioration") {
+          document.getElementById("damage-section").style.display = "block";
+        } else if (formType === "shortage") {
+          document.getElementById("shortage-section").style.display = "block";
+        } else if (
+          formType === "disposal" ||
+          formType === "scrap" ||
+          formType === "recall"
+        ) {
+          document.getElementById("disposal-section").style.display = "block";
+        } else if (
+          formType &&
+          (formType.includes("daily") ||
+            formType.includes("movement") ||
+            formType.includes("report") ||
+            formType.includes("analysis") ||
+            formType.includes("performance"))
+        ) {
+          document.getElementById("report-section").style.display = "block";
+        }
+      }
+
+      // Calculate shortage quantity
+      document
+        .getElementById("advancedForm")
+        .addEventListener("input", function () {
+          const recorded =
+            parseFloat(document.getElementById("recordedQty").value) || 0;
+          const actual =
+            parseFloat(document.getElementById("actualQty").value) || 0;
+          const shortage = recorded - actual;
+          if (shortage >= 0) {
+            document.getElementById("shortageQty").value = shortage.toFixed(0);
+          }
+        });
+
+      document
+        .getElementById("advancedForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          alert("Form submitted successfully!");
+        });
+    </script>
+  </body>
+</html>

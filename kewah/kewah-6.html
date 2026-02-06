@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KEW.AH-6: Mortality Records Form</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-color: #f9fafb;
+      }
+      .form-header {
+        background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+        color: white;
+        padding: 2rem;
+      }
+      .form-section {
+        background: white;
+        border-left: 4px solid #ef4444;
+        margin: 1.5rem 0;
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+      }
+      .form-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+      }
+      .form-group {
+        display: flex;
+        flex-direction: column;
+      }
+      .form-group label {
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: #374151;
+      }
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        padding: 0.75rem;
+        border: 1px solid #d1d5db;
+        border-radius: 0.375rem;
+        font-size: 0.875rem;
+      }
+      .btn-group {
+        display: flex;
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+      .btn {
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 0.375rem;
+        cursor: pointer;
+        font-weight: 600;
+      }
+      .btn-primary {
+        background-color: #ef4444;
+        color: white;
+      }
+      .btn-secondary {
+        background-color: #e5e7eb;
+        color: #374151;
+      }
+      @media print {
+        body {
+          font-size: 12pt;
+        }
+        .no-print {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-header">
+      <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-bold mb-2">KEW.AH-6: Mortality Records</h1>
+        <p class="text-red-100">Livestock Death and Loss Documentation</p>
+      </div>
+    </div>
+
+    <main class="max-w-4xl mx-auto p-8">
+      <form id="mortalityForm">
+        <!-- Animal Information -->
+        <div class="form-section">
+          <h2 class="text-xl font-bold text-red-700 mb-4">
+            <i class="fas fa-horse mr-2"></i>Animal Information
+          </h2>
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="animalId">Animal ID/Tag Number</label>
+              <input
+                type="text"
+                id="animalId"
+                name="animalId"
+                placeholder="e.g., C2024-001"
+              />
+            </div>
+            <div class="form-group">
+              <label for="animalName">Animal Name</label>
+              <input type="text" id="animalName" name="animalName" />
+            </div>
+            <div class="form-group">
+              <label for="animalType">Animal Type/Species</label>
+              <select id="animalType" name="animalType">
+                <option value="">Select Type</option>
+                <option value="cattle">Cattle/Buffalo</option>
+                <option value="goat">Goat</option>
+                <option value="sheep">Sheep</option>
+                <option value="horse">Horse/Donkey</option>
+                <option value="poultry">Poultry</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="breed">Breed</label>
+              <input type="text" id="breed" name="breed" />
+            </div>
+            <div class="form-group">
+              <label for="gender">Gender</label>
+              <select id="gender" name="gender">
+                <option value="">Select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="dateOfAcquisition">Date of Acquisition</label>
+              <input
+                type="date"
+                id="dateOfAcquisition"
+                name="dateOfAcquisition"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Death Information -->
+        <div class="form-section">
+          <h2 class="text-xl font-bold text-red-700 mb-4">
+            <i class="fas fa-skull mr-2"></i>Death Information
+          </h2>
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="dateOfDeath">Date of Death</label>
+              <input type="date" id="dateOfDeath" name="dateOfDeath" />
+            </div>
+            <div class="form-group">
+              <label for="timeOfDeath">Time of Death (if known)</label>
+              <input type="time" id="timeOfDeath" name="timeOfDeath" />
+            </div>
+            <div class="form-group">
+              <label for="deathCause">Cause of Death (Preliminary)</label>
+              <select id="deathCause" name="deathCause">
+                <option value="">Select Cause</option>
+                <option value="disease">Disease/Illness</option>
+                <option value="accident">Accident/Injury</option>
+                <option value="predation">Predation</option>
+                <option value="mortality">Mortality/Old Age</option>
+                <option value="congenital">Congenital Defect</option>
+                <option value="unknown">Unknown</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="ageAtDeath">Age at Death (years/months)</label>
+              <input
+                type="text"
+                id="ageAtDeath"
+                name="ageAtDeath"
+                placeholder="e.g., 5 years, 3 months"
+              />
+            </div>
+          </div>
+          <div class="form-grid">
+            <div class="form-group col-span-2">
+              <label for="deathDescription"
+                >Description of Death/Symptoms Observed</label
+              >
+              <textarea
+                id="deathDescription"
+                name="deathDescription"
+                rows="4"
+                placeholder="Detailed description of circumstances leading to death"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Clinical History -->
+        <div class="form-section">
+          <h2 class="text-xl font-bold text-red-700 mb-4">
+            <i class="fas fa-notes-medical mr-2"></i>Clinical History
+          </h2>
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="recentTreatment">Recent Treatment/Medication</label>
+              <input type="text" id="recentTreatment" name="recentTreatment" />
+            </div>
+            <div class="form-group">
+              <label for="priorIllness">Prior Illness/Health Issues</label>
+              <input type="text" id="priorIllness" name="priorIllness" />
+            </div>
+            <div class="form-group col-span-2">
+              <label for="clinicalNotes">Clinical Notes Prior to Death</label>
+              <textarea
+                id="clinicalNotes"
+                name="clinicalNotes"
+                rows="3"
+                placeholder="Symptoms, behavior changes, vital signs, etc."
+              ></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Necropsy/Post-Mortem -->
+        <div class="form-section">
+          <h2 class="text-xl font-bold text-red-700 mb-4">
+            <i class="fas fa-vial mr-2"></i>Necropsy/Post-Mortem Findings
+          </h2>
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="necroscopyPerformed">Necropsy Performed?</label>
+              <select id="necroscopyPerformed" name="necroscopyPerformed">
+                <option value="">Select Option</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+                <option value="planned">Planned</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="necroscopyDate">Necropsy Date</label>
+              <input type="date" id="necroscopyDate" name="necroscopyDate" />
+            </div>
+            <div class="form-group col-span-2">
+              <label for="necroscopyFindings">Necropsy Findings</label>
+              <textarea
+                id="necroscopyFindings"
+                name="necroscopyFindings"
+                rows="4"
+                placeholder="Detailed findings from post-mortem examination"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Disposal -->
+        <div class="form-section">
+          <h2 class="text-xl font-bold text-red-700 mb-4">
+            <i class="fas fa-trash-alt mr-2"></i>Carcass Disposal
+          </h2>
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="disposalMethod">Disposal Method</label>
+              <select id="disposalMethod" name="disposalMethod">
+                <option value="">Select Method</option>
+                <option value="burial">Burial</option>
+                <option value="cremation">Cremation</option>
+                <option value="composting">Composting</option>
+                <option value="incineration">Incineration</option>
+                <option value="pickup">Pickup by Animal Service</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="disposalDate">Disposal Date</label>
+              <input type="date" id="disposalDate" name="disposalDate" />
+            </div>
+            <div class="form-group col-span-2">
+              <label for="disposalNotes">Disposal Location/Details</label>
+              <input
+                type="text"
+                id="disposalNotes"
+                name="disposalNotes"
+                placeholder="Where disposed and any relevant details"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Documentation -->
+        <div class="form-section">
+          <h2 class="text-xl font-bold text-red-700 mb-4">
+            <i class="fas fa-clipboard-list mr-2"></i>Documentation & Reporting
+          </h2>
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="reportedToAuthority">Reported to Authority?</label>
+              <select id="reportedToAuthority" name="reportedToAuthority">
+                <option value="">Select Option</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+                <option value="required">Not Required</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="authoritiesCalled"
+                >Authorities/Agencies Contacted</label
+              >
+              <input
+                type="text"
+                id="authoritiesCalled"
+                name="authoritiesCalled"
+                placeholder="e.g., Veterinary Services"
+              />
+            </div>
+            <div class="form-group col-span-2">
+              <label for="additionalNotes">Additional Notes/Observations</label>
+              <textarea
+                id="additionalNotes"
+                name="additionalNotes"
+                rows="3"
+                placeholder="Any other relevant information"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="btn-group no-print">
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-save mr-2"></i>Save Form
+          </button>
+          <button type="reset" class="btn btn-secondary">
+            <i class="fas fa-redo mr-2"></i>Reset
+          </button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            onclick="window.print()"
+          >
+            <i class="fas fa-print mr-2"></i>Print
+          </button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            onclick="window.location.href = '/kewah/index'"
+          >
+            <i class="fas fa-arrow-left mr-2"></i>Back
+          </button>
+        </div>
+      </form>
+    </main>
+
+    <script>
+      document
+        .getElementById("mortalityForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          alert("Form submitted successfully!");
+        });
+    </script>
+  </body>
+</html>

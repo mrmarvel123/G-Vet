@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KEW.PS-1 &amp; 2: Store Receipt Forms</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      @media print {
+        .no-print {
+          display: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <header
+      class="bg-gradient-to-r from-green-600 to-green-800 text-white shadow-lg p-6 no-print"
+    >
+      <div class="flex items-center justify-between">
+        <div class="flex items-center space-x-4">
+          <i class="fas fa-inbox text-3xl"></i>
+          <div>
+            <h1 class="text-2xl font-bold">KEW.PS-1 &amp; 2: Store Receipt</h1>
+            <p class="text-sm text-green-100">
+              Goods Receipt & Rejection Forms
+            </p>
+          </div>
+        </div>
+        <button
+          onclick="window.history.back()"
+          class="bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg"
+        >
+          <i class="fas fa-arrow-left mr-2"></i>Back
+        </button>
+      </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto p-6">
+      <div class="bg-white rounded-xl shadow-lg p-8">
+        <div class="border-t-4 border-green-600 pt-4 mb-6 text-center">
+          <p class="font-bold text-lg">
+            JABATAN PERKHIDMATAN VETERINAR NEGERI PERAK
+          </p>
+          <p class="text-sm font-semibold">STORE GOODS RECEIPT DOCUMENT</p>
+          <p class="text-sm font-bold text-green-600 mt-2">
+            FORMS KEW.PS-1 (Receipt) & KEW.PS-2 (Rejection)
+          </p>
+        </div>
+
+        <!-- Receipt Details -->
+        <div class="space-y-6 border-t-2 border-gray-300 pt-4">
+          <div class="grid grid-cols-3 gap-4">
+            <div>
+              <label class="block font-semibold text-gray-700 mb-1"
+                >Receipt Date</label
+              >
+              <input
+                type="date"
+                class="w-full border border-gray-300 px-3 py-2 rounded"
+                title="Receipt Date"
+              />
+            </div>
+            <div>
+              <label class="block font-semibold text-gray-700 mb-1"
+                >Receipt No.</label
+              >
+              <input
+                type="text"
+                class="w-full border border-gray-300 px-3 py-2 rounded"
+                placeholder="PS-01-2026"
+                title="Store receipt number"
+              />
+            </div>
+            <div>
+              <label class="block font-semibold text-gray-700 mb-1"
+                >PO/Invoice No.</label
+              >
+              <input
+                type="text"
+                class="w-full border border-gray-300 px-3 py-2 rounded"
+                title="Purchase order or invoice number"
+              />
+            </div>
+          </div>
+
+          <!-- Supplier Information -->
+          <div>
+            <h3 class="font-bold text-lg text-green-600 mb-4">
+              Supplier Information
+            </h3>
+            <div class="space-y-4">
+              <div>
+                <label class="block font-semibold text-gray-700 mb-1"
+                  >Supplier Name</label
+                >
+                <input
+                  type="text"
+                  class="w-full border border-gray-300 px-3 py-2 rounded"
+                  title="Supplier name"
+                />
+              </div>
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label class="block font-semibold text-gray-700 mb-1"
+                    >Delivery Date</label
+                  >
+                  <input
+                    type="date"
+                    class="w-full border border-gray-300 px-3 py-2 rounded"
+                    title="Delivery date"
+                  />
+                </div>
+                <div>
+                  <label class="block font-semibold text-gray-700 mb-1"
+                    >Delivery No./Ref</label
+                  >
+                  <input
+                    type="text"
+                    class="w-full border border-gray-300 px-3 py-2 rounded"
+                    title="Delivery reference number"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Items Table -->
+          <div>
+            <h3 class="font-bold text-lg text-green-600 mb-4">
+              Items Received
+            </h3>
+            <div class="overflow-x-auto">
+              <table class="w-full border-collapse border border-gray-400">
+                <thead class="bg-green-600 text-white">
+                  <tr>
+                    <th class="border px-3 py-2">No.</th>
+                    <th class="border px-3 py-2">Item Code</th>
+                    <th class="border px-3 py-2">Item Description</th>
+                    <th class="border px-3 py-2">UOM</th>
+                    <th class="border px-3 py-2">PO Qty</th>
+                    <th class="border px-3 py-2">Received Qty</th>
+                    <th class="border px-3 py-2">Unit Price</th>
+                    <th class="border px-3 py-2">Remarks</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>title="Item code" />
+                    </td>
+                    <td class="border px-3 py-2">
+                      <input type="text" class="w-full border-0" title="Item description" />
+                    </td>
+                    <td class="border px-3 py-2">
+                      <input
+                        type="text"
+                        class="w-full border-0"
+                        placeholder="Pcs"
+                        title="Unit of measure"
+                      />
+                    </td>
+                    <td class="border px-3 py-2">
+                      <input type="number" class="w-full border-0" title="Purchase order quantity" />
+                    </td>
+                    <td class="border px-3 py-2">
+                      <input type="number" class="w-full border-0" title="Received quantity" />
+                    </td>
+                    <td class="border px-3 py-2">
+                      <input type="number" class="w-full border-0 text-right" title="Unit price" />
+                    </td>
+                    <td class="border px-3 py-2">
+                      <input type="text" class="w-full border-0" title="Remarks" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="border px-3 py-2">2</td>
+                    <td class="border px-3 py-2">
+                      <input type="text" class="w-full border-0" title="Item code" />
+                    </td>
+                    <td class="border px-3 py-2">
+                      <input type="text" class="w-full border-0" title="Item description" />
+                    </td>
+                    <td class="border px-3 py-2">
+                      <input
+                        type="text"
+                        class="w-full border-0"
+                        placeholder="Pcs"
+                        title="Unit of measure"
+                      />
+                    </td>
+                    <td class="border px-3 py-2">
+                      <input type="number" class="w-full border-0" title="Purchase order quantity" />
+                    </td>
+                    <td class="border px-3 py-2">
+                      <input type="number" class="w-full border-0" title="Received quantity" />
+                    </td>
+                    <td class="border px-3 py-2">
+                      <input type="number" class="w-full border-0 text-right" title="Unit price" />
+                    </td>
+                    <td class="border px-3 py-2">
+                      <input type="text" class="w-full border-0" title="Remarks" />
+                    </td>
+                    <td class="border px-3 py-2">
+                      <input type="text" class="w-full border-0" title="Notes" />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Receiving Details -->
+          <div>
+            <h3 class="font-bold text-lg text-green-600 mb-4">
+              Receipt Assessment
+            </h3>
+            <div class="space-y-4">
+              <div>
+                <label class="block font-semibold text-gray-700 mb-1"
+                  >Overall Condition</label
+                >
+                <select class="w-full border border-gray-300 px-3 py-2 rounded" title="Overall receipt condition">
+                  <option>-- Select --</option>
+                  <option>Good - All items received in good condition</option>
+                  <option>Minor Discrepancies - Qty or minor damage</option>
+                  <option>Major Issues - Significant problems</option>
+                  <option>Rejected - Return to supplier</option>
+                </select>
+              </div>
+              <div>
+                <label class="block font-semibold text-gray-700 mb-1"
+                  >Notes / Issues</label
+                >
+                <textarea
+                  class="w-full border border-gray-300 px-3 py-2 rounded h-16"
+                  title="Additional notes or issues related to receipt"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Signatures -->
+          <div class="border-t-2 border-gray-300 pt-4 grid grid-cols-3 gap-4">
+            <div class="text-center">
+              <div class="border-t border-gray-400 pt-2 h-20"></div>
+              <p class="text-sm font-semibold">Received By</p>
+              <p class="text-xs text-gray-600">Date: _______</p>
+            </div>
+            <div class="text-center">
+              <div class="border-t border-gray-400 pt-2 h-20"></div>
+              <p class="text-sm font-semibold">Inspected By</p>
+              <p class="text-xs text-gray-600">Date: _______</p>
+            </div>
+            <div class="text-center">
+              <div class="border-t border-gray-400 pt-2 h-20"></div>
+              <p class="text-sm font-semibold">Approved By</p>
+              <p class="text-xs text-gray-600">Date: _______</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KEW.PA-3: Asset Register</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-gray-50">
+    <header
+      class="bg-gradient-to-r from-green-600 to-green-800 text-white shadow-lg p-6 no-print"
+    >
+      <div class="flex items-center justify-between">
+        <div class="flex items-center space-x-4">
+          <i class="fas fa-clipboard-list text-3xl"></i>
+          <div>
+            <h1 class="text-2xl font-bold">KEW.PA-3: Asset Register</h1>
+            <p class="text-sm text-green-100">
+              Complete Asset Registry - Jabatan Veterinar Perak
+            </p>
+          </div>
+        </div>
+        <button
+          onclick="window.history.back()"
+          class="bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg"
+        >
+          <i class="fas fa-arrow-left mr-2"></i>Back
+        </button>
+      </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto p-6">
+      <div class="bg-white rounded-xl shadow-lg p-8">
+        <!-- Government Header -->
+        <div class="border-t-4 border-green-600 pt-4 mb-6 text-center">
+          <p class="font-bold text-lg">
+            JABATAN PERKHIDMATAN VETERINAR NEGERI PERAK
+          </p>
+          <p class="text-sm font-semibold">ASSET REGISTER</p>
+          <p class="text-sm font-bold text-green-600 mt-2">FORM KEW.PA-3</p>
+        </div>
+
+        <!-- Period Information -->
+        <div class="grid grid-cols-3 gap-4 mb-6 bg-green-50 p-4 rounded-lg">
+          <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-1"
+              >Financial Year</label
+            >
+            <input
+              type="text"
+              class="w-full border border-gray-300 px-3 py-2 rounded"
+              placeholder="2025/2026"
+              title="Fiscal year for asset register (e.g., 2025/2026)"
+            />
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-1"
+              >Department/Unit</label
+            >
+            <input
+              type="text"
+              class="w-full border border-gray-300 px-3 py-2 rounded"
+              placeholder="Unit Name"
+              title="Department or Unit name"
+            />
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-1"
+              >Register Month</label
+            >
+            <input
+              type="text"
+              placeholder="YYYY-MM"
+              pattern="\d{4}-\d{2}"
+              title="Enter month in YYYY-MM format (e.g., 2026-02)"
+              class="w-full border border-gray-300 px-3 py-2 rounded"
+            />
+          </div>
+        </div>
+
+        <!-- Asset Table -->
+        <div class="overflow-x-auto">
+          <table class="w-full border-collapse border border-gray-400">
+            <thead class="bg-green-600 text-white">
+              <tr>
+                <th class="border border-gray-400 px-3 py-2">No.</th>
+                <th class="border border-gray-400 px-3 py-2">Asset Code</th>
+                <th class="border border-gray-400 px-3 py-2">
+                  Asset Description
+                </th>
+                <th class="border border-gray-400 px-3 py-2">Category</th>
+                <th class="border border-gray-400 px-3 py-2">Qty</th>
+                <th class="border border-gray-400 px-3 py-2">Purchase Date</th>
+                <th class="border border-gray-400 px-3 py-2">Purchase Price</th>
+                <th class="border border-gray-400 px-3 py-2">Location</th>
+                <th class="border border-gray-400 px-3 py-2">Custodian</th>
+                <th class="border border-gray-400 px-3 py-2">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="hover:bg-gray-50">
+                <td class="border border-gray-400 px-3 py-2">1</td>
+                <td class="border border-gray-400 px-3 py-2">
+                  <input
+                    type="text"
+                    class="w-full border-0 px-1 py-1"
+                    placeholder="PA-001"
+                    title="Asset Code"
+                  />
+                </td>
+                <td class="border border-gray-400 px-3 py-2">
+                  <input
+                    type="text"
+                    class="w-full border-0 px-1 py-1"
+                    placeholder="Asset Name"
+                    title="Asset Name"
+                  />
+                </td>
+                <td class="border border-gray-400 px-3 py-2">
+                  <input
+                    type="text"
+                    class="w-full border-0 px-1 py-1"
+                    placeholder="Category"
+                    title="Asset Category"
+                  />
+                </td>
+                <td class="border border-gray-400 px-3 py-2">
+                  <input
+                    type="number"
+                    class="w-full border-0 px-1 py-1"
+                    min="1"
+                    title="Quantity"
+                  />
+                </td>
+                <td class="border border-gray-400 px-3 py-2">
+                  <input
+                    type="date"
+                    class="w-full border-0 px-1 py-1"
+                    title="Purchase Date"
+                  />
+                </td>
+                <td class="border border-gray-400 px-3 py-2">
+                  <input
+                    type="number"
+                    class="w-full border-0 px-1 py-1"
+                    step="0.01"
+                    title="Price"
+                  />
+                </td>
+                <td class="border border-gray-400 px-3 py-2">
+                  <input
+                    type="text"
+                    class="w-full border-0 px-1 py-1"
+                    placeholder="Location"
+                    title="Location"
+                  />
+                </td>
+                <td class="border border-gray-400 px-3 py-2">
+                  <input
+                    type="text"
+                    class="w-full border-0 px-1 py-1"
+                    placeholder="Officer Name"
+                    title="Officer Name"
+                  />
+                </td>
+                <td class="border border-gray-400 px-3 py-2">
+                  <input
+                    type="text"
+                    class="w-full border-0 px-1 py-1"
+                    placeholder="Active"
+                    title="Active Status"
+                  />
+                </td>
+              </tr>
+              <tr class="hover:bg-gray-50">
+                <td class="border border-gray-400 px-3 py-2">2</td>
+                <td class="border border-gray-400 px-3 py-2">
+                  <input
+                    type="text"
+                    class="w-full border-0 px-1 py-1"
+                    placeholder="PA-002"
+                    title="Asset Code"
+                  />
+                </td>
+                <td class="border border-gray-400 px-3 py-2">
+                  <input
+                    type="text"
+                    class="w-full border-0 px-1 py-1"
+                    placeholder="Asset Name"
+                    title="Asset Name"
+                  />
+                </td>
+                <td class="border border-gray-400 px-3 py-2">
+                  <input
+                    type="text"
+                    class="w-full border-0 px-1 py-1"
+                    placeholder="Category"
+                    title="Asset Category"
+                  />
+                </td>
+                <td class="border border-gray-400 px-3 py-2">
+                  <input
+                    type="number"
+                    class="w-full border-0 px-1 py-1"
+                    min="1"
+                    title="Quantity"
+                  />
+                </td>
+                <td class="border border-gray-400 px-3 py-2">
+                  <input
+                    type="date"
+                    class="w-full border-0 px-1 py-1"
+                    title="Purchase Date"
+                  />
+                </td>
+                <td class="border border-gray-400 px-3 py-2">
+                  <input
+                    type="number"
+                    class="w-full border-0 px-1 py-1"
+                    step="0.01"
+                    title="Price"
+                  />
+                </td>
+                <td class="border border-gray-400 px-3 py-2">
+                  <input
+                    type="text"
+                    class="w-full border-0 px-1 py-1"
+                    placeholder="Location"
+                    title="Location"
+                  />
+                </td>
+                <td class="border border-gray-400 px-3 py-2">
+                  <input
+                    type="text"
+                    class="w-full border-0 px-1 py-1"
+                    placeholder="Officer Name"
+                    title="Officer Name"
+                  />
+                </td>
+                <td class="border border-gray-400 px-3 py-2">
+                  <input
+                    type="text"
+                    class="w-full border-0 px-1 py-1"
+                    placeholder="Active"
+                    title="Active Status"
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Add Row Button -->
+        <button
+          onclick="addRow()"
+          class="mt-4 bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg no-print"
+        >
+          <i class="fas fa-plus mr-2"></i>Add Row
+        </button>
+
+        <!-- Summary -->
+        <div class="mt-6 grid grid-cols-3 gap-4">
+          <div class="bg-green-50 p-4 rounded-lg">
+            <p class="text-sm text-gray-600">Total Assets</p>
+            <p class="text-2xl font-bold text-green-600">2</p>
+          </div>
+          <div class="bg-blue-50 p-4 rounded-lg">
+            <p class="text-sm text-gray-600">Total Value (RM)</p>
+            <p class="text-2xl font-bold text-blue-600">0.00</p>
+          </div>
+          <div class="bg-purple-50 p-4 rounded-lg">
+            <p class="text-sm text-gray-600">Active Assets</p>
+            <p class="text-2xl font-bold text-purple-600">2</p>
+          </div>
+        </div>
+
+        <!-- Signatures -->
+        <div
+          class="border-t-2 border-gray-300 mt-8 pt-4 grid grid-cols-3 gap-4"
+        >
+          <div class="text-center">
+            <div class="border-t border-gray-400 pt-2 h-24"></div>
+            <p class="text-sm font-semibold">Prepared By</p>
+            <p class="text-xs text-gray-600">Date: _______</p>
+          </div>
+          <div class="text-center">
+            <div class="border-t border-gray-400 pt-2 h-24"></div>
+            <p class="text-sm font-semibold">Verified By</p>
+            <p class="text-xs text-gray-600">Date: _______</p>
+          </div>
+          <div class="text-center">
+            <div class="border-t border-gray-400 pt-2 h-24"></div>
+            <p class="text-sm font-semibold">Approved By</p>
+            <p class="text-xs text-gray-600">Date: _______</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      function addRow() {
+        alert("Add row functionality would create a new table row");
+      }
+    </script>
+  </body>
+</html>

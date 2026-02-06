@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KEW.PA-13 to 16: Asset Maintenance Forms</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      @media print {
+        .no-print {
+          display: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <header
+      class="bg-gradient-to-r from-red-600 to-red-800 text-white shadow-lg p-6 no-print"
+    >
+      <div class="flex items-center justify-between">
+        <div class="flex items-center space-x-4">
+          <i class="fas fa-wrench text-3xl"></i>
+          <div>
+            <h1 class="text-2xl font-bold">
+              KEW.PA-13 to 16: Asset Maintenance
+            </h1>
+            <p class="text-sm text-red-100">
+              Maintenance Planning &amp; Execution Forms
+            </p>
+          </div>
+        </div>
+        <button
+          onclick="window.history.back()"
+          class="bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg"
+        >
+          <i class="fas fa-arrow-left mr-2"></i>Back
+        </button>
+      </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto p-6">
+      <div class="bg-white rounded-xl shadow-lg p-8">
+        <div class="border-t-4 border-red-600 pt-4 mb-6 text-center">
+          <p class="font-bold text-lg">
+            JABATAN PERKHIDMATAN VETERINAR NEGERI PERAK
+          </p>
+          <p class="text-sm font-semibold">ASSET MAINTENANCE MANAGEMENT</p>
+          <p class="text-sm font-bold text-red-600 mt-2">
+            FORMS KEW.PA-13 to 16
+          </p>
+        </div>
+
+        <!-- Form Selection -->
+        <div class="grid grid-cols-4 gap-2 mb-8 no-print text-xs">
+          <button
+            onclick="showForm('13')"
+            class="p-3 bg-red-50 hover:bg-red-100 border-2 border-red-300 rounded"
+          >
+            <p class="font-bold">PA-13</p>
+            <p>Schedule</p>
+          </button>
+          <button
+            onclick="showForm('14')"
+            class="p-3 bg-orange-50 hover:bg-orange-100 border-2 border-orange-300 rounded"
+          >
+            <p class="font-bold">PA-14</p>
+            <p>Work Order</p>
+          </button>
+          <button
+            onclick="showForm('15')"
+            class="p-3 bg-amber-50 hover:bg-amber-100 border-2 border-amber-300 rounded"
+          >
+            <p class="font-bold">PA-15</p>
+            <p>Work Log</p>
+          </button>
+          <button
+            onclick="showForm('16')"
+            class="p-3 bg-yellow-50 hover:bg-yellow-100 border-2 border-yellow-300 rounded"
+          >
+            <p class="font-bold">PA-16</p>
+            <p>Completion</p>
+          </button>
+        </div>
+
+        <!-- Maintenance Form -->
+        <div class="space-y-6 border-t-2 border-gray-300 pt-4">
+          <div class="grid grid-cols-3 gap-4">
+            <div>
+              <label class="block font-semibold text-gray-700 mb-1"
+                >Maintenance Type</label
+              >
+              <select
+                class="w-full border border-gray-300 px-3 py-2 rounded"
+                title="Select maintenance type"
+              >
+                <option>-- Select --</option>
+                <option>Preventive Maintenance</option>
+                <option>Corrective Maintenance</option>
+                <option>Emergency Repair</option>
+                <option>Routine Service</option>
+              </select>
+            </div>
+            <div>
+              <label class="block font-semibold text-gray-700 mb-1"
+                >Scheduled Date</label
+              >
+              <input
+                type="date"
+                class="w-full border border-gray-300 px-3 py-2 rounded"
+                title="Scheduled maintenance date"
+              />
+            </div>
+            <div>
+              <label class="block font-semibold text-gray-700 mb-1"
+                >Work Order No.</label
+              >
+              <input
+                type="text"
+                class="w-full border border-gray-300 px-3 py-2 rounded"
+                placeholder="PA-WO-001"
+                title="Work order number"
+              />
+            </div>
+          </div>
+
+          <!-- Asset Details -->
+          <div>
+            <h3 class="font-bold text-lg text-red-600 mb-4">
+              Asset Information
+            </h3>
+            <div class="space-y-4">
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label class="block font-semibold text-gray-700 mb-1"
+                    >Asset Code</label
+                  >
+                  <input
+                    type="text"
+                    class="w-full border border-gray-300 px-3 py-2 rounded"
+                    title="Asset code"
+                  />
+                </div>
+                <div>
+                  <label class="block font-semibold text-gray-700 mb-1"
+                    >Asset Description</label
+                  >
+                  <input
+                    type="text"
+                    class="w-full border border-gray-300 px-3 py-2 rounded"
+                    title="Asset description"
+                  />
+                </div>
+              </div>
+              <div>
+                <label class="block font-semibold text-gray-700 mb-1"
+                  >Last Maintenance Date</label
+                >
+                <input
+                  type="date"
+                  class="w-full border border-gray-300 px-3 py-2 rounded"
+                  title="Last maintenance date"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Maintenance Details -->
+          <div>
+            <h3 class="font-bold text-lg text-red-600 mb-4">
+              Maintenance Work Details
+            </h3>
+            <div class="space-y-4">
+              <div>
+                <label class="block font-semibold text-gray-700 mb-1"
+                  >Description of Work Required</label
+                >
+                <textarea
+                  class="w-full border border-gray-300 px-3 py-2 rounded h-16"
+                  placeholder="Describe maintenance work..."
+                  title="Description of maintenance work required"
+                ></textarea>
+              </div>
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label class="block font-semibold text-gray-700 mb-1"
+                    >Estimated Cost (RM)</label
+                  >
+                  <input
+                    type="number"
+                    class="w-full border border-gray-300 px-3 py-2 rounded"
+                    step="0.01"
+                    title="Estimated maintenance cost"
+                  />
+                </div>
+                <div>
+                  <label class="block font-semibold text-gray-700 mb-1"
+                    >Estimated Duration</label
+                  >
+                  <input
+                    type="text"
+                    class="w-full border border-gray-300 px-3 py-2 rounded"
+                    placeholder="e.g., 2 hours"
+                    title="Estimated duration for maintenance work"
+                  />
+                </div>
+              </div>
+              <div>
+                <label class="block font-semibold text-gray-700 mb-1"
+                  >Assigned To</label
+                >
+                <input
+                  type="text"
+                  class="w-full border border-gray-300 px-3 py-2 rounded"
+                  placeholder="Technician Name"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Work Completion -->
+          <div>
+            <h3 class="font-bold text-lg text-red-600 mb-4">
+              Work Completion Details
+            </h3>
+            <div class="space-y-4">
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label class="block font-semibold text-gray-700 mb-1"
+                    >Completion Date</label
+                  >
+                  <input
+                    type="date"
+                    class="w-full border border-gray-300 px-3 py-2 rounded"
+                    title="Date of work completion"
+                  />
+                </div>
+                <div>
+                  <label class="block font-semibold text-gray-700 mb-1"
+                    >Actual Cost (RM)</label
+                  >
+                  <input
+                    type="number"
+                    class="w-full border border-gray-300 px-3 py-2 rounded"
+                    step="0.01"
+                    title="Actual cost of maintenance work"
+                  />
+                </div>
+              </div>
+              <div>
+                <label class="block font-semibold text-gray-700 mb-1"
+                  >Completion Notes</label
+                >
+                <textarea
+                  class="w-full border border-gray-300 px-3 py-2 rounded h-16"
+                  placeholder="Work completed, status, any issues..."
+                  title="Notes on work completion"
+                ></textarea>
+              </div>
+              <div>
+                <label class="block font-semibold text-gray-700 mb-2"
+                  >Next Maintenance Recommended</label
+                >
+                <input
+                  type="date"
+                  class="w-full border border-gray-300 px-3 py-2 rounded"
+                  title="Recommended date for next maintenance"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Approvals -->
+          <div class="border-t-2 border-gray-300 pt-4 grid grid-cols-3 gap-4">
+            <div class="text-center">
+              <div class="border-t border-gray-400 pt-2 h-20"></div>
+              <p class="text-sm font-semibold">Work by</p>
+              <p class="text-xs text-gray-600">Date: _______</p>
+            </div>
+            <div class="text-center">
+              <div class="border-t border-gray-400 pt-2 h-20"></div>
+              <p class="text-sm font-semibold">Verified By</p>
+              <p class="text-xs text-gray-600">Date: _______</p>
+            </div>
+            <div class="text-center">
+              <div class="border-t border-gray-400 pt-2 h-20"></div>
+              <p class="text-sm font-semibold">Approved By</p>
+              <p class="text-xs text-gray-600">Date: _______</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      function showForm(num) {
+        console.log("Showing form KEW.PA-" + num);
+      }
+    </script>
+  </body>
+</html>

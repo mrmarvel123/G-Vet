@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KEW.PS-10, 11, 12: Store Verification Forms</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      @media print {
+        .no-print {
+          display: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <header
+      class="bg-gradient-to-r from-purple-600 to-purple-800 text-white shadow-lg p-6 no-print"
+    >
+      <div class="flex items-center justify-between">
+        <div class="flex items-center space-x-4">
+          <i class="fas fa-clipboard-check text-3xl"></i>
+          <div>
+            <h1 class="text-2xl font-bold">
+              KEW.PS-10, 11, 12: Store Verification
+            </h1>
+            <p class="text-sm text-purple-100">
+              Stock Verification & Count Forms
+            </p>
+          </div>
+        </div>
+        <button
+          onclick="window.history.back()"
+          class="bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg"
+        >
+          <i class="fas fa-arrow-left mr-2"></i>Back
+        </button>
+      </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto p-6">
+      <div class="bg-white rounded-xl shadow-lg p-8">
+        <div class="border-t-4 border-purple-600 pt-4 mb-6 text-center">
+          <p class="font-bold text-lg">
+            JABATAN PERKHIDMATAN VETERINAR NEGERI PERAK
+          </p>
+          <p class="text-sm font-semibold">STORE STOCK VERIFICATION</p>
+          <p class="text-sm font-bold text-purple-600 mt-2">
+            FORMS KEW.PS-10 (Count), 11 (Reconciliation), 12 (Approval)
+          </p>
+        </div>
+
+        <!-- Verification Details -->
+        <div class="space-y-6 border-t-2 border-gray-300 pt-4">
+          <div class="grid grid-cols-4 gap-4 bg-purple-50 p-4 rounded-lg">
+            <div>
+              <label class="block font-semibold text-gray-700 mb-1"
+                >Verification Date</label
+              >
+              <input
+                type="date"
+                class="w-full border border-gray-300 px-3 py-2 rounded"
+                title="Date of stock verification"
+              />
+            </div>
+            <div>
+              <label class="block font-semibold text-gray-700 mb-1"
+                >Period End Date</label
+              >
+              <input
+                type="date"
+                class="w-full border border-gray-300 px-3 py-2 rounded"
+                title="End date of verification period"
+              />
+            </div>
+            <div>
+              <label class="block font-semibold text-gray-700 mb-1"
+                >Verification Ref No.</label
+              >
+              <input
+                type="text"
+                class="w-full border border-gray-300 px-3 py-2 rounded"
+                placeholder="PS-VER-001"
+                title="Verification reference number"
+              />
+            </div>
+            <div>
+              <label class="block font-semibold text-gray-700 mb-1"
+                >Store/Unit</label
+              >
+              <input
+                type="text"
+                class="w-full border border-gray-300 px-3 py-2 rounded"
+                title="Store or unit name"
+              />
+            </div>
+          </div>
+
+          <!-- Stock Count Table -->
+          <div>
+            <h3 class="font-bold text-lg text-purple-600 mb-4">
+              Physical Stock Count (KEW.PS-10)
+            </h3>
+            <div class="overflow-x-auto">
+              <table
+                class="w-full border-collapse border border-gray-400 text-sm"
+              >
+                <thead class="bg-purple-600 text-white">
+                  <tr>
+                    <th class="border px-3 py-2">Item Code</th>
+                    <th class="border px-3 py-2">Description</th>
+                    <th class="border px-3 py-2">System Qty</th>
+                    <th class="border px-3 py-2">Physical Count</th>
+                    <th class="border px-3 py-2">Variance</th>
+                    <th class="border px-3 py-2">Unit Cost</th>
+                    <th class="border px-3 py-2">Variance Value</th>
+                    <th class="border px-3 py-2">Remarks</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="border px-3 py-2">
+                      <input
+                        type="text"
+                        class="w-full border-0 text-xs"
+                        title="Item code or reference"
+                      />
+                    </td>
+                    <td class="border px-3 py-2">
+                      <input
+                        type="text"
+                        class="w-full border-0 text-xs"
+                        title="Item description or name"
+                      />
+                    </td>
+                    <td class="border px-3 py-2 text-right">
+                      <input
+                        type="number"
+                        class="w-full border-0 text-xs text-right"
+                        title="System quantity recorded"
+                      />
+                    </td>
+                    <td class="border px-3 py-2 text-right">
+                      <input
+                        type="number"
+                        class="w-full border-0 text-xs text-right"
+                        title="Physical count quantity"
+                      />
+                    </td>
+                    <td class="border px-3 py-2 text-right">
+                      <input
+                        type="number"
+                        class="w-full border-0 text-xs text-right"
+                        title="Quantity variance"
+                      />
+                    </td>
+                    <td class="border px-3 py-2 text-right">
+                      <input
+                        type="number"
+                        class="w-full border-0 text-xs text-right"
+                        step="0.01"
+                        title="Unit cost in RM"
+                      />
+                    </td>
+                    <td class="border px-3 py-2 text-right">
+                      <input
+                        type="number"
+                        class="w-full border-0 text-xs text-right"
+                        step="0.01"
+                        title="Variance value in RM"
+                      />
+                    </td>
+                    <td class="border px-3 py-2">
+                      <input
+                        type="text"
+                        class="w-full border-0 text-xs"
+                        title="Remarks or notes"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="border px-3 py-2">
+                      <input
+                        type="text"
+                        class="w-full border-0 text-xs"
+                        title="Item code or reference"
+                      />
+                    </td>
+                    <td class="border px-3 py-2">
+                      <input
+                        type="text"
+                        class="w-full border-0 text-xs"
+                        title="Item description or name"
+                      />
+                    </td>
+                    <td class="border px-3 py-2 text-right">
+                      <input
+                        type="number"
+                        class="w-full border-0 text-xs text-right"
+                        title="System quantity recorded"
+                      />
+                    </td>
+                    <td class="border px-3 py-2 text-right">
+                      <input
+                        type="number"
+                        class="w-full border-0 text-xs text-right"
+                        title="Physical count quantity"
+                      />
+                    </td>
+                    <td class="border px-3 py-2 text-right">
+                      <input
+                        type="number"
+                        class="w-full border-0 text-xs text-right"
+                        title="Quantity variance"
+                      />
+                    </td>
+                    <td class="border px-3 py-2 text-right">
+                      <input
+                        type="number"
+                        class="w-full border-0 text-xs text-right"
+                        step="0.01"
+                        title="Unit cost in RM"
+                      />
+                    </td>
+                    <td class="border px-3 py-2 text-right">
+                      <input
+                        type="number"
+                        class="w-full border-0 text-xs text-right"
+                        step="0.01"
+                        title="Variance value in RM"
+                      />
+                    </td>
+                    <td class="border px-3 py-2">
+                      <input
+                        type="text"
+                        class="w-full border-0 text-xs"
+                        title="Remarks or notes"
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Reconciliation (KEW.PS-11) -->
+          <div>
+            <h3 class="font-bold text-lg text-purple-600 mb-4">
+              Stock Reconciliation (KEW.PS-11)
+            </h3>
+            <div class="grid grid-cols-2 gap-4 bg-purple-50 p-4 rounded-lg">
+              <div>
+                <p class="text-sm text-gray-600">Total System Value (RM)</p>
+                <p class="text-xl font-bold text-purple-600">0.00</p>
+              </div>
+              <div>
+                <p class="text-sm text-gray-600">Total Actual Value (RM)</p>
+                <p class="text-xl font-bold text-purple-600">0.00</p>
+              </div>
+              <div>
+                <p class="text-sm text-gray-600">Total Variance (RM)</p>
+                <p class="text-xl font-bold text-red-600">0.00</p>
+              </div>
+              <div>
+                <p class="text-sm text-gray-600">Variance %</p>
+                <p class="text-xl font-bold text-orange-600">0.00%</p>
+              </div>
+            </div>
+            <div class="mt-4">
+              <label class="block font-semibold text-gray-700 mb-1"
+                >Reason for Variance</label
+              >
+              <textarea
+                class="w-full border border-gray-300 px-3 py-2 rounded h-12"
+                placeholder="If variance exists, explain reasons..."
+              ></textarea>
+            </div>
+          </div>
+
+          <!-- Approval (KEW.PS-12) -->
+          <div class="border-t-2 border-gray-300 pt-4">
+            <h3 class="font-bold text-lg text-purple-600 mb-4">
+              Verification Approval (KEW.PS-12)
+            </h3>
+            <div class="space-y-4">
+              <div>
+                <label class="block font-semibold text-gray-700 mb-1"
+                  >Verification By</label
+                >
+                <input
+                  type="text"
+                  class="w-full border border-gray-300 px-3 py-2 rounded"
+                  placeholder="Officer Name"
+                />
+              </div>
+              <div>
+                <label class="block font-semibold text-gray-700 mb-1"
+                  >Approval Status</label
+                >
+                <div class="space-y-2">
+                  <label class="flex items-center"
+                    ><input type="radio" name="approval" class="mr-2" />
+                    Approved - Variances Acceptable</label
+                  >
+                  <label class="flex items-center"
+                    ><input type="radio" name="approval" class="mr-2" />
+                    Approved with Exceptions</label
+                  >
+                  <label class="flex items-center"
+                    ><input type="radio" name="approval" class="mr-2" />
+                    Rejected - Further Investigation Required</label
+                  >
+                </div>
+              </div>
+              <div>
+                <label class="block font-semibold text-gray-700 mb-1"
+                  >Approval Remarks</label
+                >
+                <textarea
+                  class="w-full border border-gray-300 px-3 py-2 rounded h-12"
+                  title="Approval remarks and comments"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Signatures -->
+          <div class="border-t-2 border-gray-300 pt-4 grid grid-cols-4 gap-4">
+            <div class="text-center">
+              <div class="border-t border-gray-400 pt-2 h-20"></div>
+              <p class="text-sm font-semibold">Count By</p>
+              <p class="text-xs text-gray-600">Date: _______</p>
+            </div>
+            <div class="text-center">
+              <div class="border-t border-gray-400 pt-2 h-20"></div>
+              <p class="text-sm font-semibold">Verified By</p>
+              <p class="text-xs text-gray-600">Date: _______</p>
+            </div>
+            <div class="text-center">
+              <div class="border-t border-gray-400 pt-2 h-20"></div>
+              <p class="text-sm font-semibold">Reconciled By</p>
+              <p class="text-xs text-gray-600">Date: _______</p>
+            </div>
+            <div class="text-center">
+              <div class="border-t border-gray-400 pt-2 h-20"></div>
+              <p class="text-sm font-semibold">Approved By</p>
+              <p class="text-xs text-gray-600">Date: _______</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

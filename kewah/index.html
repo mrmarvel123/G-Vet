@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KEW.AH Forms Index</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-gray-50">
+    <header
+      class="bg-gradient-to-r from-orange-600 to-orange-800 text-white shadow-lg p-6"
+    >
+      <div class="max-w-7xl mx-auto flex items-center justify-between">
+        <div class="flex items-center space-x-4">
+          <i class="fas fa-paw text-4xl"></i>
+          <div>
+            <h1 class="text-3xl font-bold">
+              KEW.AH Livestock Management Forms
+            </h1>
+            <p class="text-orange-100">
+              Complete Form Library - Jabatan Perkhidmatan Veterinar Perak
+            </p>
+          </div>
+        </div>
+        <button
+          onclick="window.location.href = '/dashboard'"
+          aria-label="Back to dashboard"
+          class="bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg"
+        >
+          <i class="fas fa-home mr-2"></i>Home
+        </button>
+      </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto p-6">
+      <!-- Overview -->
+      <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">
+          KEW.AH: Live Asset (Livestock) Management System
+        </h2>
+        <p class="text-gray-600 mb-4">
+          KEW.AH contains 8 specialized forms for managing live animals
+          including registration, health tracking, vaccination schedules, and
+          breeding records for cattle, goats, sheep, and other livestock.
+        </p>
+        <div class="grid grid-cols-4 gap-4">
+          <div class="bg-orange-50 p-4 rounded-lg">
+            <p class="text-sm text-gray-600">Total Forms</p>
+            <p class="text-2xl font-bold text-orange-600">8</p>
+          </div>
+          <div class="bg-green-50 p-4 rounded-lg">
+            <p class="text-sm text-gray-600">Available Now</p>
+            <p class="text-2xl font-bold text-green-600">8</p>
+          </div>
+          <div class="bg-blue-50 p-4 rounded-lg">
+            <p class="text-sm text-gray-600">Completion</p>
+            <p class="text-2xl font-bold text-blue-600">100%</p>
+          </div>
+          <div class="bg-purple-50 p-4 rounded-lg">
+            <p class="text-sm text-gray-600">Last Updated</p>
+            <p class="text-lg font-bold text-purple-600">Feb 2026</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <!-- Form 1 -->
+        <div class="bg-white rounded-xl shadow-lg p-6">
+          <h3 class="text-lg font-bold text-orange-600 mb-4">
+            <i class="fas fa-clipboard-list mr-2"></i>KEW.AH-1: Animal
+            Registration
+          </h3>
+          <p class="text-gray-600 text-sm mb-4">
+            Individual animal ID assignment, species identification, physical
+            characteristics, and initial registration. Captures breed, gender,
+            DOB, and distinguishing features.
+          </p>
+          <a
+            href="/kewah/kewah-1.html"
+            aria-label="Open KEW.AH-1: Animal Registration"
+            class="inline-block px-6 py-2 bg-orange-600 hover:bg-orange-700 text-white rounded-lg transition-all"
+          >
+            <i class="fas fa-arrow-right mr-2"></i>Open Form
+          </a>
+        </div>
+
+        <!-- Form 2 -->
+        <div class="bg-white rounded-xl shadow-lg p-6">
+          <h3 class="text-lg font-bold text-green-600 mb-4">
+            <i class="fas fa-heartbeat mr-2"></i>KEW.AH-2: Animal Health Record
+          </h3>
+          <p class="text-gray-600 text-sm mb-4">
+            Comprehensive health tracking including treatment history,
+            diagnoses, medications, health status monitoring, and daily
+            observations. Maintains complete medical history.
+          </p>
+          <a
+            href="/kewah/kewah-2.html"
+            aria-label="Open KEW.AH-2: Animal Health Record"
+            class="inline-block px-6 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-all"
+          >
+            <i class="fas fa-arrow-right mr-2"></i>Open Form
+          </a>
+        </div>
+
+        <!-- Form 3 & 4 -->
+        <div class="bg-white rounded-xl shadow-lg p-6 md:col-span-2">
+          <h3 class="text-lg font-bold text-blue-600 mb-4">
+            <i class="fas fa-syringe mr-2"></i>KEW.AH-3 &amp; 4: Vaccination &
+            Breeding
+          </h3>
+          <p class="text-gray-600 text-sm mb-4">
+            KEW.AH-3 tracks vaccination schedules, vaccine types, batch numbers,
+            and next due dates. KEW.AH-4 records breeding events, mating dates,
+            pregnancy monitoring, and offspring information.
+          </p>
+          <a
+            href="/kewah/kewah-3-4.html"
+            aria-label="Open KEW.AH 3 and 4: Vaccination and Breeding"
+            class="inline-block px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-all"
+          >
+            <i class="fas fa-arrow-right mr-2"></i>Open Form
+          </a>
+        </div>
+
+        <!-- Form 5 -->
+        <div class="bg-white rounded-xl shadow-lg p-6">
+          <h3 class="text-lg font-bold text-pink-600 mb-4">
+            <i class="fas fa-dna mr-2"></i>KEW.AH-5: Breeding Management
+          </h3>
+          <p class="text-gray-600 text-sm mb-4">
+            Comprehensive breeding records including sire and dam information,
+            mating events, pregnancy monitoring, birth records, and offspring
+            details. Tracks genealogy and breeding history.
+          </p>
+          <a
+            href="/kewah/kewah-5.html"
+            aria-label="Open KEW.AH-5: Breeding Management"
+            class="inline-block px-6 py-2 bg-pink-600 hover:bg-pink-700 text-white rounded-lg transition-all"
+          >
+            <i class="fas fa-arrow-right mr-2"></i>Open Form
+          </a>
+        </div>
+
+        <!-- Form 6 -->
+        <div class="bg-white rounded-xl shadow-lg p-6">
+          <h3 class="text-lg font-bold text-red-600 mb-4">
+            <i class="fas fa-skull mr-2"></i>KEW.AH-6: Mortality Records
+          </h3>
+          <p class="text-gray-600 text-sm mb-4">
+            Documentation of livestock deaths including cause of death, clinical
+            history, necropsy findings (if performed), and proper carcass
+            disposal methods. Important for disease tracking and record keeping.
+          </p>
+          <a
+            href="/kewah/kewah-6.html"
+            aria-label="Open KEW.AH-6: Mortality Records"
+            class="inline-block px-6 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-all"
+          >
+            <i class="fas fa-arrow-right mr-2"></i>Open Form
+          </a>
+        </div>
+
+        <!-- Form 7 -->
+        <div class="bg-white rounded-xl shadow-lg p-6">
+          <h3 class="text-lg font-bold text-blue-600 mb-4">
+            <i class="fas fa-exchange-alt mr-2"></i>KEW.AH-7: Livestock Transfer
+          </h3>
+          <p class="text-gray-600 text-sm mb-4">
+            Records for inter-facility animal movements, sales, loans, or
+            donations. Captures health status at transfer, facility information,
+            transport details, and receiving confirmation. Maintains chain of
+            custody.
+          </p>
+          <a
+            href="/kewah/kewah-7.html"
+            aria-label="Open KEW.AH-7: Livestock Transfer"
+            class="inline-block px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-all"
+          >
+            <i class="fas fa-arrow-right mr-2"></i>Open Form
+          </a>
+        </div>
+
+        <!-- Form 8 -->
+        <div class="bg-white rounded-xl shadow-lg p-6">
+          <h3 class="text-lg font-bold text-green-600 mb-4">
+            <i class="fas fa-calendar mr-2"></i>KEW.AH-8: Daily Care Log
+          </h3>
+          <p class="text-gray-600 text-sm mb-4">
+            Daily health monitoring and care records including feeding, water
+            provision, behavioral observations, medical treatments, facility
+            maintenance, and caretaker notes. Essential for continuous animal
+            welfare tracking.
+          </p>
+          <a
+            href="/kewah/kewah-8.html"
+            aria-label="Open KEW.AH-8: Daily Care Log"
+            class="inline-block px-6 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-all"
+          >
+            <i class="fas fa-arrow-right mr-2"></i>Open Form
+          </a>
+        </div>
+      </div>
+
+      <!-- Additional Information -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <div class="bg-blue-50 border-l-4 border-blue-400 p-6 rounded-lg">
+          <h3 class="font-bold text-gray-900 mb-2">
+            <i class="fas fa-lightbulb mr-2"></i>Animal Categories
+          </h3>
+          <ul class="text-sm text-gray-700 space-y-1">
+            <li>• Cattle & Buffalo</li>
+            <li>• Goats & Sheep</li>
+            <li>• Horses & Donkeys</li>
+            <li>• Poultry Birds</li>
+            <li>• Other Livestock</li>
+          </ul>
+        </div>
+
+        <div class="bg-green-50 border-l-4 border-green-400 p-6 rounded-lg">
+          <h3 class="font-bold text-gray-900 mb-2">
+            <i class="fas fa-stethoscope mr-2"></i>Health Services Tracked
+          </h3>
+          <ul class="text-sm text-gray-700 space-y-1">
+            <li>• Vaccination programs</li>
+            <li>• Treatment & medication</li>
+            <li>• Health monitoring</li>
+            <li>• Breeding management</li>
+            <li>• Mortality records</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Instructions -->
+      <div class="bg-yellow-50 border-l-4 border-yellow-400 p-6 rounded-lg">
+        <h3 class="font-bold text-gray-900 mb-2">📋 How to Use These Forms</h3>
+        <ol class="list-decimal list-inside space-y-2 text-sm text-gray-700">
+          <li>
+            <strong>Register Animals:</strong> Use KEW.AH-1 to register each
+            animal with unique ID and physical description
+          </li>
+          <li>
+            <strong>Track Health:</strong> Use KEW.AH-2 to record all medical
+            treatments, diagnoses, and observations
+          </li>
+          <li>
+            <strong>Vaccination Schedule:</strong> Use KEW.AH-3 to track
+            vaccination compliance and next due dates
+          </li>
+          <li>
+            <strong>Breeding Management:</strong> Use KEW.AH-4 to record all
+            breeding activities and offspring
+          </li>
+          <li>
+            <strong>Regular Updates:</strong> Update forms immediately after any
+            medical treatment or event
+          </li>
+          <li>
+            <strong>Print & Archive:</strong> Print completed forms and file
+            according to record retention schedule
+          </li>
+        </ol>
+      </div>
+
+      <!-- Quick Stats -->
+      <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div
+          class="bg-gradient-to-br from-orange-500 to-orange-600 text-white rounded-xl shadow-lg p-6"
+        >
+          <i class="fas fa-file-alt text-4xl mb-2 opacity-80"></i>
+          <p class="text-2xl font-bold">8</p>
+          <p class="text-sm opacity-90">Total Forms</p>
+        </div>
+        <div
+          class="bg-gradient-to-br from-green-500 to-green-600 text-white rounded-xl shadow-lg p-6"
+        >
+          <i class="fas fa-check-circle text-4xl mb-2 opacity-80"></i>
+          <p class="text-2xl font-bold">100%</p>
+          <p class="text-sm opacity-90">Completion Rate</p>
+        </div>
+        <div
+          class="bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-xl shadow-lg p-6"
+        >
+          <i class="fas fa-heart text-4xl mb-2 opacity-80"></i>
+          <p class="text-2xl font-bold">Animals</p>
+          <p class="text-sm opacity-90">Full Lifecycle Tracked</p>
+        </div>
+      </div>
+    </main>
+
+    <footer class="text-center py-8 text-gray-600 text-sm mt-8">
+      <p><strong>G-VET ASSET MANAGEMENT SYSTEM v2.5</strong></p>
+      <p>© 2026 Jabatan Perkhidmatan Veterinar Negeri Perak</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KEW.PA-17 to 20: Procurement & Ordering Forms</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-color: #f9fafb;
+      }
+      .form-header {
+        background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+        color: white;
+        padding: 2rem;
+      }
+      .form-section {
+        background: white;
+        border-left: 4px solid #8b5cf6;
+        margin: 1.5rem 0;
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+      }
+      .form-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+      }
+      .form-group {
+        display: flex;
+        flex-direction: column;
+      }
+      .form-group label {
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: #374151;
+      }
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        padding: 0.75rem;
+        border: 1px solid #d1d5db;
+        border-radius: 0.375rem;
+        font-size: 0.875rem;
+      }
+      .btn-group {
+        display: flex;
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+      .btn {
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 0.375rem;
+        cursor: pointer;
+        font-weight: 600;
+      }
+      .btn-primary {
+        background-color: #8b5cf6;
+        color: white;
+      }
+      .btn-secondary {
+        background-color: #e5e7eb;
+        color: #374151;
+      }
+      .form-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1rem;
+      }
+      .form-table th,
+      .form-table td {
+        padding: 0.75rem;
+        border: 1px solid #d1d5db;
+        text-align: left;
+      }
+      .form-table th {
+        background-color: #f3f4f6;
+        font-weight: 600;
+      }
+      .tab-buttons {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+        border-bottom: 2px solid #e5e7eb;
+      }
+      .tab-btn {
+        padding: 0.75rem 1.5rem;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-weight: 600;
+        color: #6b7280;
+        border-bottom: 3px solid transparent;
+      }
+      .tab-btn.active {
+        color: #8b5cf6;
+        border-bottom-color: #8b5cf6;
+      }
+      .tab-content {
+        display: none;
+      }
+      .tab-content.active {
+        display: block;
+      }
+      .table-input {
+        width: 100%;
+        padding: 0.5rem;
+        border: 1px solid #d1d5db;
+      }
+      .table-select {
+        width: 100%;
+        padding: 0.5rem;
+        border: 1px solid #d1d5db;
+      }
+      .table-total {
+        text-align: right;
+        font-weight: bold;
+      }
+      @media print {
+        body {
+          font-size: 12pt;
+        }
+        .no-print {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-header">
+      <div class="max-w-6xl mx-auto">
+        <h1 class="text-3xl font-bold mb-2">
+          KEW.PA-17 to 20: Procurement & Ordering
+        </h1>
+        <p class="text-purple-100">Purchase Requisitions & Vendor Management</p>
+      </div>
+    </div>
+
+    <main class="max-w-6xl mx-auto p-8">
+      <form id="procurementForm">
+        <!-- Tab Navigation -->
+        <div class="tab-buttons no-print">
+          <button
+            type="button"
+            class="tab-btn active"
+            onclick="switchTab('purchase')"
+          >
+            <i class="fas fa-shopping-cart mr-2"></i>Purchase Requisition
+          </button>
+          <button type="button" class="tab-btn" onclick="switchTab('vendor')">
+            <i class="fas fa-building mr-2"></i>Vendor Management
+          </button>
+          <button
+            type="button"
+            class="tab-btn"
+            onclick="switchTab('quotation')"
+          >
+            <i class="fas fa-file-invoice mr-2"></i>Quotation Request
+          </button>
+          <button type="button" class="tab-btn" onclick="switchTab('poacc')">
+            <i class="fas fa-check mr-2"></i>PO Acceptance
+          </button>
+        </div>
+
+        <!-- Purchase Requisition -->
+        <div id="purchase" class="tab-content active">
+          <div class="form-section">
+            <h2 class="text-xl font-bold text-purple-700 mb-4">
+              <i class="fas fa-shopping-cart mr-2"></i>Purchase Requisition
+              Details
+            </h2>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="reqNumber">Requisition Number</label>
+                <input
+                  type="text"
+                  id="reqNumber"
+                  name="reqNumber"
+                  placeholder="Auto-generated"
+                />
+              </div>
+              <div class="form-group">
+                <label for="reqDate">Requisition Date</label>
+                <input type="date" id="reqDate" name="reqDate" />
+              </div>
+              <div class="form-group">
+                <label for="requiredBy">Required By Date</label>
+                <input type="date" id="requiredBy" name="requiredBy" />
+              </div>
+              <div class="form-group">
+                <label for="department">Department</label>
+                <input type="text" id="department" name="department" />
+              </div>
+              <div class="form-group">
+                <label for="budget">Budget Code</label>
+                <input type="text" id="budget" name="budget" />
+              </div>
+              <div class="form-group">
+                <label for="priority">Priority</label>
+                <select id="priority" name="priority">
+                  <option value="">Select Priority</option>
+                  <option value="urgent">Urgent</option>
+                  <option value="high">High</option>
+                  <option value="normal">Normal</option>
+                  <option value="low">Low</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h2 class="text-xl font-bold text-purple-700 mb-4">
+              <i class="fas fa-list mr-2"></i>Items Required
+            </h2>
+            <table class="form-table">
+              <thead>
+                <tr>
+                  <th>Item Code</th>
+                  <th>Description</th>
+                  <th>Quantity</th>
+                  <th>Unit</th>
+                  <th>Est. Unit Price (RM)</th>
+                  <th>Est. Total (RM)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <input type="text" class="table-input" title="Item code" />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      class="table-input"
+                      title="Item description"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      class="table-input"
+                      title="Quantity required"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      class="table-input"
+                      title="Unit of measure"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      class="table-input"
+                      title="Estimated unit price"
+                      step="0.01"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      class="table-input"
+                      title="Estimated total"
+                      readonly
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="5" class="table-total">Estimated Total:</td>
+                  <td>
+                    <input
+                      type="number"
+                      id="estTotal"
+                      class="table-input"
+                      title="Total estimated price"
+                      readonly
+                    />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Vendor Management -->
+        <div id="vendor" class="tab-content">
+          <div class="form-section">
+            <h2 class="text-xl font-bold text-purple-700 mb-4">
+              <i class="fas fa-building mr-2"></i>Vendor Information
+            </h2>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="vendorCode">Vendor Code</label>
+                <input type="text" id="vendorCode" name="vendorCode" />
+              </div>
+              <div class="form-group">
+                <label for="vendorName">Vendor Name</label>
+                <input type="text" id="vendorName" name="vendorName" />
+              </div>
+              <div class="form-group">
+                <label for="vendorContact">Contact Person</label>
+                <input type="text" id="vendorContact" name="vendorContact" />
+              </div>
+              <div class="form-group">
+                <label for="vendorEmail">Email</label>
+                <input type="email" id="vendorEmail" name="vendorEmail" />
+              </div>
+              <div class="form-group">
+                <label for="vendorPhone">Phone</label>
+                <input type="tel" id="vendorPhone" name="vendorPhone" />
+              </div>
+              <div class="form-group">
+                <label for="vendorAddress">Address</label>
+                <textarea
+                  id="vendorAddress"
+                  name="vendorAddress"
+                  rows="2"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h2 class="text-xl font-bold text-purple-700 mb-4">
+              <i class="fas fa-star mr-2"></i>Vendor Performance
+            </h2>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="reliabilityScore">Reliability Score (1-5)</label>
+                <input
+                  type="number"
+                  id="reliabilityScore"
+                  name="reliabilityScore"
+                  min="1"
+                  max="5"
+                />
+              </div>
+              <div class="form-group">
+                <label for="leadTime">Average Lead Time (days)</label>
+                <input type="number" id="leadTime" name="leadTime" min="0" />
+              </div>
+              <div class="form-group">
+                <label for="qualityRecord">Quality Record</label>
+                <select id="qualityRecord" name="qualityRecord">
+                  <option value="">Select Record</option>
+                  <option value="excellent">Excellent</option>
+                  <option value="good">Good</option>
+                  <option value="acceptable">Acceptable</option>
+                  <option value="poor">Poor</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="priceCompetitiveness">Price Competitiveness</label>
+                <select id="priceCompetitiveness" name="priceCompetitiveness">
+                  <option value="">Select Level</option>
+                  <option value="high">Very Competitive</option>
+                  <option value="medium">Competitive</option>
+                  <option value="low">Less Competitive</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quotation Request -->
+        <div id="quotation" class="tab-content">
+          <div class="form-section">
+            <h2 class="text-xl font-bold text-purple-700 mb-4">
+              <i class="fas fa-file-invoice mr-2"></i>Quotation Request
+            </h2>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="quoteNumber">Quotation Request Number</label>
+                <input
+                  type="text"
+                  id="quoteNumber"
+                  name="quoteNumber"
+                  placeholder="Auto-generated"
+                />
+              </div>
+              <div class="form-group">
+                <label for="quoteDate">Request Date</label>
+                <input type="date" id="quoteDate" name="quoteDate" />
+              </div>
+              <div class="form-group">
+                <label for="quotationVendors"
+                  >Number of Quotations Required</label
+                >
+                <input
+                  type="number"
+                  id="quotationVendors"
+                  name="quotationVendors"
+                  min="1"
+                  value="3"
+                />
+              </div>
+              <div class="form-group col-span-2">
+                <label for="quotationSpecifications"
+                  >Specifications & Requirements</label
+                >
+                <textarea
+                  id="quotationSpecifications"
+                  name="quotationSpecifications"
+                  rows="4"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PO Acceptance -->
+        <div id="poacc" class="tab-content">
+          <div class="form-section">
+            <h2 class="text-xl font-bold text-purple-700 mb-4">
+              <i class="fas fa-check mr-2"></i>Purchase Order Acceptance
+            </h2>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="poNumber">Purchase Order Number</label>
+                <input type="text" id="poNumber" name="poNumber" />
+              </div>
+              <div class="form-group">
+                <label for="poDate">PO Date</label>
+                <input type="date" id="poDate" name="poDate" />
+              </div>
+              <div class="form-group">
+                <label for="poVendor">Vendor Selected</label>
+                <input type="text" id="poVendor" name="poVendor" />
+              </div>
+              <div class="form-group">
+                <label for="poAmount">Total Amount (RM)</label>
+                <input
+                  type="number"
+                  id="poAmount"
+                  name="poAmount"
+                  step="0.01"
+                />
+              </div>
+              <div class="form-group col-span-2">
+                <label for="poTerms">Payment Terms</label>
+                <textarea id="poTerms" name="poTerms" rows="3"></textarea>
+              </div>
+              <div class="form-group col-span-2">
+                <label for="poDelivery">Delivery Terms</label>
+                <textarea id="poDelivery" name="poDelivery" rows="3"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Approval -->
+        <div class="form-section">
+          <h2 class="text-xl font-bold text-purple-700 mb-4">
+            <i class="fas fa-signature mr-2"></i>Approval
+          </h2>
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="approvedBy">Approved By</label>
+              <input type="text" id="approvedBy" name="approvedBy" />
+            </div>
+            <div class="form-group">
+              <label for="approvalDate">Approval Date</label>
+              <input type="date" id="approvalDate" name="approvalDate" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="btn-group no-print">
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-save mr-2"></i>Save Form
+          </button>
+          <button type="reset" class="btn btn-secondary">
+            <i class="fas fa-redo mr-2"></i>Reset
+          </button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            onclick="window.print()"
+          >
+            <i class="fas fa-print mr-2"></i>Print
+          </button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            onclick="window.location.href = '/kewpa/index'"
+          >
+            <i class="fas fa-arrow-left mr-2"></i>Back
+          </button>
+        </div>
+      </form>
+    </main>
+
+    <script>
+      function switchTab(tabName) {
+        document.querySelectorAll(".tab-content").forEach((tab) => {
+          tab.classList.remove("active");
+        });
+        document.querySelectorAll(".tab-btn").forEach((btn) => {
+          btn.classList.remove("active");
+        });
+        document.getElementById(tabName).classList.add("active");
+        event.target.classList.add("active");
+      }
+
+      document
+        .getElementById("procurementForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          alert("Form submitted successfully!");
+        });
+    </script>
+  </body>
+</html>

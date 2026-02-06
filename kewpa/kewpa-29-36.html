@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KEW.PA-29 to 36: Stock Management & Reporting Forms</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-color: #f9fafb;
+      }
+      .form-header {
+        background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        color: white;
+        padding: 2rem;
+      }
+      .form-section {
+        background: white;
+        border-left: 4px solid #f59e0b;
+        margin: 1.5rem 0;
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+      }
+      .form-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+      }
+      .form-group {
+        display: flex;
+        flex-direction: column;
+      }
+      .form-group label {
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: #374151;
+      }
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        padding: 0.75rem;
+        border: 1px solid #d1d5db;
+        border-radius: 0.375rem;
+        font-size: 0.875rem;
+      }
+      .btn-group {
+        display: flex;
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+      .btn {
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 0.375rem;
+        cursor: pointer;
+        font-weight: 600;
+      }
+      .btn-primary {
+        background-color: #f59e0b;
+        color: white;
+      }
+      .btn-secondary {
+        background-color: #e5e7eb;
+        color: #374151;
+      }
+      .form-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1rem;
+      }
+      .form-table th,
+      .form-table td {
+        padding: 0.75rem;
+        border: 1px solid #d1d5db;
+        text-align: left;
+      }
+      .form-table th {
+        background-color: #f3f4f6;
+        font-weight: 600;
+      }
+      .tab-buttons {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+        border-bottom: 2px solid #e5e7eb;
+        flex-wrap: wrap;
+      }
+      .tab-btn {
+        padding: 0.75rem 1rem;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-weight: 600;
+        color: #6b7280;
+        border-bottom: 3px solid transparent;
+        font-size: 0.875rem;
+      }
+      .tab-btn.active {
+        color: #f59e0b;
+        border-bottom-color: #f59e0b;
+      }
+      .tab-content {
+        display: none;
+      }
+      .tab-content.active {
+        display: block;
+      }
+      .table-input {
+        width: 100%;
+        padding: 0.5rem;
+        border: 1px solid #d1d5db;
+      }
+      .table-select {
+        width: 100%;
+        padding: 0.5rem;
+        border: 1px solid #d1d5db;
+      }
+      @media print {
+        body {
+          font-size: 12pt;
+        }
+        .no-print {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-header">
+      <div class="max-w-6xl mx-auto">
+        <h1 class="text-3xl font-bold mb-2">
+          KEW.PA-29 to 36: Stock Management & Reporting
+        </h1>
+        <p class="text-amber-100">Inventory Reporting & Management Analytics</p>
+      </div>
+    </div>
+
+    <main class="max-w-6xl mx-auto p-8">
+      <form id="inventoryForm">
+        <!-- Tab Navigation -->
+        <div class="tab-buttons no-print">
+          <button
+            type="button"
+            class="tab-btn active"
+            onclick="switchTab('stocklevel')"
+          >
+            <i class="fas fa-boxes mr-2"></i>Stock Levels
+          </button>
+          <button type="button" class="tab-btn" onclick="switchTab('movement')">
+            <i class="fas fa-arrows-alt mr-2"></i>Movement Report
+          </button>
+          <button type="button" class="tab-btn" onclick="switchTab('aging')">
+            <i class="fas fa-calendar mr-2"></i>Stock Aging
+          </button>
+          <button type="button" class="tab-btn" onclick="switchTab('analysis')">
+            <i class="fas fa-chart-bar mr-2"></i>Analysis
+          </button>
+          <button
+            type="button"
+            class="tab-btn"
+            onclick="switchTab('recommendation')"
+          >
+            <i class="fas fa-lightbulb mr-2"></i>Recommendations
+          </button>
+        </div>
+
+        <!-- Stock Levels Tab -->
+        <div id="stocklevel" class="tab-content active">
+          <div class="form-section">
+            <h2 class="text-xl font-bold text-amber-700 mb-4">
+              <i class="fas fa-boxes mr-2"></i>Stock Level Report
+            </h2>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="reportDate">Report Date</label>
+                <input type="date" id="reportDate" name="reportDate" />
+              </div>
+              <div class="form-group">
+                <label for="warehouse">Warehouse/Storage Location</label>
+                <input type="text" id="warehouse" name="warehouse" />
+              </div>
+              <div class="form-group">
+                <label for="reportBy">Report Generated By</label>
+                <input type="text" id="reportBy" name="reportBy" />
+              </div>
+              <div class="form-group">
+                <label for="verifiedBy">Verified By</label>
+                <input type="text" id="verifiedBy" name="verifiedBy" />
+              </div>
+            </div>
+            <table class="form-table">
+              <thead>
+                <tr>
+                  <th>Item Code</th>
+                  <th>Description</th>
+                  <th>Min. Stock Level</th>
+                  <th>Current Stock</th>
+                  <th>Max. Stock Level</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <input type="text" class="table-input" title="Item code" />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      class="table-input"
+                      title="Item description"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      class="table-input"
+                      title="Minimum stock level"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      class="table-input"
+                      title="Current stock quantity"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      class="table-input"
+                      title="Maximum stock level"
+                    />
+                  </td>
+                  <td>
+                    <select class="table-select" title="Stock status">
+                      <option>Normal</option>
+                      <option>Low Stock</option>
+                      <option>Overstock</option>
+                    </select>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Movement Report Tab -->
+        <div id="movement" class="tab-content">
+          <div class="form-section">
+            <h2 class="text-xl font-bold text-amber-700 mb-4">
+              <i class="fas fa-arrows-alt mr-2"></i>Stock Movement Report
+            </h2>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="movementPeriod">Reporting Period</label>
+                <select id="movementPeriod" name="movementPeriod">
+                  <option value="">Select Period</option>
+                  <option value="daily">Daily</option>
+                  <option value="weekly">Weekly</option>
+                  <option value="monthly">Monthly</option>
+                  <option value="quarterly">Quarterly</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="startDate">Start Date</label>
+                <input type="date" id="startDate" name="startDate" />
+              </div>
+              <div class="form-group">
+                <label for="endDate">End Date</label>
+                <input type="date" id="endDate" name="endDate" />
+              </div>
+              <div class="form-group">
+                <label for="movementType">Movement Type</label>
+                <select id="movementType" name="movementType">
+                  <option value="">Select Type</option>
+                  <option value="inbound">Inbound</option>
+                  <option value="outbound">Outbound</option>
+                  <option value="transfer">Internal Transfer</option>
+                  <option value="adjustment">Adjustment</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-grid">
+              <div class="form-group col-span-2">
+                <label for="movementSummary">Movement Summary</label>
+                <textarea
+                  id="movementSummary"
+                  name="movementSummary"
+                  rows="4"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stock Aging Tab -->
+        <div id="aging" class="tab-content">
+          <div class="form-section">
+            <h2 class="text-xl font-bold text-amber-700 mb-4">
+              <i class="fas fa-calendar mr-2"></i>Stock Aging Report
+            </h2>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="agingDate">As of Date</label>
+                <input type="date" id="agingDate" name="agingDate" />
+              </div>
+              <div class="form-group col-span-2">
+                <label for="agingAnalysis">Aging Categories & Analysis</label>
+                <textarea
+                  id="agingAnalysis"
+                  name="agingAnalysis"
+                  rows="4"
+                  placeholder="Breakdown: Recent (0-30 days), Current (31-90 days), Aging (91-180 days), Obsolete (180+ days)"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Analysis Tab -->
+        <div id="analysis" class="tab-content">
+          <div class="form-section">
+            <h2 class="text-xl font-bold text-amber-700 mb-4">
+              <i class="fas fa-chart-bar mr-2"></i>Inventory Analysis
+            </h2>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="turnoverRatio">Inventory Turnover Ratio</label>
+                <input
+                  type="number"
+                  id="turnoverRatio"
+                  name="turnoverRatio"
+                  step="0.01"
+                />
+              </div>
+              <div class="form-group">
+                <label for="totalValue">Total Inventory Value (RM)</label>
+                <input
+                  type="number"
+                  id="totalValue"
+                  name="totalValue"
+                  step="0.01"
+                />
+              </div>
+              <div class="form-group">
+                <label for="utilizationRate">Utilization Rate (%)</label>
+                <input
+                  type="number"
+                  id="utilizationRate"
+                  name="utilizationRate"
+                  min="0"
+                  max="100"
+                />
+              </div>
+              <div class="form-group">
+                <label for="shrinkagePercent">Shrinkage Percentage (%)</label>
+                <input
+                  type="number"
+                  id="shrinkagePercent"
+                  name="shrinkagePercent"
+                  min="0"
+                />
+              </div>
+              <div class="form-group col-span-2">
+                <label for="analysisNotes">Key Findings & Analysis</label>
+                <textarea
+                  id="analysisNotes"
+                  name="analysisNotes"
+                  rows="4"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recommendations Tab -->
+        <div id="recommendation" class="tab-content">
+          <div class="form-section">
+            <h2 class="text-xl font-bold text-amber-700 mb-4">
+              <i class="fas fa-lightbulb mr-2"></i>Recommendations & Actions
+            </h2>
+            <div class="form-grid">
+              <div class="form-group col-span-2">
+                <label for="recommendations">Recommendations</label>
+                <textarea
+                  id="recommendations"
+                  name="recommendations"
+                  rows="4"
+                  placeholder="List recommended actions based on analysis"
+                ></textarea>
+              </div>
+              <div class="form-group col-span-2">
+                <label for="actionPlan">Action Plan & Timeline</label>
+                <textarea
+                  id="actionPlan"
+                  name="actionPlan"
+                  rows="4"
+                  placeholder="Specific actions to be implemented"
+                ></textarea>
+              </div>
+              <div class="form-group">
+                <label for="owner">Responsibility Owner</label>
+                <input type="text" id="owner" name="owner" />
+              </div>
+              <div class="form-group">
+                <label for="targetDate">Implementation Target Date</label>
+                <input type="date" id="targetDate" name="targetDate" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="btn-group no-print">
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-save mr-2"></i>Save Form
+          </button>
+          <button type="reset" class="btn btn-secondary">
+            <i class="fas fa-redo mr-2"></i>Reset
+          </button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            onclick="window.print()"
+          >
+            <i class="fas fa-print mr-2"></i>Print
+          </button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            onclick="window.location.href = '/kewpa/index'"
+          >
+            <i class="fas fa-arrow-left mr-2"></i>Back
+          </button>
+        </div>
+      </form>
+    </main>
+
+    <script>
+      function switchTab(tabName) {
+        document.querySelectorAll(".tab-content").forEach((tab) => {
+          tab.classList.remove("active");
+        });
+        document.querySelectorAll(".tab-btn").forEach((btn) => {
+          btn.classList.remove("active");
+        });
+        document.getElementById(tabName).classList.add("active");
+        event.target.classList.add("active");
+      }
+
+      document
+        .getElementById("inventoryForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          alert("Form submitted successfully!");
+        });
+    </script>
+  </body>
+</html>

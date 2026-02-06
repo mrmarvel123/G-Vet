@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KEW.AH-7: Livestock Transfer Form</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-color: #f9fafb;
+      }
+      .form-header {
+        background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+        color: white;
+        padding: 2rem;
+      }
+      .form-section {
+        background: white;
+        border-left: 4px solid #3b82f6;
+        margin: 1.5rem 0;
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+      }
+      .form-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+      }
+      .form-group {
+        display: flex;
+        flex-direction: column;
+      }
+      .form-group label {
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: #374151;
+      }
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        padding: 0.75rem;
+        border: 1px solid #d1d5db;
+        border-radius: 0.375rem;
+        font-size: 0.875rem;
+      }
+      .btn-group {
+        display: flex;
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+      .btn {
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 0.375rem;
+        cursor: pointer;
+        font-weight: 600;
+      }
+      .btn-primary {
+        background-color: #3b82f6;
+        color: white;
+      }
+      .btn-secondary {
+        background-color: #e5e7eb;
+        color: #374151;
+      }
+      @media print {
+        body {
+          font-size: 12pt;
+        }
+        .no-print {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-header">
+      <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-bold mb-2">KEW.AH-7: Livestock Transfer</h1>
+        <p class="text-blue-100">
+          Inter-Facility Animal Movement & Transfer Records
+        </p>
+      </div>
+    </div>
+
+    <main class="max-w-4xl mx-auto p-8">
+      <form id="transferForm">
+        <!-- Transfer Information -->
+        <div class="form-section">
+          <h2 class="text-xl font-bold text-blue-700 mb-4">
+            <i class="fas fa-exchange-alt mr-2"></i>Transfer Details
+          </h2>
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="transferDate">Transfer Date</label>
+              <input type="date" id="transferDate" name="transferDate" />
+            </div>
+            <div class="form-group">
+              <label for="transferType">Type of Transfer</label>
+              <select id="transferType" name="transferType">
+                <option value="">Select Type</option>
+                <option value="internal">Internal Facility Transfer</option>
+                <option value="external">External Facility Transfer</option>
+                <option value="sale">Sale</option>
+                <option value="loan">Loan/Temporary Transfer</option>
+                <option value="donation">Donation</option>
+                <option value="exchange">Exchange</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="transferReason">Reason for Transfer</label>
+              <select id="transferReason" name="transferReason">
+                <option value="">Select Reason</option>
+                <option value="breeding">Breeding Program</option>
+                <option value="research">Research/Education</option>
+                <option value="health">Health Management</option>
+                <option value="grazing">Grazing Rotation</option>
+                <option value="overcrowding">Overcrowding Relief</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Animal Information -->
+        <div class="form-section">
+          <h2 class="text-xl font-bold text-blue-700 mb-4">
+            <i class="fas fa-horse mr-2"></i>Animal Information
+          </h2>
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="animalId">Animal ID/Tag Number</label>
+              <input
+                type="text"
+                id="animalId"
+                name="animalId"
+                placeholder="e.g., C2024-001"
+              />
+            </div>
+            <div class="form-group">
+              <label for="animalName">Animal Name</label>
+              <input type="text" id="animalName" name="animalName" />
+            </div>
+            <div class="form-group">
+              <label for="animalType">Animal Type/Species</label>
+              <select id="animalType" name="animalType">
+                <option value="">Select Type</option>
+                <option value="cattle">Cattle/Buffalo</option>
+                <option value="goat">Goat</option>
+                <option value="sheep">Sheep</option>
+                <option value="horse">Horse/Donkey</option>
+                <option value="poultry">Poultry</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="breed">Breed</label>
+              <input type="text" id="breed" name="breed" />
+            </div>
+            <div class="form-group">
+              <label for="gender">Gender</label>
+              <select id="gender" name="gender">
+                <option value="">Select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="age">Age (years/months)</label>
+              <input
+                type="text"
+                id="age"
+                name="age"
+                placeholder="e.g., 2 years, 6 months"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Health Status -->
+        <div class="form-section">
+          <h2 class="text-xl font-bold text-blue-700 mb-4">
+            <i class="fas fa-heartbeat mr-2"></i>Health Status at Transfer
+          </h2>
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="healthStatus">Current Health Status</label>
+              <select id="healthStatus" name="healthStatus">
+                <option value="">Select Status</option>
+                <option value="excellent">Excellent</option>
+                <option value="good">Good</option>
+                <option value="fair">Fair</option>
+                <option value="poor">Poor</option>
+                <option value="sick">Sick/Under Treatment</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="vaccinations">Vaccinations Current?</label>
+              <select id="vaccinations" name="vaccinations">
+                <option value="">Select Option</option>
+                <option value="yes">Yes, Current</option>
+                <option value="due">Due/Overdue</option>
+                <option value="unknown">Unknown</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="treatments">Current Treatments/Medications</label>
+              <input
+                type="text"
+                id="treatments"
+                name="treatments"
+                placeholder="Any ongoing treatments"
+              />
+            </div>
+            <div class="form-group col-span-2">
+              <label for="healthNotes">Health Notes</label>
+              <textarea
+                id="healthNotes"
+                name="healthNotes"
+                rows="2"
+                placeholder="Any health concerns or observations"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sending Facility/Owner -->
+        <div class="form-section">
+          <h2 class="text-xl font-bold text-blue-700 mb-4">
+            <i class="fas fa-industry mr-2"></i>Sending Facility/Owner
+          </h2>
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="sendingFacility">Facility/Organization Name</label>
+              <input type="text" id="sendingFacility" name="sendingFacility" />
+            </div>
+            <div class="form-group">
+              <label for="sendingOwner">Owner/Contact Person</label>
+              <input type="text" id="sendingOwner" name="sendingOwner" />
+            </div>
+            <div class="form-group">
+              <label for="sendingPhone">Phone Number</label>
+              <input type="tel" id="sendingPhone" name="sendingPhone" />
+            </div>
+            <div class="form-group">
+              <label for="sendingEmail">Email</label>
+              <input type="email" id="sendingEmail" name="sendingEmail" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Receiving Facility/Owner -->
+        <div class="form-section">
+          <h2 class="text-xl font-bold text-blue-700 mb-4">
+            <i class="fas fa-home mr-2"></i>Receiving Facility/Owner
+          </h2>
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="receivingFacility">Facility/Organization Name</label>
+              <input
+                type="text"
+                id="receivingFacility"
+                name="receivingFacility"
+              />
+            </div>
+            <div class="form-group">
+              <label for="receivingOwner">Owner/Contact Person</label>
+              <input type="text" id="receivingOwner" name="receivingOwner" />
+            </div>
+            <div class="form-group">
+              <label for="receivingPhone">Phone Number</label>
+              <input type="tel" id="receivingPhone" name="receivingPhone" />
+            </div>
+            <div class="form-group">
+              <label for="receivingEmail">Email</label>
+              <input type="email" id="receivingEmail" name="receivingEmail" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Transfer Conditions -->
+        <div class="form-section">
+          <h2 class="text-xl font-bold text-blue-700 mb-4">
+            <i class="fas fa-file-contract mr-2"></i>Transfer Conditions
+          </h2>
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="transportMethod">Transport Method</label>
+              <select id="transportMethod" name="transportMethod">
+                <option value="">Select Method</option>
+                <option value="vehicle">Own Vehicle</option>
+                <option value="commercial">Commercial Transport</option>
+                <option value="walk">Walk/Drive (on-foot)</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="conditions">Special Conditions/Requirements</label>
+              <input
+                type="text"
+                id="conditions"
+                name="conditions"
+                placeholder="Any special care or handling requirements"
+              />
+            </div>
+            <div class="form-group col-span-2">
+              <label for="terms">Terms of Transfer Agreement</label>
+              <textarea
+                id="terms"
+                name="terms"
+                rows="3"
+                placeholder="Terms, liability, insurance, return clauses, etc."
+              ></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Authorizations -->
+        <div class="form-section">
+          <h2 class="text-xl font-bold text-blue-700 mb-4">
+            <i class="fas fa-check-square mr-2"></i>Authorizations
+          </h2>
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="sentByName">Sent By (Name)</label>
+              <input type="text" id="sentByName" name="sentByName" />
+            </div>
+            <div class="form-group">
+              <label for="sentBySignature">Signature</label>
+              <input
+                type="text"
+                id="sentBySignature"
+                name="sentBySignature"
+                placeholder="Signature or initials"
+              />
+            </div>
+            <div class="form-group">
+              <label for="receivedByName">Received By (Name)</label>
+              <input type="text" id="receivedByName" name="receivedByName" />
+            </div>
+            <div class="form-group">
+              <label for="receivedBySignature">Signature</label>
+              <input
+                type="text"
+                id="receivedBySignature"
+                name="receivedBySignature"
+                placeholder="Signature or initials"
+              />
+            </div>
+            <div class="form-group">
+              <label for="receiveDate">Date Received</label>
+              <input type="date" id="receiveDate" name="receiveDate" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="btn-group no-print">
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-save mr-2"></i>Save Form
+          </button>
+          <button type="reset" class="btn btn-secondary">
+            <i class="fas fa-redo mr-2"></i>Reset
+          </button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            onclick="window.print()"
+          >
+            <i class="fas fa-print mr-2"></i>Print
+          </button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            onclick="window.location.href = '/kewah/index'"
+          >
+            <i class="fas fa-arrow-left mr-2"></i>Back
+          </button>
+        </div>
+      </form>
+    </main>
+
+    <script>
+      document
+        .getElementById("transferForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          alert("Form submitted successfully!");
+        });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KEW.AH-1: Animal Registration Form</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      @media print {
+        .no-print {
+          display: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <header
+      class="bg-gradient-to-r from-orange-600 to-orange-800 text-white shadow-lg p-6 no-print"
+    >
+      <div class="flex items-center justify-between">
+        <div class="flex items-center space-x-4">
+          <i class="fas fa-clipboard-list text-3xl"></i>
+          <div>
+            <h1 class="text-2xl font-bold">KEW.AH-1: Animal Registration</h1>
+            <p class="text-sm text-orange-100">
+              Livestock Identification & Registration Form
+            </p>
+          </div>
+        </div>
+        <button
+          onclick="window.history.back()"
+          class="bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg"
+        >
+          <i class="fas fa-arrow-left mr-2"></i>Back
+        </button>
+      </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto p-6">
+      <div class="bg-white rounded-xl shadow-lg p-8">
+        <div class="border-t-4 border-orange-600 pt-4 mb-6 text-center">
+          <p class="font-bold text-lg">
+            JABATAN PERKHIDMATAN VETERINAR NEGERI PERAK
+          </p>
+          <p class="text-sm font-semibold">ANIMAL REGISTRATION FORM</p>
+          <p class="text-sm font-bold text-orange-600 mt-2">FORM KEW.AH-1</p>
+        </div>
+
+        <!-- Animal Information -->
+        <div class="space-y-6 border-t-2 border-gray-300 pt-4">
+          <div>
+            <h3 class="font-bold text-lg text-orange-600 mb-4">
+              Animal Identification
+            </h3>
+            <div class="grid grid-cols-3 gap-4">
+              <div>
+                <label class="block font-semibold text-gray-700 mb-1"
+                  >Animal ID/Tag Number</label
+                >
+                <input
+                  type="text"
+                  class="w-full border border-gray-300 px-3 py-2 rounded"
+                  placeholder="AH-001"
+                  title="Animal ID or tag number"
+                />
+              </div>
+              <div>
+                <label class="block font-semibold text-gray-700 mb-1"
+                  >Registration Date</label
+                >
+                <input
+                  type="date"
+                  class="w-full border border-gray-300 px-3 py-2 rounded"
+                  title="Registration date"
+                />
+              </div>
+              <div>
+                <label class="block font-semibold text-gray-700 mb-1"
+                  >Farm/Unit</label
+                >
+                <input
+                  type="text"
+                  class="w-full border border-gray-300 px-3 py-2 rounded"
+                  title="Farm or unit name"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Basic Details -->
+          <div>
+            <h3 class="font-bold text-lg text-orange-600 mb-4">
+              Basic Information
+            </h3>
+            <div class="space-y-4">
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label class="block font-semibold text-gray-700 mb-1"
+                    >Species</label
+                  >
+                  <select
+                    class="w-full border border-gray-300 px-3 py-2 rounded"
+                    title="Animal species"
+                  >
+                    <option>-- Select Species --</option>
+                    <option>Cattle</option>
+                    <option>Goat</option>
+                    <option>Sheep</option>
+                    <option>Horse</option>
+                    <option>Buffalo</option>
+                    <option>Poultry</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block font-semibold text-gray-700 mb-1"
+                    >Breed</label
+                  >
+                  <input
+                    type="text"
+                    class="w-full border border-gray-300 px-3 py-2 rounded"
+                    title="Animal breed"
+                  />
+                </div>
+              </div>
+              <div class="grid grid-cols-3 gap-4">
+                <div>
+                  <label class="block font-semibold text-gray-700 mb-1"
+                    >Animal Name (if any)</label
+                  >
+                  <input
+                    type="text"
+                    class="w-full border border-gray-300 px-3 py-2 rounded"
+                    title="Animal name or identifier"
+                  />
+                </div>
+                <div>
+                  <label class="block font-semibold text-gray-700 mb-1"
+                    >Gender</label
+                  >
+                  <select
+                    class="w-full border border-gray-300 px-3 py-2 rounded"
+                    title="Animal gender"
+                  >
+                    <option>-- Select --</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block font-semibold text-gray-700 mb-1"
+                    >Date of Birth</label
+                  >
+                  <input
+                    type="date"
+                    class="w-full border border-gray-300 px-3 py-2 rounded"
+                    title="Animal date of birth"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Physical Characteristics -->
+          <div>
+            <h3 class="font-bold text-lg text-orange-600 mb-4">
+              Physical Characteristics
+            </h3>
+            <div class="space-y-4">
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label class="block font-semibold text-gray-700 mb-1"
+                    >Color/Markings</label
+                  >
+                  <input
+                    type="text"
+                    class="w-full border border-gray-300 px-3 py-2 rounded"
+                    placeholder="e.g., Brown with white patches"
+                    title="Color and markings description"
+                  />
+                </div>
+                <div>
+                  <label class="block font-semibold text-gray-700 mb-1"
+                    >Current Weight (kg)</label
+                  >
+                  <input
+                    type="number"
+                    class="w-full border border-gray-300 px-3 py-2 rounded"
+                    step="0.1"
+                    title="Current animal weight in kilograms"
+                  />
+                </div>
+              </div>
+              <div>
+                <label class="block font-semibold text-gray-700 mb-1"
+                  >Distinguishing Features</label
+                >
+                <textarea
+                  class="w-full border border-gray-300 px-3 py-2 rounded h-16"
+                  placeholder="Scars, horns, missing parts, etc..."
+                ></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pedigree Information -->
+          <div>
+            <h3 class="font-bold text-lg text-orange-600 mb-4">
+              Pedigree Information
+            </h3>
+            <div class="space-y-4">
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label class="block font-semibold text-gray-700 mb-1"
+                    >Father ID (if known)</label
+                  >
+                  <input
+                    type="text"
+                    class="w-full border border-gray-300 px-3 py-2 rounded"
+                    title="Father ID or identifier"
+                  />
+                </div>
+                <div>
+                  <label class="block font-semibold text-gray-700 mb-1"
+                    >Mother ID (if known)</label
+                  >
+                  <input
+                    type="text"
+                    class="w-full border border-gray-300 px-3 py-2 rounded"
+                    title="Mother ID or identifier"
+                  />
+                </div>
+              </div>
+              <div>
+                <label class="block font-semibold text-gray-700 mb-1"
+                  >Breeding Purpose</label
+                >
+                <select
+                  class="w-full border border-gray-300 px-3 py-2 rounded"
+                  title="Breeding or production purpose"
+                >
+                  <option>-- Select --</option>
+                  <option>Breeding</option>
+                  <option>Production (Milk/Meat)</option>
+                  <option>Working Animal</option>
+                  <option>Research</option>
+                  <option>Others</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Photo Section -->
+          <div class="p-4 bg-orange-50 rounded-lg">
+            <label class="block font-semibold text-gray-700 mb-2"
+              >Animal Photo</label
+            >
+            <div
+              class="border-2 border-dashed border-orange-300 p-8 text-center"
+            >
+              <i class="fas fa-camera text-4xl text-orange-300 mb-2"></i>
+              <p class="text-gray-600">Click to upload photo or drag & drop</p>
+              <input
+                type="file"
+                class="mt-2"
+                accept="image/*"
+                title="Upload animal photo"
+              />
+            </div>
+          </div>
+
+          <!-- Signature -->
+          <div class="border-t-2 border-gray-300 pt-4 grid grid-cols-3 gap-4">
+            <div class="text-center">
+              <div class="border-t border-gray-400 pt-2 h-20"></div>
+              <p class="text-sm font-semibold">Registered By</p>
+              <p class="text-xs text-gray-600">Date: _______</p>
+            </div>
+            <div class="text-center">
+              <div class="border-t border-gray-400 pt-2 h-20"></div>
+              <p class="text-sm font-semibold">Veterinarian</p>
+              <p class="text-xs text-gray-600">Date: _______</p>
+            </div>
+            <div class="text-center">
+              <div class="border-t border-gray-400 pt-2 h-20"></div>
+              <p class="text-sm font-semibold">Manager</p>
+              <p class="text-xs text-gray-600">Date: _______</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

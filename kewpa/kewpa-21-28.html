@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KEW.PA-21 to 28: Requisition & Authorization Forms</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-color: #f9fafb;
+      }
+      .form-header {
+        background: linear-gradient(135deg, #ec4899 0%, #be185d 100%);
+        color: white;
+        padding: 2rem;
+      }
+      .form-section {
+        background: white;
+        border-left: 4px solid #ec4899;
+        margin: 1.5rem 0;
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+      }
+      .form-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+      }
+      .form-group {
+        display: flex;
+        flex-direction: column;
+      }
+      .form-group label {
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: #374151;
+      }
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        padding: 0.75rem;
+        border: 1px solid #d1d5db;
+        border-radius: 0.375rem;
+        font-size: 0.875rem;
+      }
+      .btn-group {
+        display: flex;
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+      .btn {
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 0.375rem;
+        cursor: pointer;
+        font-weight: 600;
+      }
+      .btn-primary {
+        background-color: #ec4899;
+        color: white;
+      }
+      .btn-secondary {
+        background-color: #e5e7eb;
+        color: #374151;
+      }
+      @media print {
+        body {
+          font-size: 12pt;
+        }
+        .no-print {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-header">
+      <div class="max-w-6xl mx-auto">
+        <h1 class="text-3xl font-bold mb-2">
+          KEW.PA-21 to 28: Requisition & Authorization
+        </h1>
+        <p class="text-pink-100">
+          Internal Approvals & Authorization Workflows
+        </p>
+      </div>
+    </div>
+
+    <main class="max-w-6xl mx-auto p-8">
+      <form id="requisitionForm">
+        <!-- Form Information -->
+        <div class="form-section">
+          <h2 class="text-xl font-bold text-pink-700 mb-4">
+            <i class="fas fa-file-alt mr-2"></i>Requisition Details
+          </h2>
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="requisitionType">Requisition Type</label>
+              <select id="requisitionType" name="requisitionType">
+                <option value="">Select Type</option>
+                <option value="materials">Materials Requisition</option>
+                <option value="equipment">Equipment Requisition</option>
+                <option value="services">Services Requisition</option>
+                <option value="staffing">Staffing Requisition</option>
+                <option value="training">Training Requisition</option>
+                <option value="maintenance">Maintenance Requisition</option>
+                <option value="capital">Capital Equipment</option>
+                <option value="minor">Minor Repairs</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="requisitionNumber">Requisition Number</label>
+              <input
+                type="text"
+                id="requisitionNumber"
+                name="requisitionNumber"
+                placeholder="Auto-generated"
+              />
+            </div>
+            <div class="form-group">
+              <label for="requisitionDate">Date Required</label>
+              <input type="date" id="requisitionDate" name="requisitionDate" />
+            </div>
+            <div class="form-group">
+              <label for="requestingDept">Requesting Department</label>
+              <input type="text" id="requestingDept" name="requestingDept" />
+            </div>
+            <div class="form-group">
+              <label for="costCenter">Cost Center</label>
+              <input type="text" id="costCenter" name="costCenter" />
+            </div>
+            <div class="form-group">
+              <label for="estimatedBudget">Estimated Budget (RM)</label>
+              <input
+                type="number"
+                id="estimatedBudget"
+                name="estimatedBudget"
+                step="0.01"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Justification -->
+        <div class="form-section">
+          <h2 class="text-xl font-bold text-pink-700 mb-4">
+            <i class="fas fa-lightbulb mr-2"></i>Business Justification
+          </h2>
+          <div class="form-grid">
+            <div class="form-group col-span-2">
+              <label for="businessReason">Business Reason/Justification</label>
+              <textarea
+                id="businessReason"
+                name="businessReason"
+                rows="4"
+                placeholder="Explain why this requisition is needed"
+              ></textarea>
+            </div>
+            <div class="form-group col-span-2">
+              <label for="benefits">Expected Benefits</label>
+              <textarea
+                id="benefits"
+                name="benefits"
+                rows="3"
+                placeholder="Describe the benefits or improvements"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Authorization Chain -->
+        <div class="form-section">
+          <h2 class="text-xl font-bold text-pink-700 mb-4">
+            <i class="fas fa-certificate mr-2"></i>Authorization Chain
+          </h2>
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="supervisor">Supervisor/Manager Approval</label>
+              <input type="text" id="supervisor" name="supervisor" />
+            </div>
+            <div class="form-group">
+              <label for="supervisorDate">Approval Date</label>
+              <input type="date" id="supervisorDate" name="supervisorDate" />
+            </div>
+            <div class="form-group">
+              <label for="headDept">Department Head Approval</label>
+              <input type="text" id="headDept" name="headDept" />
+            </div>
+            <div class="form-group">
+              <label for="headDeptDate">Approval Date</label>
+              <input type="date" id="headDeptDate" name="headDeptDate" />
+            </div>
+            <div class="form-group">
+              <label for="finance">Finance Manager Approval</label>
+              <input type="text" id="finance" name="finance" />
+            </div>
+            <div class="form-group">
+              <label for="financeDate">Approval Date</label>
+              <input type="date" id="financeDate" name="financeDate" />
+            </div>
+            <div class="form-group">
+              <label for="director">Director/Executive Approval</label>
+              <input type="text" id="director" name="director" />
+            </div>
+            <div class="form-group">
+              <label for="directorDate">Approval Date</label>
+              <input type="date" id="directorDate" name="directorDate" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Tracking -->
+        <div class="form-section">
+          <h2 class="text-xl font-bold text-pink-700 mb-4">
+            <i class="fas fa-tasks mr-2"></i>Processing Status
+          </h2>
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="status">Current Status</label>
+              <select id="status" name="status">
+                <option value="">Select Status</option>
+                <option value="submitted">Submitted</option>
+                <option value="under_review">Under Review</option>
+                <option value="approved">Approved</option>
+                <option value="rejected">Rejected</option>
+                <option value="on_hold">On Hold</option>
+                <option value="processed">Processed</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="statusNotes">Status Notes</label>
+              <textarea id="statusNotes" name="statusNotes" rows="2"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="btn-group no-print">
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-save mr-2"></i>Save Form
+          </button>
+          <button type="reset" class="btn btn-secondary">
+            <i class="fas fa-redo mr-2"></i>Reset
+          </button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            onclick="window.print()"
+          >
+            <i class="fas fa-print mr-2"></i>Print
+          </button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            onclick="window.location.href = '/kewpa/index'"
+          >
+            <i class="fas fa-arrow-left mr-2"></i>Back
+          </button>
+        </div>
+      </form>
+    </main>
+
+    <script>
+      document
+        .getElementById("requisitionForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          alert("Form submitted successfully!");
+        });
+    </script>
+  </body>
+</html>
